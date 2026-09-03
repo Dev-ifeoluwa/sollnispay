@@ -1,59 +1,5 @@
-// import Animate from "components/Animate";
-// import { DollarSign } from "lucide-react";
-// import Image from "next/image";
-// import BenefitCard from "./BenefitCard";
-// import Link from "next/link";
-
-
-// export default function Benefit() {
-//   return (
-//     <>
-//       <div className="flex flex-col gap-4 px-4 py-7 md:px-7 md:py-14">
-//         {/* top */}
-//         <div className="flex justify-between items-center lg:flex-row">
-//           <div className="w-full max-w-lg">
-//             <Animate type="fade-up" delay={300}>
-//               <h2 className="text-lg md:text-4xl font-semibold mb-9 px-2 leading-lung">
-//                 Our Key <span className="text-green-800">Service</span>{" "}
-//                 (Our Solutions)
-//               </h2>
-//             </Animate>
-//           </div>
-//           <div className="flex items-center gap-3 text-white bg-green-500 font-semibold text-md whitespace-nowrap py-1 text-center px-2 rounded-4xl md:py-3 md:px-5 md:text-xl">
-//                 {/* <span>Learn More</span> */}
-//                 <Link href={"/Account/loginaccount"}>See All</Link>
-//                 <span>
-//                     <Image 
-//                         src="/arrow-white.svg" 
-//                         alt="logo" 
-//                         height={20} 
-//                         width={20}
-//                         />
-//                 </span>
-//           </div>
-//         </div>
-//         {/* bottom */}
-//         <div>
-//             <BenefitCard />
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-
-
-import React from "react";
 import Animate from "components/Animate";
 
-/**
- * "How to register" section — 3-step onboarding walkthrough.
- * Left: numbered steps with copy. Right: an on-brand step-flow
- * graphic (icon + connector line) instead of an app-screen mockup,
- * so the section reads as editorial rather than a product screenshot.
- *
- * Uses the brand.* colors already defined in tailwind.config.js.
- */
 
 type Step = {
   number: string;

@@ -76,7 +76,7 @@ const Signin = () => {
               height={40}
               className="rounded-full bg-green-950"
             />
-            <h2 className="text-2xl font-bold">Shalompay</h2>
+            <h2 className="text-2xl font-bold">Sollnispay</h2>
           </div>
           <div className="bg-white rounded-2xl shadow-md p-8 w-full max-w-md">
             {/* Header */}
@@ -157,11 +157,11 @@ const Signin = () => {
               {/* Login Button */}
               <button
                 type="submit"
-                className="w-full cursor-pointer bg-linear-to-r from-green-700 to-lime-400 text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition"
+                className="w-full cursor-pointer bg-linear-to-r from-orange-700 bg-amber-900 text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition"
               >
                 Login
               </button>
-              <Link href="/Account/SignUp" className="text-sm text-gray-700 hover:underline -mt-6 block text-center">New to Shalompay? <strong className="text-green-700">Sign Up</strong></Link>
+              <Link href="/Account/SignUp" className="text-sm text-gray-700 hover:underline -mt-6 block text-center">New to Sollnispay? <strong className="text-orange-900">Sign Up</strong></Link>
             </form>
           </div>
           <Toaster position="top-center" reverseOrder={false} />
