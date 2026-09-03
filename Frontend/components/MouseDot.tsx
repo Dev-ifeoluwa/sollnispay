@@ -23,7 +23,7 @@ export default function MouseDot() {
     <>
       {visible && (
         <div
-          className="fixed w-3 h-3 bg-green-600 rounded-full pointer-events-none transition-transform duration-75 ease-linear"
+          className="fixed w-2 h-2 bg-orange-600 rounded-full pointer-events-none transition-transform duration-75 ease-linear"
           style={{
             left: position.x,
             top: position.y,

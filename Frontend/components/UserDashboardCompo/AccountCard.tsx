@@ -15,7 +15,7 @@ export default function AccountCard() {
                         <p className="text-lg md:text-2xl text-white font-semibold whitespace-break-spaces">Welcome, <span className="text-green-100 font-semibold">Taiwo</span></p>
                     </div>
                     <div className="flex gap-4 text-lg md:text-2xl items-center">
-                        <h2 className="font-semibold text-white">Novapay</h2>
+                        <h2 className="font-semibold text-white">sollnispay</h2>
                         <Link href={"/User/Profile"} className="py-1 px-1.5 text-sm font-bold text-gray-700 bg-gray-200 rounded-full">TF</Link>
                     </div>
                 </div>

@@ -13,18 +13,18 @@ export default function AccountFoot() {
         <div className="flex justify-between  p-2 items-center rounded bg-white shadow-gray-400 mt-5 px-6 shadow-lg">
             <button 
                 onClick={handleClick}
-                className="p-2 rounded-full text-white bg-green-700">
+                className="p-2 rounded-full text-white bg-orange-700">
                 <HomeIcon/>
             </button>
             <button 
                 onClick={handleClick}
-                 className="p-2 rounded-full text-white bg-green-700">
+                 className="p-2 rounded-full text-white bg-orange-700">
                 <Settings/>
             </button>
             {/* <AccountSideBar /> */}
             <button
                 onClick={handleClick}
-                className="p-2 rounded-full text-white bg-green-700">
+                className="p-2 rounded-full text-white bg-orange-700">
                 <Contact2 />
             </button>
         </div>

@@ -62,7 +62,7 @@ export default function UserDashboard() {
                                 <p className="text-lg md:text-2xl text-white font-semibold whitespace-break-spaces">Welcome, <span className="text-green-100 font-semibold">{dashboard.firstName}!</span></p>
                             </div>
                             <div className="flex gap-4 text-lg md:text-2xl items-center">
-                                <h2 className="font-semibold text-white">Shalompay</h2>
+                                <h2 className="font-semibold text-white">Sollnispay</h2>
                                 <Link href={"/User/Profile"} className="p-2 text-sm font-bold text-gray-700 bg-gray-200 rounded-full">
                                     {`${dashboard.firstName?.[0] ?? "U"}${dashboard.lastName?.[0] ?? ""}`}
                                 </Link>

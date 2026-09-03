@@ -17,12 +17,8 @@ export default function FancyHeading() {
 
   return (
     <div className="relative group">
-      {/* <h1 className="text-4xl text-white xl:text-5xl font-semibold leading-tight md:cursor-default relative z-10">
-        <span className="text-green-500">Redefining</span> the Future of Banking
-        Today
-      </h1> */}
       <h1 className="text-4xl text-white xl:text-5xl font-semibold leading-tight md:cursor-default relative z-10">
-        <span className="text-green-500">Power</span> you business at ease today
+        <span className="text-orange-600">Power</span> your business at ease today
       </h1>
       <div className="lens hidden group-hover:block group-active:block"></div>
 

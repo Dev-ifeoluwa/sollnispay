@@ -1,6 +1,6 @@
 import Footer from "components/BusinessComponent/Footer";
 import Navbar from "components/BusinessComponent/Navbar";
-import BankWith from "components/PersonalComponent/BankWith";
+import About from "components/PersonalComponent/About";
 import Benefit from "components/PersonalComponent/Benefit";
 import Hero from "components/PersonalComponent/Hero";
 import Payment from "components/PersonalComponent/Payment";
@@ -11,7 +11,7 @@ export default function PersonalPage() {
     <>
       <Navbar />
       <Hero />
-      <BankWith />
+      <About />
       <Benefit />
       <PersonalAccount />
       <Payment />

@@ -31,7 +31,7 @@ import {
       },
       {
         icon: <Network />,
-        Name: "Shalomtransfer",
+        Name: "Sollnistransfer",
       },
       {
         icon: <Monitor />,
@@ -49,18 +49,10 @@ import {
         icon: <Gamepad2 />,
         Name: "Sport wallet Funding",
       },
-      // {
-      //   icon: <WalletCards />,
-      //   Name: "Loan",
-      // },
       {
         icon: <LoaderIcon />,
         Name: "Business Account",
       },
-      // {
-      //   icon: <BaggageClaim />,
-      //   Name: "Xelviomart",
-      // },
       {
         icon: <EuroIcon />,
         Name: "Convert Currency",
@@ -69,17 +61,13 @@ import {
         icon: <Plane />,
         Name: "Travel Payment",
       },
-      // {
-      //   icon: <Newspaper />,
-      //   Name: "Transaction history",
-      // },
     ];
   
     return (
       <>
         <div className="flex flex-col gap-3 px-4 py-8">
           <div className="flex items-center justify-between">
-            <h4 className="text-lg md:text-xl text-green-950 font-semibold">
+            <h4 className="text-lg md:text-xl text-orange-950 font-semibold">
               Service
             </h4>
           </div>
@@ -90,7 +78,7 @@ import {
                 <div
                   key={index}
                   onClick={handleClick}
-                  className="shadow-sm flex flex-col items-center gap-3 shadow-gray-400 cursor-pointer rounded-xl px-2 py-4 text-greeb-950 text-sm"
+                  className="shadow-sm flex flex-col items-center gap-3 shadow-orange-200 cursor-pointer rounded-xl px-2 py-4 text-greeb-950 text-sm"
                 >
                   <span>{BankFeature.icon}</span>
                   <p>{BankFeature.Name}</p>
