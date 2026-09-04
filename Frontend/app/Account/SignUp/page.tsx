@@ -52,14 +52,14 @@ const Signup = () => {
   }
 
   return (
-    <div className="flex flex-col items-center px-2 py-15 justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center px-2 py-15 justify-center min-h-screen bg-orange-100">
       <div className="flex items-center gap-4 px-auto mx-auto pb-6 ">
         <Image
           src="/favicon.ico"
           alt="Logo"
           width={40}
           height={40}
-          className="rounded-full bg-green-950"
+          className="rounded-full bg-orange-100"
         />
         <h2 className="text-2xl font-bold">Sollnispay</h2>
       </div>

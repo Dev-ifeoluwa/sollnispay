@@ -57,7 +57,7 @@ const Signin = () => {
 
   return (
     <>
-      <div className="flex flex-col bg-gray-100">
+      <div className="flex flex-col bg-orange-100">
         <span className="flex justify-between px-2 text-sm pt-5 items-center">
           <p className="flex items-center gap-3">
             <ArrowLeft
@@ -74,7 +74,7 @@ const Signin = () => {
               alt="Logo"
               width={40}
               height={40}
-              className="rounded-full bg-green-950"
+              className="rounded-full bg-orange-100"
             />
             <h2 className="text-2xl font-bold">Sollnispay</h2>
           </div>
