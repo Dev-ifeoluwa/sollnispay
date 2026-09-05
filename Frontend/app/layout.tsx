@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 const metadata: Metadata = {
-  title: "shalompay - Built for You, Built for Tomorrow",
+  title: "sollnispay - Built for You, Built for Tomorrow",
   description: "Bills and payment app for the future",
 };
 
