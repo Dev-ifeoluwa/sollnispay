@@ -11,6 +11,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://sollnispay.vercel.app',
+      'https://animated-space-computing-machine-vxpwprrgx69fxrg5-3000.app.github.dev',
       'http://localhost:3000',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
