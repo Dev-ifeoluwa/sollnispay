@@ -69,7 +69,7 @@ export default function AccountTransaction() {
           <h4 className="text-lg md:text-xl text-green-950 font-semibold">
             Recent Transaction
           </h4>
-          <span className="flex p-1 shadow-gray-500 shadow-sm cursor-pointer text-[10px] md:text-sm bg-green-300 items-center gap-1 text-white rounded-3xl">
+          <span className="flex p-1 shadow-gray-500 shadow-sm cursor-pointer text-[10px] md:text-sm bg-orange-700 items-center gap-1 text-white rounded-3xl">
             <p className="bg-lime-100 p-0.5 text-gray-700 rounded-2xl">
               7days
             </p>
