@@ -24,7 +24,7 @@ import {
     },
     {
       icon: EuroIcon,
-      Name: "Convert Currency",
+      Name: "Convert Funds",
       href: "/User/Convertmoney"
     },
     {

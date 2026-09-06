@@ -1,5 +1,5 @@
-import Footer from "components/BusinessComponent/Footer";
-import Navbar from "components/BusinessComponent/Navbar";
+import Footer from "components/PersonalComponent/Footer";
+import Navbar from "components/PersonalComponent/Navbar";
 
 export default function CompanyPage() {
     return(
