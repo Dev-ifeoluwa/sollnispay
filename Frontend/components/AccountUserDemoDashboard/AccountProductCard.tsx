@@ -78,7 +78,7 @@ import {
                 <div
                   key={index}
                   onClick={handleClick}
-                  className="shadow-sm flex flex-col items-center gap-3 shadow-orange-200 cursor-pointer rounded-xl px-2 py-4 text-greeb-950 text-sm"
+                  className="shadow-sm flex flex-col items-center gap-3 shadow-orange-200 cursor-pointer rounded-xl px-2 py-4 text-orange-950 text-sm"
                 >
                   <span>{BankFeature.icon}</span>
                   <p>{BankFeature.Name}</p>
