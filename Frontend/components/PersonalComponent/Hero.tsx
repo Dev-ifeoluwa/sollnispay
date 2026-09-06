@@ -79,7 +79,7 @@ export default function Hero() {
         {/* right section */}
         <Animate type="flip-right" delay={300}>
           <Image
-            src={"/app11.png"}
+            src={"/app12.png"}
             alt=""
             width={350}
             height={350}
