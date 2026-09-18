@@ -7,10 +7,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { MonnifyModule } from 'src/monnify/monnify.module';
 
 @Module({
   imports: [
     UsersModule,
+    MonnifyModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'secretKey',

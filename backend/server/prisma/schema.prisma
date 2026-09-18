@@ -49,9 +49,7 @@ model TotalUser {
   balance              Float               @default(0)
   transactions         Transaction[]
   wallet               Wallet?
-  accountNumber        String?
   monnifyAccountRef    String? // your generated reference used with Monnify
-  monnifyReservedId    String? // Monnify's reserved-account id (if provided)
   monnifyAccountNumber String? // the actual virtual account number
   monnifyAccountStatus String?
   createdAt            DateTime            @default(now())

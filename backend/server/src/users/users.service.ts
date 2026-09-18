@@ -68,7 +68,7 @@ export class UsersService {
       firstName: true,
       lastName: true,
       balance: true,
-      accountNumber: true,
+      // accountNumber: true,
       phoneNumber: true,
       transactions: {
         orderBy: { createdAt: 'desc' },

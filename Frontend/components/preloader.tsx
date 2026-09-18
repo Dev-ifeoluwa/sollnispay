@@ -14,9 +14,8 @@ export default function Preloader() {
   if (!loading) return null;
 
   return (
-    // <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-gradient-to-r from-green-100 to-gray-300 p-2 rounded-full shadow-lg">
+      <div className="bg-gradient-to-r from-ornage-100 p-2 rounded-full shadow-lg">
             <Image 
             src="/favicon.ico" 
             alt="loading...."
