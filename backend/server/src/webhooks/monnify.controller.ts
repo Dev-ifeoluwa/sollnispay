@@ -1,18 +1,3 @@
-// import { Controller, Post, Req, Res } from '@nestjs/common';
-// import type { Request, Response } from 'express';
-
-// @Controller('monnify')
-// export class MonnifyController {
-//   @Post('webhook')
-//   handleWebhook(@Req() req: Request, @Res() res: Response) {
-//     console.log(req.body);
-//     res.sendStatus(200);
-//   }
-// }
-
-
-
-
 import { Controller, Post, Req, Res, HttpStatus, BadRequestException } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import * as crypto from 'crypto';
