@@ -97,7 +97,10 @@ export default function Benefit() {
             Getting started
           </span>
           <Animate type="fade-up" delay={300}>
-            <h2 className="mb-5 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold leading-tight text-brand-brown">
+            <h2 
+            className="text-balance mb-6 max-w-lg text-2xl font-bold leading-tight mt-0.5 md:text-3xl lg:text-5xl font-[family-name:var(--font-serif)] text-brand-brown leading-[1.02] tracking-[-0.025em]"
+            // className="mb-5 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold leading-tight text-brand-brown"
+            >
               Start transacting in 3 simple steps
             </h2>
           </Animate>
