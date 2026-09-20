@@ -10,7 +10,10 @@ export default function Payment() {
         <div className="flex flex-col gap-6 w-full max-w-md">
           <p className="text-gray-700 text-center w-25 p-1 bg-orange-100 rounded-2xl text-sm md:text-md">Payment</p>
           <Animate type="fade-left" delay={300}>
-            <h2 className="mb-5 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold text-white">Every transaction delivered without failure</h2>
+            <h2 
+            // className="mb-5 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold text-white"
+            className="text-balance mb-6 max-w-lg text-2xl font-bold leading-tight mt-0.5 md:text-3xl lg:text-5xl font-[family-name:var(--font-serif)] text-white leading-[1.02] tracking-[-0.025em]"
+            >Every transaction delivered without failure</h2>
           </Animate>
           <p className="text-[17px] text-gray-300">
             Enjoy Smooth Money Moves! Transfer funds to loved 
