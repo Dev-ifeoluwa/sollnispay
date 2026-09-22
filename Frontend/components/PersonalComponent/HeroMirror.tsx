@@ -20,10 +20,11 @@ export default function FancyHeading() {
     <div className="relative group">
       <Animate type="fade-right" delay={300}>
         <h1 
-          className="text-balance font-[family-name:var(--font-serif)] text-white text-[length:clamp(2.7rem,5.6vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+          className="text-balance text-white text-[length:clamp(2.2rem,5.6vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+          style={{ fontFamily: "'Playfair Display', serif" }}
           // className="text-2xl mt-0.5 md:text-3xl lg:text-5xl leading-tight lg:leading-18 text-white font-stretch-85% font-semibold"
         >
-            <span className="text-orange-500">One</span> app. Every transaction you need.
+            <span className="text-orange-500 font-[family-name:var(--font-serif)]">One</span> app. Every transaction you need.
         </h1>
       </Animate>
       <div className="lens hidden group-hover:block group-active:block"></div>

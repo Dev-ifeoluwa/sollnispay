@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // fontFamily: {
+      //   display: ['"Playfair Display"', 'serif'],
+      //   sans: ['"Inter"', 'sans-serif'],
+      // },
       animation: {
         'fade-in': 'fadeIn 0.7s ease-in',
       },

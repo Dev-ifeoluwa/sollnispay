@@ -1,5 +1,15 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap'); */
 @import "tailwindcss";
 @import "aos/dist/aos.css";
+
+
+
+
+/* @theme {
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+} */
+
 /* @config "../../tailwind.config.js"; */
 
 
