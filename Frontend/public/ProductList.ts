@@ -48,7 +48,7 @@ import {
     },
     {
       icon: Monitor,
-      Name: "Tv subscription",
+      Name: "Tv sub",
       href: "/User/Tvsubscription",
       comingSoon: true,
     },
