@@ -31,22 +31,26 @@ import {
     {
       icon: Earth,
       Name: "Mobile data",
-      href: "/User/Mobiledata"
+      href: "/User/Mobiledata",
+      comingSoon: true,
     },
     {
       icon: PhoneCall,
       Name: "Airtime",
-      href: "/User/AirtimeTopup"
+      href: "/User/AirtimeTopup",
+      comingSoon: true,
     },
     {
       icon: Gamepad2,
-      Name: "Sport betting",
-      href: "/User/Betting"
+      Name: "Betting",
+      href: "/User/Betting",
+      comingSoon: true,
     },
     {
       icon: Monitor,
       Name: "Tv subscription",
-      href: "/User/Tvsubscription"
+      href: "/User/Tvsubscription",
+      comingSoon: true,
     },
     // {
     //   icon: LoaderIcon,
