@@ -135,7 +135,7 @@ export default function Footer() {
         <div className="items-center">
           <p className="text-center text-xs text-brand-cream/55">
             &copy; {new Date().getFullYear()} SollnisPay. All rights reserved. Built and developed
-            by sollnistechnologies.
+            by sollnistechnologies
           </p>
         </div>
       </div>
