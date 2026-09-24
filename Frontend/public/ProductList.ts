@@ -25,7 +25,8 @@ import {
     {
       icon: EuroIcon,
       Name: "Convert money",
-      href: "/User/Convertmoney"
+      href: "/User/Convertmoney",
+      comingSoon: true,  
     },
     {
       icon: Earth,

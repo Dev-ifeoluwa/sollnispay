@@ -1,11 +1,25 @@
+"use client";
+
+
 import { Products } from 'public/ProductList'
 import Link from "next/link";
 import { ArrowRight } from 'lucide-react';
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+
 
 export default function AccountProductCard() {
   const [featured, ...rest] = Products;
   const sideItems = rest.slice(0, 2);
   const gridItems = rest.slice(2);
+
+const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
+    if (comingSoon) {
+      e.preventDefault(); // stops navigation to the page
+      toast("Coming soon", { icon: "🚧", id: "coming-soon" });
+    }
+  };
+
 
   return (
     <div className="flex flex-col gap-4 py-6 sm:px-3">
@@ -27,6 +41,7 @@ export default function AccountProductCard() {
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <Link
             href={featured.href}
+            onClick={(e) => handleClick(e, featured.comingSoon)}
             className="row-span-2 flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-gradient-to-br from-[#3a1c0d] to-[#241209] px-4 py-5 sm:px-5 sm:py-6 min-h-[190px] sm:min-h-[210px]"
           >
             <div>
@@ -48,10 +63,11 @@ export default function AccountProductCard() {
           </Link>
 
           <div className="flex flex-col gap-3 sm:gap-4">
-            {sideItems.map(({ Name, href, icon: Icon }) => (
+            {sideItems.map(({ Name, href, icon: Icon, comingSoon  }) => (
               <Link
                 href={href}
                 key={Name}
+                onClick={(e) => handleClick(e, comingSoon)}
                 className="flex flex-1 flex-col justify-between gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-4 py-4 sm:px-5"
               >
                 <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
@@ -67,10 +83,11 @@ export default function AccountProductCard() {
       {/* Remaining tiles */}
       {gridItems.length > 0 && (
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
-          {gridItems.map(({ Name, href, icon: Icon }) => (
+          {gridItems.map(({ Name, href, icon: Icon, comingSoon }) => (
             <Link
               href={href}
               key={Name}
+              onClick={(e) => handleClick(e, comingSoon)}
               className="flex flex-col items-start gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-3 py-4 sm:px-4"
             >
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
@@ -82,6 +99,8 @@ export default function AccountProductCard() {
         </div>
       )}
     </div>
+
+    <Toaster position="top-center" />
   );
 }
 
