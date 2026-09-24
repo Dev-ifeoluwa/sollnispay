@@ -15,7 +15,7 @@ export default function PersonalPage() {
       <Benefit />
       <PersonalAccount />
       <Payment />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
