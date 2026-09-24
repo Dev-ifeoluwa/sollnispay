@@ -3,8 +3,9 @@
 
 import { Products } from 'public/ProductList'
 import Link from "next/link";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 import toast, { Toaster } from "react-hot-toast";
+
 
 
 export default function AccountProductCard() {
@@ -14,8 +15,11 @@ export default function AccountProductCard() {
 
 const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
     if (comingSoon) {
-      e.preventDefault(); // stops navigation to the page
-      toast("Coming soon", { icon: "🚧", id: "coming-soon" });
+        e.preventDefault(); // stops navigation to the page
+        toast("Coming soon", {
+        icon: <Clock size={18} className="text-[#ff7a3d]" />,
+        id: "coming-soon",
+      });
     }
   };
 
