@@ -133,10 +133,10 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-brand-cream/10 py-6">
         <div className="items-center">
-          {/* <p className="text-center text-xs text-brand-cream/55">
+          <p className="text-center text-xs text-brand-cream/55">
             &copy; {new Date().getFullYear()} SollnisPay. All rights reserved. Built and developed
             by sollnistechnologies
-          </p> */}
+          </p>
         </div>
       </div>
     </footer>
