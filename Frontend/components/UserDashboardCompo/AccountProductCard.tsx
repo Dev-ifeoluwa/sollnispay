@@ -4,8 +4,7 @@
 import { Products } from 'public/ProductList'
 import Link from "next/link";
 import { ArrowRight } from 'lucide-react';
-import toast from "react-hot-toast";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 
 export default function AccountProductCard() {
@@ -98,9 +97,8 @@ const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
           ))}
         </div>
       )}
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
-
-    <Toaster position="top-center" />
   );
 }
 
