@@ -97,7 +97,7 @@ export default function UserDashboard() {
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm sm:text-base font-semibold text-[#d8c3b6]">
                                                 {/* •••• •••• {dashboard.accountNumber?.toString().slice(-2)} */}
-                                                {dashboard.accountNumber ?? "Generating account…"}
+                                                {dashboard.accountNumber ?? "Generating account…"} / <p>Wema</p>
                                             </span>
                                             <button
                                                 onClick={copyAccountNumber}
