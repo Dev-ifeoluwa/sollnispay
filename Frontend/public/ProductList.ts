@@ -32,9 +32,9 @@ import {
     {
       icon: Earth,
       Name: "Mobile data",
-      href: "/",
-      // href: "/User/Mobiledata",
-      comingSoon: true,
+      // href: "/",
+      href: "/User/Mobiledata",
+      // comingSoon: true,
     },
     {
       icon: PhoneCall,
