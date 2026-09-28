@@ -90,12 +90,36 @@ export class AuthController {
         })
         return { user, tokens };
     }
+    // @UseGuards(JwtAuthGuard)
+    // @Get('me')
+    // async me(@Req() req: Request) {
+    //     const userId = (req.user as any)?.userId;
+    //     if (!userId) throw new BadRequestException('No user found');
+    //     const dashboard = await this.usersService.getUserDashboard(userId);
+    //     return { dashboard };
+    // }
+
+    // added-------------------------------------------------------------
     @UseGuards(JwtAuthGuard)
     @Get('me')
     async me(@Req() req: Request) {
-        const userId = (req.user as any)?.userId;
-        if (!userId) throw new BadRequestException('No user found');
-        const dashboard = await this.usersService.getUserDashboard(userId);
+    const userId = (req.user as any)?.userId;
+    if (!userId) throw new BadRequestException('No user found');
+
+    const dashboard = await this.usersService.getUserDashboard(userId);
+    if (!dashboard) throw new BadRequestException('No user found');
+
+    // no account number yet (old user, or Monnify failed at signup): create it now
+    if (!dashboard.accountNumber) {
+        try {
+            await this.monnifyService.createReservedAccountForUser(userId);
+        } catch (err: any) {
+            console.error('Monnify fallback failed:', err.response?.data ?? err.message);
+        }
+        const fresh = await this.usersService.findById(userId);
+        dashboard.accountNumber = fresh?.monnifyAccountNumber ?? null;
+    }
+
         return { dashboard };
     }
 

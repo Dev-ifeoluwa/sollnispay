@@ -61,13 +61,15 @@ export class UsersService {
     }
 
     async getUserDashboard(id: number) {
-    return this.prisma.totalUser.findUnique({
-    where: { id },
-    select: {
+      return this.prisma.totalUser.findUnique({
+      where: { id },
+      select: {
       id: true,
       firstName: true,
       lastName: true,
       balance: true,
+      // added----------------------------
+      monnifyAccountNumber: true,
       // accountNumber: true,
       phoneNumber: true,
       transactions: {
@@ -83,6 +85,13 @@ export class UsersService {
       },
     },
   });
+
+// added----------------------------------------------------------------------
+  if (!user) return null;
+
+  // rename to accountNumber so the dashboard can read it
+  const { monnifyAccountNumber, ...rest } = user;
+  return { ...rest, accountNumber: monnifyAccountNumber };
 }
 
 }

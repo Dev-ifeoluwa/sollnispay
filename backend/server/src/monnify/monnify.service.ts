@@ -29,6 +29,9 @@ export class MonnifyService {
 
   // Step 2: create a reserved account for a specific user, and save it on their record
   async createReservedAccountForUser(userId: number) {
+    // added---------------------------------------------------------------------------
+    if (user.monnifyAccountNumber) return { accountNumber: user.monnifyAccountNumber };
+
     const user = await this.prisma.totalUser.findUnique({ where: { id: userId } });
     if (!user) throw new Error('User not found');
 
