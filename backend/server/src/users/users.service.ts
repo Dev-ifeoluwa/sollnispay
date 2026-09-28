@@ -61,7 +61,8 @@ export class UsersService {
     }
 
     async getUserDashboard(id: number) {
-      return this.prisma.totalUser.findUnique({
+      // return this.prisma.totalUser.findUnique({
+      const user = await this.prisma.totalUser.findUnique({
       where: { id },
       select: {
       id: true,
