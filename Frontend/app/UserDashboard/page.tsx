@@ -95,7 +95,7 @@ export default function UserDashboard() {
                                     <div>
                                         <p className="text-xs font-semibold text-[#8f7768] mb-1.5">Account number</p>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm sm:text-base tracking-[0.2em] font-semibold text-[#d8c3b6]">
+                                            <span className="text-sm sm:text-base font-semibold text-[#d8c3b6]">
                                                 {/* •••• •••• {dashboard.accountNumber?.toString().slice(-2)} */}
                                                 {dashboard.accountNumber ?? "Generating account…"}
                                             </span>
