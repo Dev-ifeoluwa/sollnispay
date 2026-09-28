@@ -21,7 +21,7 @@ import {
       icon: IdCard,
       Name: "Gift card",
       href: "/User/GiftCard",
-      comingSoon: true, 
+      comingSoon: true,
     },
     {
       icon: EuroIcon,
