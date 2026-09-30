@@ -1,11 +1,115 @@
-import { Injectable, ParseIntPipe } from '@nestjs/common';
+// import { Injectable, ParseIntPipe } from '@nestjs/common';
+// import { PrismaService } from 'src/prisma.service';
+// import * as bcrypt from 'bcrypt';
+
+// @Injectable()
+// export class UsersService {
+//     constructor(private prisma: PrismaService) {}
+
+//     // ---------
+//     async createUser(
+//                     email: string, password: string, 
+//                     firstName: string, lastName: string, 
+//                     phoneNumber: string
+//                     ) {
+//         const hash = await bcrypt.hash(password, 10);
+//         const user = await this.prisma.totalUser.create({
+//             data: {
+//                 email,
+//                 password: hash,
+//                 firstName,
+//                 lastName,
+//                 phoneNumber,
+//                 balance: 0
+//             },
+//             select: { 
+//                 id: true, 
+//                 email: true, 
+//                 firstName: true, 
+//                 lastName: true, 
+//                 phoneNumber: true,
+//                 createdAt: true, 
+//                 updatedAt: true,
+//                 balance: true
+//             }
+//         })
+//         return user;
+//     }
+
+//     async updatePin(userId: number, transactionPin: string) {
+//       const hasedPin = await bcrypt.hash(transactionPin, 10)
+
+//       return this.prisma.totalUser.update({
+//         where: { id: userId },
+//         data: { transactionPin: hasedPin },
+//       });
+//     }
+
+
+//     // ---------
+//     async findByEmail(email: string) {
+//         return this.prisma.totalUser.findUnique({
+//             where: { email }
+//         });
+//     }
+
+//     // ---------
+//     async findById(id: number) {
+//         return this.prisma.totalUser.findUnique({
+//             where: { id }
+//         });
+//     }
+
+//     async getUserDashboard(id: number) {
+//       // return this.prisma.totalUser.findUnique({
+//       const user = await this.prisma.totalUser.findUnique({
+//       where: { id },
+//       select: {
+//       id: true,
+//       firstName: true,
+//       lastName: true,
+//       balance: true,
+//       // added----------------------------
+//       monnifyAccountNumber: true,
+//       // accountNumber: true,
+//       phoneNumber: true,
+//       transactions: {
+//         orderBy: { createdAt: 'desc' },
+//         select: {
+//           id: true,
+//           itemsPurchased: true,
+//           dayPurchased: true,
+//           itemsTime: true,
+//           description: true,
+//           amount: true,
+//         },
+//       },
+//     },
+//   });
+
+// // added----------------------------------------------------------------------
+//   if (!user) return null;
+
+//   // rename to accountNumber so the dashboard can read it
+//   const { monnifyAccountNumber, ...rest } = user;
+//   return { ...rest, accountNumber: monnifyAccountNumber };
+// }
+
+// }
+
+
+
+
+
+
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import * as bcrypt from 'bcrypt';
-
+ 
 @Injectable()
 export class UsersService {
     constructor(private prisma: PrismaService) {}
-
+ 
     // ---------
     async createUser(
                     email: string, password: string, 
@@ -35,64 +139,80 @@ export class UsersService {
         })
         return user;
     }
-
+ 
     async updatePin(userId: number, transactionPin: string) {
       const hasedPin = await bcrypt.hash(transactionPin, 10)
-
+ 
       return this.prisma.totalUser.update({
         where: { id: userId },
         data: { transactionPin: hasedPin },
       });
     }
-
-
+ 
+ 
     // ---------
     async findByEmail(email: string) {
         return this.prisma.totalUser.findUnique({
             where: { email }
         });
     }
-
+ 
     // ---------
     async findById(id: number) {
         return this.prisma.totalUser.findUnique({
             where: { id }
         });
     }
-
+ 
     async getUserDashboard(id: number) {
-      // return this.prisma.totalUser.findUnique({
       const user = await this.prisma.totalUser.findUnique({
-      where: { id },
-      select: {
-      id: true,
-      firstName: true,
-      lastName: true,
-      balance: true,
-      // added----------------------------
-      monnifyAccountNumber: true,
-      // accountNumber: true,
-      phoneNumber: true,
-      transactions: {
-        orderBy: { createdAt: 'desc' },
+        where: { id },
         select: {
           id: true,
-          itemsPurchased: true,
-          dayPurchased: true,
-          itemsTime: true,
-          description: true,
-          amount: true,
+          firstName: true,
+          lastName: true,
+          balance: true,
+          phoneNumber: true,
+          // Paystack dedicated account
+          paystackAccountNumber: true,
+          paystackBankName: true,
+          paystackAccountName: true,
+          paystackAccountStatus: true,
+          transactions: {
+            orderBy: { createdAt: 'desc' },
+            select: {
+              id: true,
+              type: true,        // added: decides credit vs debit
+              createdAt: true,   // added: powers the 7 / 30 day filter
+              itemsPurchased: true,
+              dayPurchased: true,
+              itemsTime: true,
+              description: true,
+              amount: true,
+            },
+          },
         },
-      },
-    },
-  });
-
-// added----------------------------------------------------------------------
-  if (!user) return null;
-
-  // rename to accountNumber so the dashboard can read it
-  const { monnifyAccountNumber, ...rest } = user;
-  return { ...rest, accountNumber: monnifyAccountNumber };
+      });
+ 
+      if (!user) return null;
+ 
+      // rename so the dashboard can read simple field names
+      const {
+        paystackAccountNumber,
+        paystackBankName,
+        paystackAccountName,
+        paystackAccountStatus,
+        ...rest
+      } = user;
+ 
+      return {
+        ...rest,
+        accountNumber: paystackAccountNumber,
+        bankName: paystackBankName,
+        accountName: paystackAccountName,
+        accountStatus: paystackAccountStatus,
+      };
+    }
+ 
 }
-
-}
+ 
