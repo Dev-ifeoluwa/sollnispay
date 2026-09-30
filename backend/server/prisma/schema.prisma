@@ -1,12 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  // output   = "../generated/prisma"
 }
 
 datasource db {
@@ -36,6 +29,7 @@ enum TransactionType {
 enum Provider {
   VTPASS
   INTERNAL
+  PAYSTACK
 }
 
 model TotalUser {
@@ -49,15 +43,23 @@ model TotalUser {
   balance              Float               @default(0)
   transactions         Transaction[]
   wallet               Wallet?
-  monnifyAccountRef    String? // your generated reference used with Monnify
-  monnifyAccountNumber String? // the actual virtual account number
+
+  monnifyAccountRef    String?
+  monnifyAccountNumber String?
   monnifyAccountStatus String?
+
+  paystackCustomerCode      String?
+  paystackAccountNumber     String?   @unique
+  paystackBankName          String?
+  paystackAccountName       String?
+  paystackAccountStatus     String?
+  paystackAssignRequestedAt DateTime?
+
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
   conversions          ConversionHistory[]
 }
 
-// Wallet System
 model Wallet {
   id        Int       @id @default(autoincrement())
   userId    Int       @unique
@@ -80,8 +82,8 @@ model Transaction {
   itemsPurchased String?
   dayPurchased   DateTime?
   itemsTime      DateTime?
-  proofUrl       String? // <-- add: link to uploaded proof or ref
-  approvedById   Int? // <-- add: admin id who approved
+  proofUrl       String?
+  approvedById   Int?
   createdAt      DateTime          @default(now())
 
   userId Int
@@ -92,9 +94,9 @@ model Transaction {
 
 model Service {
   id        String   @id @default(cuid())
-  name      String // e.g., "MTN 1GB Data"
-  type      String // e.g., "DATA", "AIRTIME"
-  code      String // e.g., VTpass variation_code
+  name      String
+  type      String
+  code      String
   price     Float
   provider  Provider
   isActive  Boolean  @default(true)
