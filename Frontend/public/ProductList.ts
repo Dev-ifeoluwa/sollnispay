@@ -18,34 +18,46 @@ import {
 
   export const Products: Product[] = [
     {
+      icon: Earth,
+      Name: "Mobile data",
+      // href: "/",
+      href: "/User/Mobiledata",
+      // comingSoon: true,
+    },
+    {
       icon: IdCard,
       Name: "Gift card",
-      href: "/User/GiftCard"
+      href: "",
+      // href: "/User/GiftCard",
+      comingSoon: true,
     },
     {
       icon: EuroIcon,
       Name: "Convert money",
-      href: "/User/Convertmoney"
-    },
-    {
-      icon: Earth,
-      Name: "Mobile data",
-      href: "/User/Mobiledata"
+      href: "",
+      // href: "/User/Convertmoney",
+      comingSoon: true,  
     },
     {
       icon: PhoneCall,
       Name: "Airtime",
-      href: "/User/AirtimeTopup"
+      href: "",
+      // href: "/User/AirtimeTopup",
+      comingSoon: true,
     },
     {
       icon: Gamepad2,
-      Name: "Sport betting",
-      href: "/User/Betting"
+      Name: "Betting",
+      href: "",
+      // href: "/User/Betting",
+      comingSoon: true,
     },
     {
       icon: Monitor,
-      Name: "Tv subscription",
-      href: "/User/Tvsubscription"
+      Name: "Tv sub",
+      href: "",
+      // href: "/User/Tvsubscription",
+      comingSoon: true,
     },
     // {
     //   icon: LoaderIcon,
