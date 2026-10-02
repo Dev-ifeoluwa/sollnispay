@@ -432,11 +432,11 @@ export default function FundWalletPage() {
                                     <div className="flex items-center justify-between gap-3">
                                         <div>
                                         <p className="text-[11px] text-[#8f7768]">Account name</p>
-                                        <p className="text-sm font-light capitalize text-[#fbf3ec]">{dashboard.accountName}</p>
+                                        <p className="text-sm font-light lowercase text-[#fbf3ec]">{dashboard.accountName}</p>
                                     </div>
                                     <div>
                                         <p className="text-[11px] text-[#8f7768]">Bank name</p>
-                                        <p className="text-sm font-light text-[#fbf3ec]">{dashboard.bankName}</p>
+                                        <p className="text-sm font-light lowercase text-[#fbf3ec]">{dashboard.bankName}</p>
                                     </div>
                                     </div>
                                 </div>
