@@ -8,14 +8,18 @@ import toast, { Toaster } from "react-hot-toast";
 // Your backend address. Set NEXT_PUBLIC_API_URL in the frontend .env (and on Vercel).
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 
-// One place that talks to the backend. If your other pages send a token
-// (for example from localStorage) instead of the login cookie, add the
-// Authorization header here and every call below picks it up.
+// One place that talks to the backend. Your login page saves the token in
+// localStorage under "token", and the dashboard sends it as a Bearer header,
+// so this page does the same.
 function apiFetch(path: string, init: RequestInit = {}) {
+    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
     return fetch(`${API_URL}${path}`, {
         ...init,
-        credentials: "include",
-        headers: { "Content-Type": "application/json", ...(init.headers ?? {}) },
+        headers: {
+            "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            ...(init.headers ?? {}),
+        },
     });
 }
 
@@ -104,7 +108,10 @@ export default function MobileDataTopup() {
         setPlansError('')
         apiFetch(`/data/plans?network=${encodeURIComponent(network)}`)
             .then(async (res) => {
-                if (res.status === 401) throw new Error('Your session expired. Log in again.')
+                if (res.status === 401) {
+                    router.push('/Account/Signin')
+                    throw new Error('Your session expired. Log in again.')
+                }
                 if (!res.ok) throw new Error('Could not load plans.')
                 return res.json()
             })
@@ -193,6 +200,7 @@ export default function MobileDataTopup() {
 
             if (res.status === 401) {
                 toast.error('Your session expired. Log in again.')
+                router.push('/Account/Signin')
                 return
             }
 
