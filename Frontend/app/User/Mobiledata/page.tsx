@@ -2,20 +2,71 @@
 
 import { ArrowLeft, CircleUser, Newspaper, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-type DataPlan = {
-    dataPlan: string;
-    Validity: string;
-    Price: string;
+// Your backend address. Set NEXT_PUBLIC_API_URL in the frontend .env (and on Vercel).
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
+
+// One place that talks to the backend. If your other pages send a token
+// (for example from localStorage) instead of the login cookie, add the
+// Authorization header here and every call below picks it up.
+function apiFetch(path: string, init: RequestInit = {}) {
+    return fetch(`${API_URL}${path}`, {
+        ...init,
+        credentials: "include",
+        headers: { "Content-Type": "application/json", ...(init.headers ?? {}) },
+    });
 }
 
-type DataPlans = {
-    dataPlan: string;
-    Validity: string;
-    Price: string;
+// Shape returned by GET /data/plans (price is already your selling price)
+type ApiPlan = {
+    id: string;
+    name: string;
+    network: string | null;
+    validity: string | null;
+    price: number;
 }
+
+type Tab = "Hot" | "Daily" | "Weekly" | "Monthly";
+const tabs: Tab[] = ["Hot", "Daily", "Weekly", "Monthly"];
+
+const networks = [
+    { value: "MTN", label: "MTN" },
+    { value: "GLO", label: "Glo" },
+    { value: "AIRTEL", label: "Airtel" },
+    { value: "9MOBILE", label: "9mobile" },
+];
+
+// same rule the backend enforces
+const PHONE_OK = /^0[789][01]\d{8}$/;
+
+const naira = (n: number) => `₦${n.toLocaleString("en-NG")}`;
+
+// "MTN SME 1GB - 7 Days" -> "SME 1GB"
+const sizeLabel = (name: string) =>
+    name.replace(/\s*-\s*[^-]+$/, "").replace(/^(MTN|AIRTEL|GLO|9MOBILE)\s*/i, "");
+
+// "7 Days" / "Weekly" / "2 Months" -> number of days (null if unknown)
+const daysOf = (validity: string | null): number | null => {
+    if (!validity) return null;
+    const s = validity.toLowerCase();
+    if (s.includes("daily")) return 1;
+    if (s.includes("weekly")) return 7;
+    if (s.includes("monthly")) return 30;
+    const m = s.match(/(\d+)\s*(day|week|month|year)/);
+    if (!m) return null;
+    const n = Number(m[1]);
+    switch (m[2]) {
+        case "day": return n;
+        case "week": return n * 7;
+        case "month": return n * 30;
+        default: return n * 365;
+    }
+};
+
+const newKey = () =>
+    globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 export default function MobileDataTopup() {
     const router = useRouter()
@@ -25,62 +76,76 @@ export default function MobileDataTopup() {
 
     const [network, setNetwork] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-    const [selectPlan, setSelectPlan] = useState<DataPlans | null>(null)
+    const [plans, setPlans] = useState<ApiPlan[]>([])
+    const [loadingPlans, setLoadingPlans] = useState(false)
+    const [plansError, setPlansError] = useState('')
+    const [reloadKey, setReloadKey] = useState(0)
+    const [selectPlan, setSelectPlan] = useState<ApiPlan | null>(null)
     const [showPopup, setShowPopup] = useState(false)
     const [error, setError] = useState('')
-    const [activeTab, setActiveTab] = useState<'Hot' | 'Daily' | 'Weekly' | 'Monthly' | 'Yearly'>('Hot')
-    const [filteredPlan, setFilteredPlan] = useState<DataPlans[]>([])
+    const [activeTab, setActiveTab] = useState<Tab>('Hot')
     const [showPin, setShowPin] = useState(false)
     const [pin, setPin] = useState(["", "", "", ""]);
+    const [submitting, setSubmitting] = useState(false)
 
+    // One random id per purchase attempt. Sending it again (retry, double tap)
+    // can never charge twice, because the backend returns the first order.
+    const idempotencyKey = useRef<string | null>(null)
+
+    // load the plans for the chosen network
     useEffect(() => {
-        filterPlan('Hot')
-    }, [])
-
-    const tabs = ['Hot', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
-
-    const filterPlan = (tab: 'Hot' | 'Daily' | 'Weekly' | 'Monthly' | 'Yearly') => {
-        setActiveTab(tab)
-        let durationFilter = ''
-        switch (tab) {
-            case 'Hot':
-                durationFilter = 'Day';
-                break;
-            case 'Daily':
-                durationFilter = '1 Day';
-                break
-            case 'Weekly':
-                durationFilter = '7 Days';
-                break
-            case 'Monthly':
-                durationFilter = '30 Days';
-                break
-            case 'Yearly':
-                durationFilter = 'Year';
-                break
+        if (!network) {
+            setPlans([])
+            setPlansError('')
+            return
         }
-        const filtered = DataPrice.filter((plan) => plan.Validity.includes(durationFilter))
-        setFilteredPlan(filtered)
+        let cancelled = false
+        setLoadingPlans(true)
+        setPlansError('')
+        apiFetch(`/data/plans?network=${encodeURIComponent(network)}`)
+            .then(async (res) => {
+                if (res.status === 401) throw new Error('Your session expired. Log in again.')
+                if (!res.ok) throw new Error('Could not load plans.')
+                return res.json()
+            })
+            .then((data) => {
+                if (!cancelled) setPlans(Array.isArray(data) ? data : [])
+            })
+            .catch((err) => {
+                if (cancelled) return
+                setPlans([])
+                setPlansError(err?.message || 'Could not reach the server. Check your connection.')
+            })
+            .finally(() => {
+                if (!cancelled) setLoadingPlans(false)
+            })
+        return () => { cancelled = true }
+    }, [network, reloadKey])
+
+    const filteredPlan = useMemo(() => {
+        const sorted = [...plans].sort((a, b) => a.price - b.price)
+        if (activeTab === 'Hot') return sorted.slice(0, 9) // the 9 cheapest
+        return sorted.filter((p) => {
+            const d = daysOf(p.validity)
+            if (d === null) return false
+            if (activeTab === 'Daily') return d <= 3
+            if (activeTab === 'Weekly') return d >= 4 && d <= 14
+            return d >= 15 && d <= 90 // Monthly
+        })
+    }, [plans, activeTab])
+
+    const handleTabClick = (tab: Tab) => {
+        setActiveTab(tab)
     }
 
-    const handleTabClick = (tab: 'Hot' | 'Daily' | 'Weekly' | 'Monthly' | 'Yearly') => {
-        filterPlan(tab)
-    }
-
-    const handleCardClick = (plan: any) => {
+    const handleCardClick = (plan: ApiPlan) => {
         if (!network || !phoneNumber) {
-            toast.error('select network and enter phone number')
+            toast.error('Select a network and enter a phone number')
             return
         }
 
-        if (!phoneNumber.startsWith('0')) {
-            setError('Phone number must start with 0');
-            setShowPopup(false);
-            return;
-        }
-
-        if (phoneNumber.length !== 11) {
-            setError('Phone number must be 11 digits');
+        if (!PHONE_OK.test(phoneNumber)) {
+            setError('Enter a valid 11-digit Nigerian phone number');
             setShowPopup(false);
             return;
         }
@@ -91,34 +156,75 @@ export default function MobileDataTopup() {
     }
 
     const handleProcess = () => {
+        idempotencyKey.current = newKey() // a fresh purchase attempt starts here
         setShowPopup(false)
         setShowPin(true)
     }
 
-    const handleProcessSubmit = () => {
-        const payload = {
-            network,
-            phoneNumber,
-            dataPlan: selectPlan?.dataPlan,
-            validity: selectPlan?.Validity,
-            price: selectPlan?.Price
-        }
-        console.log('sending to backend:', payload);
+    const closePin = () => {
+        if (submitting) return
+        setShowPin(false)
+        setPin(["", "", "", ""])
+        idempotencyKey.current = null
     }
 
-    const DataPrice: DataPlan[] = [
-        { dataPlan: "1GB", Validity: "1 Day", Price: "₦500" },
-        { dataPlan: "2.5GB", Validity: "2 Days", Price: "₦500" },
-        { dataPlan: "500MB", Validity: "7 Days", Price: "₦500" },
-        { dataPlan: "1GB", Validity: "7 Days", Price: "₦800" },
-        { dataPlan: "2.5GB", Validity: "1 Day", Price: "₦750" },
-        { dataPlan: "2GB", Validity: "30 Days", Price: "₦1,500" },
-        { dataPlan: "3.5GB", Validity: "30 Days", Price: "₦500" },
-        { dataPlan: "20GB", Validity: "7 Days", Price: "₦5,000" },
-        { dataPlan: "25GB", Validity: "30 Days", Price: "₦15,000" },
-        { dataPlan: "60GB", Validity: "Year", Price: "₦75,000" },
-        { dataPlan: "100GB", Validity: "Year", Price: "₦110,000" },
-    ]
+    const handleProcessSubmit = async () => {
+        if (submitting || !selectPlan) return
+
+        const code = pin.join('')
+        if (!/^\d{4}$/.test(code)) {
+            toast.error('Enter your 4-digit PIN')
+            return
+        }
+
+        setSubmitting(true)
+        try {
+            // only these four fields are sent. The price is worked out on the server.
+            const res = await apiFetch('/data/purchase', {
+                method: 'POST',
+                body: JSON.stringify({
+                    planId: selectPlan.id,
+                    phone: phoneNumber,
+                    pin: code,
+                    idempotencyKey: idempotencyKey.current,
+                }),
+            })
+            const data = await res.json().catch(() => null)
+
+            if (res.status === 401) {
+                toast.error('Your session expired. Log in again.')
+                return
+            }
+
+            if (!res.ok) {
+                // wrong PIN, not enough balance, locked PIN, service unavailable...
+                const msg = Array.isArray(data?.message) ? data.message[0] : data?.message
+                toast.error(msg || 'Purchase failed. Try again.')
+                setPin(["", "", "", ""])
+                document.getElementById('pin-0')?.focus()
+                return
+            }
+
+            if (data?.status === 'FAILED' || data?.status === 'REVERSED') {
+                toast.error(data.message)
+            } else {
+                // SUCCESS, or PENDING (Sabuss confirms a little later)
+                toast.success(data?.message || 'Order placed.')
+            }
+
+            // the attempt is finished, close and reset
+            setShowPin(false)
+            setPin(["", "", "", ""])
+            setSelectPlan(null)
+            idempotencyKey.current = null
+        } catch {
+            // No answer from the server. The order may or may not exist, so keep the
+            // same key: pressing Buy now again is safe and can't charge twice.
+            toast.error('No response from the server. Press Buy now to retry, or check History before trying again.')
+        } finally {
+            setSubmitting(false)
+        }
+    }
 
     const handleChange = (value: string, index: number) => {
         if (/^[0-9]?$/.test(value)) {
@@ -128,6 +234,14 @@ export default function MobileDataTopup() {
             if (value && index < 3) document.getElementById(`pin-${index + 1}`)?.focus();
         }
     };
+
+    const handlePinKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+        if (e.key === 'Backspace' && !pin[index] && index > 0) {
+            document.getElementById(`pin-${index - 1}`)?.focus();
+        }
+    };
+
+    const networkLabel = networks.find((n) => n.value === network)?.label ?? network
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#1a0f0a_0%,#0e0704_40%,#0a0503_100%)]">
@@ -159,14 +273,14 @@ export default function MobileDataTopup() {
                 <div className="flex items-center justify-between gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-4 py-3">
                     <div className="flex items-center gap-2 flex-1 min-w-0">
                         <select
+                            value={network}
                             onChange={(e) => setNetwork(e.target.value)}
                             className="bg-transparent text-sm font-semibold outline-none border-0 text-[#fbf3ec] cursor-pointer flex-shrink-0"
                         >
                             <option className="text-black" value="">Network</option>
-                            <option className="text-black" value="MTN">MTN</option>
-                            <option className="text-black" value="Glo">Glo</option>
-                            <option className="text-black" value="Airtel">Airtel</option>
-                            <option className="text-black" value="9mobile">9mobile</option>
+                            {networks.map((n) => (
+                                <option key={n.value} className="text-black" value={n.value}>{n.label}</option>
+                            ))}
                         </select>
                         <span className="w-px h-5 bg-white/[0.1] flex-shrink-0" />
                         <input
@@ -179,9 +293,11 @@ export default function MobileDataTopup() {
                                 setPhoneNumber(value);
 
                                 if (value.length > 0 && value[0] !== '0') {
-                                    setError('phone number must start with 0');
+                                    setError('Phone number must start with 0');
                                 } else if (value.length > 0 && value.length !== 11) {
-                                    setError('phone number must be 11 digits');
+                                    setError('Phone number must be 11 digits');
+                                } else if (value.length === 11 && !PHONE_OK.test(value)) {
+                                    setError('Enter a valid Nigerian phone number');
                                 } else {
                                     setError('')
                                 }
@@ -202,7 +318,7 @@ export default function MobileDataTopup() {
                         {tabs.map((tab) => (
                             <button
                                 key={tab}
-                                onClick={() => handleTabClick(tab as 'Hot' | 'Daily' | 'Weekly' | 'Monthly' | 'Yearly')}
+                                onClick={() => handleTabClick(tab)}
                                 className={`text-xs font-bold px-3.5 py-1.5 rounded-full whitespace-nowrap transition ${
                                     activeTab === tab
                                         ? "bg-[#ff7a3d] text-[#1a0d05]"
@@ -214,21 +330,47 @@ export default function MobileDataTopup() {
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                        {filteredPlan.map((plan: DataPlan, index: number) => (
-                            <div
-                                key={index}
-                                onClick={() => handleCardClick(plan)}
-                                className="flex flex-col items-center gap-1.5 rounded-xl border border-white/[0.08] bg-[#301a10] px-2 py-4 cursor-pointer text-center"
+                    {!network && (
+                        <p className="text-xs text-[#8f7768] text-center py-6">Select a network to see its data plans.</p>
+                    )}
+
+                    {network && loadingPlans && (
+                        <p className="text-xs text-[#8f7768] text-center py-6">Loading plans…</p>
+                    )}
+
+                    {network && !loadingPlans && plansError && (
+                        <div className="flex flex-col items-center gap-3 py-6">
+                            <p className="text-xs text-[#e8563a] text-center">{plansError}</p>
+                            <button
+                                onClick={() => setReloadKey((k) => k + 1)}
+                                className="text-xs font-bold px-4 py-2 rounded-full border border-white/[0.1] text-[#fbf3ec]"
                             >
-                                <p className="font-bold text-sm text-[#fbf3ec]">{plan.dataPlan}</p>
-                                <span className="text-[10px] font-semibold text-[#1a0d05] bg-gradient-to-r from-[#ff7a3d] to-[#f4b860] px-2 py-0.5 rounded-full">
-                                    {plan.Validity}
-                                </span>
-                                <p className="text-[11px] text-[#8f7768]">{plan.Price}</p>
-                            </div>
-                        ))}
-                    </div>
+                                Try again
+                            </button>
+                        </div>
+                    )}
+
+                    {network && !loadingPlans && !plansError && filteredPlan.length === 0 && (
+                        <p className="text-xs text-[#8f7768] text-center py-6">No {networkLabel} plans in this tab. Try another tab.</p>
+                    )}
+
+                    {network && !loadingPlans && !plansError && filteredPlan.length > 0 && (
+                        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                            {filteredPlan.map((plan) => (
+                                <div
+                                    key={plan.id}
+                                    onClick={() => handleCardClick(plan)}
+                                    className="flex flex-col items-center gap-1.5 rounded-xl border border-white/[0.08] bg-[#301a10] px-2 py-4 cursor-pointer text-center"
+                                >
+                                    <p className="font-bold text-sm text-[#fbf3ec]">{sizeLabel(plan.name)}</p>
+                                    <span className="text-[10px] font-semibold text-[#1a0d05] bg-gradient-to-r from-[#ff7a3d] to-[#f4b860] px-2 py-0.5 rounded-full">
+                                        {plan.validity ?? '—'}
+                                    </span>
+                                    <p className="text-[11px] text-[#8f7768]">{naira(plan.price)}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Data service info */}
@@ -256,11 +398,11 @@ export default function MobileDataTopup() {
                                 </button>
                             </div>
                             <div className="flex flex-col gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-4 py-4">
-                                <SummaryRow label="Service" value={network} />
+                                <SummaryRow label="Service" value={networkLabel} />
                                 <SummaryRow label="Number" value={phoneNumber} />
-                                <SummaryRow label="Data plan" value={selectPlan.dataPlan} />
-                                <SummaryRow label="Validity" value={selectPlan.Validity} />
-                                <SummaryRow label="Price" value={selectPlan.Price} highlight />
+                                <SummaryRow label="Data plan" value={sizeLabel(selectPlan.name)} />
+                                <SummaryRow label="Validity" value={selectPlan.validity ?? '—'} />
+                                <SummaryRow label="Price" value={naira(selectPlan.price)} highlight />
                             </div>
                             <div className="flex mt-5 gap-3 items-center">
                                 <button
@@ -289,7 +431,7 @@ export default function MobileDataTopup() {
                                     Input your PIN to pay
                                 </h1>
                                 <h1 className="font-serif text-2xl font-semibold text-[#f4b860]">
-                                    {selectPlan?.Price}
+                                    {selectPlan ? naira(selectPlan.price) : ''}
                                 </h1>
                                 <div className="flex justify-center gap-3 my-6">
                                     {pin.map((digit, i) => (
@@ -297,9 +439,11 @@ export default function MobileDataTopup() {
                                             key={i}
                                             id={`pin-${i}`}
                                             type="password"
+                                            inputMode="numeric"
                                             maxLength={1}
                                             value={digit}
                                             onChange={(e) => handleChange(e.target.value, i)}
+                                            onKeyDown={(e) => handlePinKeyDown(e, i)}
                                             className="w-11 h-11 text-center text-lg font-semibold rounded-xl bg-white/[0.06] border border-white/[0.1] text-[#fbf3ec] outline-none focus:border-[#ff7a3d]"
                                         />
                                     ))}
@@ -310,16 +454,18 @@ export default function MobileDataTopup() {
                             </div>
                             <div className="flex mt-6 gap-3 items-center">
                                 <button
-                                    onClick={() => setShowPin(false)}
-                                    className="flex-1 py-3 rounded-xl font-bold text-sm text-[#fbf3ec] border border-white/[0.1]"
+                                    onClick={closePin}
+                                    disabled={submitting}
+                                    className="flex-1 py-3 rounded-xl font-bold text-sm text-[#fbf3ec] border border-white/[0.1] disabled:opacity-50"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleProcessSubmit}
-                                    className="flex-1 py-3 rounded-xl font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
+                                    disabled={submitting}
+                                    className="flex-1 py-3 rounded-xl font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40 disabled:opacity-60"
                                 >
-                                    Buy now
+                                    {submitting ? 'Processing…' : 'Buy now'}
                                 </button>
                             </div>
                         </div>

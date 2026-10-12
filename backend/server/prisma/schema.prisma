@@ -30,6 +30,8 @@ enum Provider {
   VTPASS
   INTERNAL
   PAYSTACK
+  CLUBKONNECT
+  SABUSS
 }
 
 model TotalUser {
@@ -54,6 +56,9 @@ model TotalUser {
   paystackAccountName       String?
   paystackAccountStatus     String?
   paystackAssignRequestedAt DateTime?
+
+  pinFailedAttempts Int       @default(0)   // <- add
+  pinLockedUntil    DateTime?
 
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
@@ -83,6 +88,9 @@ model Transaction {
   dayPurchased   DateTime?
   itemsTime      DateTime?
   proofUrl       String?
+  @@index([providerRef])  
+
+
   approvedById   Int?
   createdAt      DateTime          @default(now())
 
@@ -100,6 +108,10 @@ model Service {
   price     Float
   provider  Provider
   isActive  Boolean  @default(true)
+  network   String?                        
+  validity  String?                         
+  costPrice Float   @default(0)  
+  @@unique([provider, code]) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
