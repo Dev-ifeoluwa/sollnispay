@@ -36,14 +36,14 @@ export class UsersService {
         return user;
     }
  
-    async updatePin(userId: number, transactionPin: string) {
-      const hasedPin = await bcrypt.hash(transactionPin, 10)
+    // async updatePin(userId: number, transactionPin: string) {
+    //   const hasedPin = await bcrypt.hash(transactionPin, 10)
  
-      return this.prisma.totalUser.update({
-        where: { id: userId },
-        data: { transactionPin: hasedPin },
-      });
-    }
+    //   return this.prisma.totalUser.update({
+    //     where: { id: userId },
+    //     data: { transactionPin: hasedPin },
+    //   });
+    // }
  
  
     // ---------

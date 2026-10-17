@@ -50,15 +50,15 @@ export class AuthController {
         return { user };
     }
  
-    @Post("setPin")
-    async setPin(@Body() body: { email: string; transactionPin: string }) {
-        const user = await this.usersService.findByEmail(body.email);
-        if (!user) throw new BadRequestException('User not found');
+    // @Post("setPin")
+    // async setPin(@Body() body: { email: string; transactionPin: string }) {
+    //     const user = await this.usersService.findByEmail(body.email);
+    //     if (!user) throw new BadRequestException('User not found');
  
-        await this.usersService.updatePin(user.id, body.transactionPin);
+    //     await this.usersService.updatePin(user.id, body.transactionPin);
  
-        return { message: 'PIN set successfully' };
-    }
+    //     return { message: 'PIN set successfully' };
+    // }
  
  
     @Post("login")
