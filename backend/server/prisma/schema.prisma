@@ -57,8 +57,10 @@ model TotalUser {
   paystackAccountStatus     String?
   paystackAssignRequestedAt DateTime?
 
-  pinFailedAttempts Int       @default(0)   // <- add
+  pinFailedAttempts Int       @default(0)
   pinLockedUntil    DateTime?
+
+  deletedAt            DateTime?           // NEW: set when the user deletes their account
 
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
@@ -88,16 +90,16 @@ model Transaction {
   dayPurchased   DateTime?
   itemsTime      DateTime?
   proofUrl       String?
-  @@index([providerRef])  
-
 
   approvedById   Int?
   createdAt      DateTime          @default(now())
 
   userId Int
-  user   TotalUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   TotalUser @relation(fields: [userId], references: [id], onDelete: Restrict) // CHANGED: was Cascade
 
   approvedBy Admin? @relation(fields: [approvedById], references: [id])
+
+  @@index([providerRef])
 }
 
 model Service {
@@ -108,12 +110,13 @@ model Service {
   price     Float
   provider  Provider
   isActive  Boolean  @default(true)
-  network   String?                        
-  validity  String?                         
-  costPrice Float   @default(0)  
-  @@unique([provider, code]) 
+  network   String?
+  validity  String?
+  costPrice Float    @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([provider, code])
 }
 
 model ConversionHistory {

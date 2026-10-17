@@ -52,16 +52,6 @@ export class AuthController {
         return { user };
     }
  
-    // @Post("setPin")
-    // async setPin(@Body() body: { email: string; transactionPin: string }) {
-    //     const user = await this.usersService.findByEmail(body.email);
-    //     if (!user) throw new BadRequestException('User not found');
- 
-    //     await this.usersService.updatePin(user.id, body.transactionPin);
- 
-    //     return { message: 'PIN set successfully' };
-    // }
- 
  
     @Post("login")
     @HttpCode(200)
@@ -145,5 +135,15 @@ export class AuthController {
         res.clearCookie('jid')
         res.clearCookie('refreshToken')
         return { message: 'Logged out' };
+    }
+
+
+    @UseGuards(JwtAuthGuard)
+    @Post('delete-account')
+    @HttpCode(200)
+    async deleteAccount(@Req() req: Request, @Body() body: { password: string }) {
+        const userId = (req.user as any)?.userId;
+        if (!userId) throw new BadRequestException('No user found');
+        return this.authService.deleteAccount(userId, body?.password);
     }
 }

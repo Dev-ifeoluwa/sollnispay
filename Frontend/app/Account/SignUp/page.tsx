@@ -19,38 +19,6 @@ const Signup = () => {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await fetch(`${API_URL}/auth/register`, {
-  //       method: "POST",
-  //       credentials: "include",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         firstName,
-  //         lastName,
-  //         email,
-  //         password,
-  //         phoneNumber
-  //       }),
-
-  //     })
-  //     if (res.ok) {
-  //       toast.success("Account created successfully!");
-  //       router.push(`/Account/CreatePin?email=${encodeURIComponent(email)}`);
-  //     } else {
-  //       toast.error("Registration failed. Please try again.");
-  //       console.error("Registration failed");
-  //     }
-  //   }
-  //   catch (error) {
-  //     toast.error("Something went wrong. Please try again later.");
-  //     console.error("Error during registration:", error);
-  //   }
-  // }
-
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {

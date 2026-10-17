@@ -110,5 +110,16 @@ export class PaystackService {
       throw err;
     }
   }
+
+
+  async deactivateDedicatedAccount(customerCode?: string | null) {
+    if (!customerCode) return;
+    const headers = { Authorization: `Bearer ${this.secretKey}` };
+    const res = await firstValueFrom(this.http.get(`${this.base}/customer/${customerCode}`, { headers }));
+    const id = res.data?.data?.dedicated_account?.id;
+    if (!id) return;
+    await firstValueFrom(this.http.delete(`${this.base}/dedicated_account/${id}`, { headers }));
+  }
+
 }
  

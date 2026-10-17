@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import * as bcrypt from 'bcrypt';
+import { randomUUID } from 'crypto';
+import { BadRequestException } from '@nestjs/common';
  
 @Injectable()
 export class UsersService {
     constructor(private prisma: PrismaService) {}
  
-    // ---------
+   
     async createUser(
                     email: string, password: string, 
                     firstName: string, lastName: string, 
@@ -34,17 +36,7 @@ export class UsersService {
             }
         })
         return user;
-    }
- 
-    // async updatePin(userId: number, transactionPin: string) {
-    //   const hasedPin = await bcrypt.hash(transactionPin, 10)
- 
-    //   return this.prisma.totalUser.update({
-    //     where: { id: userId },
-    //     data: { transactionPin: hasedPin },
-    //   });
-    // }
- 
+    } 
  
     // ---------
     async findByEmail(email: string) {
@@ -108,6 +100,30 @@ export class UsersService {
         accountName: paystackAccountName,
         accountStatus: paystackAccountStatus,
       };
+    }
+
+
+    async anonymise(userId: number) {
+      const randomPw = await bcrypt.hash(randomUUID(), 10);
+      await this.prisma.$transaction(async (tx) => {
+        const pending = await tx.transaction.count({ where: { userId, status: 'PENDING' } });
+        if (pending > 0) throw new BadRequestException('You have a pending transaction. Try again once it completes.');
+
+        const res = await tx.totalUser.updateMany({
+          where: { id: userId, deletedAt: null, balance: { lt: 0.01 } },
+          data: {
+            deletedAt: new Date(),
+            email: `deleted-${userId}@deleted.invalid`,
+            firstName: 'Deleted', lastName: 'User', phoneNumber: '',
+            password: randomPw, transactionPin: null,
+            pinFailedAttempts: 0, pinLockedUntil: null,
+            paystackCustomerCode: null, paystackAccountNumber: null,
+            paystackAccountName: null, paystackBankName: null, paystackAccountStatus: null,
+            monnifyAccountRef: null, monnifyAccountNumber: null, monnifyAccountStatus: null,
+          },
+        });
+        if (res.count === 0) throw new BadRequestException('Spend or withdraw your balance before deleting your account.');
+      });
     }
  
 }

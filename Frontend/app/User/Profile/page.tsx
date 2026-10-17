@@ -62,6 +62,10 @@ export default function ProfilePage() {
     router.push('/Account/Signin');
   };
 
+  const handleDeleteAccount = () => {
+    router.push('/User/DeleteAccount');
+  }
+
   return (
     <>
       {!profile ? (
@@ -209,10 +213,17 @@ export default function ProfilePage() {
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className="cursor-pointer w-full mt-7 mb-10 flex items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-sm text-[#e8563a] bg-[#e8563a]/10 border border-[#e8563a]/25"
-            >
+              className="cursor-pointer w-full mt-7 mb-5 flex items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-sm text-[#e8563a] bg-[#e8563a]/10 border border-[#e8563a]/25"
+              >
               <LogOut size={15} />
               Log out
+            </button>
+            <button
+              onClick={handleDeleteAccount}
+              className="cursor-pointer w-full mt-2 mb-10 flex items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-sm text-[#e8563a] bg-[#e8563a]/10 border border-[#e8563a]/25"
+              >
+              
+              Delete Account
             </button>
 
             <p className="text-center text-[11px] text-[#8f7768] mt-4">

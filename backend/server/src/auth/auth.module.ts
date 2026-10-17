@@ -1,4 +1,3 @@
-
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -9,19 +8,22 @@ import { PrismaService } from 'src/prisma.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PaystackModule } from 'src/paystack/paystack.module';
- 
+
 @Module({
   imports: [
     UsersModule,
     PaystackModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
-    JwtModule.register({
-      secret: process.env.JWT_SECRET || 'secretKey',
-      signOptions: { expiresIn: '1h' },
+    JwtModule.registerAsync({
+      useFactory: () => {
+        const secret = process.env.JWT_SECRET;
+        if (!secret) throw new Error('JWT_SECRET is not set');
+        return { secret, signOptions: { expiresIn: '1h' } };
+      },
     }),
   ],
   controllers: [AuthController],
   providers: [AuthService, UsersService, PrismaService, JwtStrategy],
-  exports: [AuthService]
+  exports: [AuthService],
 })
 export class AuthModule {}
