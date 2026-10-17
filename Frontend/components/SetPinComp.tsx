@@ -31,7 +31,7 @@ const SetPinCom: React.FC = () => {
     const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
     try {
-      const res = await fetch(`${API_URL}/auth/setPin`, {
+      const res = await fetch(`${API_URL}/pin/set`, {
       // const res = await fetch('https://shalompay.onrender.com/auth/setPin', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
