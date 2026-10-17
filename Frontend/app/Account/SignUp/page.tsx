@@ -19,37 +19,62 @@ const Signup = () => {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(`${API_URL}/auth/register`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          password,
-          phoneNumber
-        }),
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await fetch(`${API_URL}/auth/register`, {
+  //       method: "POST",
+  //       credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         password,
+  //         phoneNumber
+  //       }),
 
-      })
-      if (res.ok) {
-        toast.success("Account created successfully!");
-        router.push(`/Account/CreatePin?email=${encodeURIComponent(email)}`);
-      } else {
-        toast.error("Registration failed. Please try again.");
-        console.error("Registration failed");
-      }
+  //     })
+  //     if (res.ok) {
+  //       toast.success("Account created successfully!");
+  //       router.push(`/Account/CreatePin?email=${encodeURIComponent(email)}`);
+  //     } else {
+  //       toast.error("Registration failed. Please try again.");
+  //       console.error("Registration failed");
+  //     }
+  //   }
+  //   catch (error) {
+  //     toast.error("Something went wrong. Please try again later.");
+  //     console.error("Error during registration:", error);
+  //   }
+  // }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    const res = await fetch(`${API_URL}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName, email, password, phoneNumber }),
+    });
+    const data = await res.json().catch(() => null);
+
+    if (res.ok && data?.tokens?.accessToken) {
+      localStorage.setItem("token", data.tokens.accessToken);
+      toast.success("Account created successfully!");
+      router.push("/Account/CreatePin");
+    } else {
+      const msg = Array.isArray(data?.message) ? data.message[0] : data?.message;
+      toast.error(msg ?? "Registration failed. Please try again.");
     }
-    catch (error) {
-      toast.error("Something went wrong. Please try again later.");
-      console.error("Error during registration:", error);
-    }
+  } catch (error) {
+    toast.error("Something went wrong. Please try again later.");
   }
+};
+
+  
 
   return (
     <div className="flex flex-col items-center px-2 py-15 justify-center min-h-screen bg-orange-100">

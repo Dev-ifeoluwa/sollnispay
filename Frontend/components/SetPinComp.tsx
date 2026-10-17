@@ -19,37 +19,79 @@ const SetPinCom: React.FC = () => {
     }
   };
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   const transactionPin = pin.join("");
+
+  //   if (transactionPin.length < 4) {
+  //     alert("Please enter a 4-digit PIN");
+  //     return;
+  //   }
+
+  //   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
+  //   try {
+  //     const res = await fetch(`${API_URL}/pin/set`, {
+  //     // const res = await fetch('https://shalompay.onrender.com/auth/setPin', {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email, transactionPin }),
+  //     });
+
+  //     if (res.ok) {
+  //       toast.success("Pin created successfully!");
+  //       router.push("/Account/Signin");
+  //     } else {
+  //       toast.error("Fail to create pin. Please try again.");
+  //       console.error("Failed to set PIN");
+  //     }
+  //   } catch (err) {
+  //     toast.error("Something went wrong. Please try again later.");
+  //     console.error("Error:", err);
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const transactionPin = pin.join("");
+  e.preventDefault();
+  const pinValue = pin.join("");
+  if (pinValue.length < 4) {
+    toast.error("Please enter a 4-digit PIN");
+    return;
+  }
 
-    if (transactionPin.length < 4) {
-      alert("Please enter a 4-digit PIN");
-      return;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const token = localStorage.getItem("token");
+  if (!token) {
+    toast.error("Please sign in first.");
+    router.push("/Account/Signin");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_URL}/pin/set`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ pin: pinValue }),
+    });
+
+    if (res.ok) {
+      toast.success("PIN created successfully!");
+      router.push("/Account/Signin"); // or "/User/Dashboard", since they're already logged in
+    } else if (res.status === 401) {
+      toast.error("Session expired. Please sign in again.");
+      router.push("/Account/Signin");
+    } else {
+      const err = await res.json().catch(() => null);
+      const msg = Array.isArray(err?.message) ? err.message[0] : err?.message;
+      toast.error(msg ?? "Failed to create PIN. Please try again.");
     }
-
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
-    try {
-      const res = await fetch(`${API_URL}/pin/set`, {
-      // const res = await fetch('https://shalompay.onrender.com/auth/setPin', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, transactionPin }),
-      });
-
-      if (res.ok) {
-        toast.success("Pin created successfully!");
-        router.push("/Account/Signin");
-      } else {
-        toast.error("Fail to create pin. Please try again.");
-        console.error("Failed to set PIN");
-      }
-    } catch (err) {
-      toast.error("Something went wrong. Please try again later.");
-      console.error("Error:", err);
-    }
-  };
+  } catch (err) {
+    toast.error("Something went wrong. Please try again later.");
+  }
+};
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">

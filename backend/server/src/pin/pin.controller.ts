@@ -20,6 +20,7 @@ export class PinController {
   set(@Req() req: Request, @Body() dto: SetPinDto) {
     return this.pinService.set(this.userId(req), dto.pin);
   }
+  
 
   @Post('change')
   @HttpCode(200)

@@ -40,6 +40,8 @@ export class AuthController {
         });
  
         const tokens = await this.authService.login(user);
+        // added
+        return { user, tokens };
  
         res.cookie('jid', tokens.accessToken, {
             httpOnly: true,

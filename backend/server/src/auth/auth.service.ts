@@ -11,16 +11,36 @@ export class AuthService {
     ) {}
 
     // --------`
-    async validateUser(email: string, password: string) {
-        const user = await this.usersService.findByEmail(email);
-        if(!user) return null;
+    // async validateUser(email: string, password: string) {
+    //     const user = await this.usersService.findByEmail(email);
+    //     if(!user) return null;
 
-        const vaild = await bcrypt.compare(password, user.password);
-        if(!vaild) return null;
+    //     const vaild = await bcrypt.compare(password, user.password);
+    //     if(!vaild) return null;
 
-        const { password: _, ...result } = user;
-        return result;
-    }
+    //     const { password: _, ...result } = user;
+    //     return result;
+    // }
+async validateUser(email: string, password: string) {
+    const user = await this.usersService.findByEmail(email);
+    if (!user) return null;
+
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) return null;
+
+    // only send the browser what it needs, never hashes or provider fields
+    const { id, firstName, lastName, phoneNumber, balance, transactionPin } = user;
+    return {
+        id,
+        email: user.email,
+        firstName,
+        lastName,
+        phoneNumber,
+        balance,
+        hasPin: !!transactionPin,
+    };
+}
+
 
     async login(user: any) {
         const payload = { email: user.email, sub: user.id };
