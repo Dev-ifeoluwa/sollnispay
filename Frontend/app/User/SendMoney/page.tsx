@@ -220,7 +220,7 @@ export default function SendMoneyPage() {
         <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#1a0f0a_0%,#0e0704_40%,#0a0503_100%)]">
             <div className="pointer-events-none absolute -top-16 left-1/4 w-72 h-72 rounded-full bg-[#ff7a3d]/25 blur-[80px]" />
 
-            <div className="relative z-10 mx-auto w-full max-w-xl px-4 py-6 sm:px-6 sm:py-8">
+            <div className="relative z-10 w-full px-4 py-6 sm:px-6 sm:py-8">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">
                     {step === "review" ? (
@@ -251,14 +251,14 @@ export default function SendMoneyPage() {
                 {step === "form" && (
                     <div className="space-y-5">
                         <div className="rounded-2xl border border-white/[0.08] bg-[#1e100a] px-5 py-4 flex items-center justify-between">
-                            <span className="text-xs text-[#8f7768]">Available balance</span>
-                            <span className="font-serif text-lg font-semibold text-[#f4b860]">{naira(balance)}</span>
+                            <span className="text-xs text-[#8f7768]">Current balance</span>
+                            <span className="text-base font-bold text-[#fbf3ec] font-serif">{naira(balance)}</span>
                         </div>
 
                         {/* mode switch */}
                         <div className="grid grid-cols-2 gap-3">
                             {([
-                                ["wallet", "Sollnispay wallet", Wallet],
+                                ["wallet", "Sollnis wallet", Wallet],
                                 ["bank", "Other banks", Building2],
                             ] as const).map(([m, label, Icon]) => (
                                 <button

@@ -203,13 +203,6 @@ export default function UserDashboard() {
                                     </div>
 
                                     <div className="flex gap-3">
-                                        {/* <Link
-                                            href={"/User/Deposit"}
-                                            className="flex-1 sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
-                                        >
-                                            <Plus size={16} />
-                                            Fund wallet
-                                        </Link> */}
                                         <button
                                             onClick={handleFundWallet}
                                             className="flex-1 cursor-pointer sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
