@@ -62,14 +62,6 @@ export default function UserDashboard() {
         loadDashboard(token);
     }, []);
 
-    // FIX 4: the 7 / 30 day toggle now filters the list
-    // const rangeDays = range === "7d" ? 7 : 30;
-    // const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
-    // const visibleTransactions: any[] = (dashboard?.transactions ?? []).filter(
-    //     (tx: any) => new Date(tx.createdAt).getTime() >= cutoff
-    // );
-
-
     const rangeDays = range === "7d" ? 7 : 30;
     const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
     const filtered: any[] = (dashboard?.transactions ?? [])
@@ -229,51 +221,12 @@ export default function UserDashboard() {
 
                         {/* Recent transactions */}
                         <div className="mt-8 sm:mt-10">
-                            {/* <div className="flex items-center justify-between mb-4">
-                                <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
-                                    Recent activity
-                                </h4>
-                                <div className="flex items-center gap-1 bg-white/[0.06] border border-white/[0.08] rounded-full p-1">
-                                    <button
-                                        onClick={() => setRange("7d")}
-                                        className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "7d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
-                                            }`}
-                                    >
-                                        7 days
-                                    </button>
-                                    <button
-                                        onClick={() => setRange("30d")}
-                                        className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "30d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
-                                            }`}
-                                    >
-                                        30 days
-                                    </button>
-                                </div>
-                            </div> */}
-
-
                             <div className="flex items-center justify-between mb-4">
                                 <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
                                     Recent activity
                                 </h4>
-                                    <div className="flex items-center gap-3">
-                                        {/* <div className="flex items-center gap-1 bg-white/[0.06] border border-white/[0.08] rounded-full p-1">
-                                            <button
-                                                onClick={() => setRange("7d")}
-                                                className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "7d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
-                                                    }`}
-                                            >
-                                                7 days
-                                            </button>
-                                            <button
-                                                onClick={() => setRange("30d")}
-                                                className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "30d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
-                                                    }`}
-                                            >
-                                                30 days
-                                            </button>
-                                        </div> */}
-                                        <Link href="/User/Transactions" className="text-xs font-semibold text-[#ff7a3d] whitespace-nowrap">
+                                    <div>
+                                        <Link href="/User/Transactions" className="text-sm font-semibold text-[#ff7a3d] whitespace-nowrap">
                                             View all
                                         </Link>
                                 </div>
