@@ -6,6 +6,7 @@ import { EyeIcon, EyeOffIcon, Plus, Send, ArrowDownLeft, ArrowUpRight } from "lu
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preloader from "components/preloader";
+import TransactionRow from "components/UserDashboardCompo/TransactionRow";
 
 // helpers: dates may be ISO strings or null
 const fmtDate = (v?: string | null) => {
@@ -62,11 +63,20 @@ export default function UserDashboard() {
     }, []);
 
     // FIX 4: the 7 / 30 day toggle now filters the list
+    // const rangeDays = range === "7d" ? 7 : 30;
+    // const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
+    // const visibleTransactions: any[] = (dashboard?.transactions ?? []).filter(
+    //     (tx: any) => new Date(tx.createdAt).getTime() >= cutoff
+    // );
+
+
     const rangeDays = range === "7d" ? 7 : 30;
     const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
-    const visibleTransactions: any[] = (dashboard?.transactions ?? []).filter(
-        (tx: any) => new Date(tx.createdAt).getTime() >= cutoff
-    );
+    const filtered: any[] = (dashboard?.transactions ?? [])
+    .filter((tx: any) => new Date(tx.createdAt).getTime() >= cutoff)
+    .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    const visibleTransactions = filtered.slice(0, 3);
+
 
     return (
         <>
@@ -219,7 +229,7 @@ export default function UserDashboard() {
 
                         {/* Recent transactions */}
                         <div className="mt-8 sm:mt-10">
-                            <div className="flex items-center justify-between mb-4">
+                            {/* <div className="flex items-center justify-between mb-4">
                                 <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
                                     Recent activity
                                 </h4>
@@ -239,7 +249,36 @@ export default function UserDashboard() {
                                         30 days
                                     </button>
                                 </div>
+                            </div> */}
+
+
+                            <div className="flex items-center justify-between mb-4">
+                                <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
+                                    Recent activity
+                                </h4>
+                                    <div className="flex items-center gap-3">
+                                        {/* <div className="flex items-center gap-1 bg-white/[0.06] border border-white/[0.08] rounded-full p-1">
+                                            <button
+                                                onClick={() => setRange("7d")}
+                                                className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "7d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
+                                                    }`}
+                                            >
+                                                7 days
+                                            </button>
+                                            <button
+                                                onClick={() => setRange("30d")}
+                                                className={`text-xs font-semibold px-3 py-1.5 rounded-full transition ${range === "30d" ? "bg-[#ff7a3d] text-[#1a0d05]" : "text-[#8f7768]"
+                                                    }`}
+                                            >
+                                                30 days
+                                            </button>
+                                        </div> */}
+                                        <Link href="/User/Transactions" className="text-xs font-semibold text-[#ff7a3d] whitespace-nowrap">
+                                            View all
+                                        </Link>
+                                </div>
                             </div>
+
 
                             {visibleTransactions.length === 0 ? (
                                 <p className="text-[#8f7768] text-sm my-5 text-center py-10">
@@ -247,41 +286,9 @@ export default function UserDashboard() {
                                 </p>
                             ) : (
                                 <div className="rounded-2xl border border-white/[0.08] bg-[#1e100a] divide-y divide-white/[0.06] overflow-hidden">
-                                    {visibleTransactions.map((tx: any) => {
-                                        // FIX 3: wallet funding is money in, everything else is money out
-                                        const isCredit = tx.type === "WALLET_FUNDING";
-                                        const amountText = `${isCredit ? "+" : "-"}₦${Number(tx.amount).toLocaleString("en-NG", {
-                                            minimumFractionDigits: 2,
-                                            maximumFractionDigits: 2,
-                                        })}`;
-                                        return (
-                                            <div
-                                                key={tx.id}
-                                                className="flex items-center gap-3 sm:gap-4 px-4 py-3 sm:px-6 sm:py-4"
-                                            >
-                                                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#26140c] border border-white/[0.08] text-[#ff7a3d]">
-                                                    {isCredit ? <ArrowDownLeft size={16} /> : <ArrowUpRight size={16} />}
-                                                </div>
-                                                <div className="min-w-0 flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5 sm:gap-4">
-                                                    <div className="min-w-0">
-                                                        {/* FIX 1: field names now match the API (itemsPurchased, dayPurchased) */}
-                                                        <p className="text-sm font-semibold text-[#fbf3ec] truncate">
-                                                            {tx.itemsPurchased}
-                                                        </p>
-                                                        <div className="flex flex-wrap gap-x-1.5 text-[11px] sm:text-xs text-[#8f7768]">
-                                                            <span>{tx.description}</span>
-                                                            <span>{fmtDate(tx.dayPurchased ?? tx.createdAt)}</span>
-                                                            <span>{fmtTime(tx.itemsTime ?? tx.createdAt)}</span>
-                                                        </div>
-                                                    </div>
-                                                    <p className={`text-sm sm:text-base font-bold flex-shrink-0 ${isCredit ? "text-[#f4b860]" : "text-[#fbf3ec]"
-                                                        }`}>
-                                                        {amountText}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
+                                    {visibleTransactions.map((tx: any) => (
+                                        <TransactionRow key={tx.id} tx={tx} />
+                                    ))}
                                 </div>
                             )}
                         </div>
