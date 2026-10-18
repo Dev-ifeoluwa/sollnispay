@@ -62,6 +62,14 @@ export default function UserDashboard() {
         loadDashboard(token);
     }, []);
 
+    const handleFundWallet = () => {
+        router.push('/User/Deposit');
+    }
+
+    const handleSendMoney = () => {
+        router.push('/User/SendMoney');
+    }
+
     const rangeDays = range === "7d" ? 7 : 30;
     const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
     const filtered: any[] = (dashboard?.transactions ?? [])
@@ -195,14 +203,25 @@ export default function UserDashboard() {
                                     </div>
 
                                     <div className="flex gap-3">
-                                        <Link
+                                        {/* <Link
                                             href={"/User/Deposit"}
                                             className="flex-1 sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
                                         >
                                             <Plus size={16} />
                                             Fund wallet
-                                        </Link>
-                                        <button className="flex-1 sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#fbf3ec] bg-white/[0.06] border border-white/15 backdrop-blur">
+                                        </Link> */}
+                                        <button
+                                            onClick={handleFundWallet}
+                                            className="flex-1 cursor-pointer sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
+                                        >
+                                            <Plus size={16} />
+                                            Fund wallet
+
+                                        </button>
+                                        <button
+                                            onClick={handleSendMoney}
+                                            className="flex-1 cursor-pointer sm:flex-none sm:px-7 flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold text-sm text-[#fbf3ec] bg-white/[0.06] border border-white/15 backdrop-blur"
+                                        >
                                             <Send size={15} />
                                             Send
                                         </button>
