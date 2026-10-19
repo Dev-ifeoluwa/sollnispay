@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,11 +16,17 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
   const handleSubmit = async (e: React.FormEvent) => {
+
+  if (loading) return;
+
+  setLoading(true);
+
   e.preventDefault();
   try {
     const res = await fetch(`${API_URL}/auth/register`, {
@@ -39,8 +46,13 @@ const Signup = () => {
     }
   } catch (error) {
     toast.error("Something went wrong. Please try again later.");
-  }
+  }finally {
+       setLoading(false);
+   }
 };
+
+
+  
 
   
 
@@ -165,11 +177,19 @@ const Signup = () => {
 
           {/* Register Button */}
           <button
-            type="submit"
-            className="w-full cursor-pointer bg-linear-to-r from-orange-700 bg-amber-900 text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition"
-          >
-            Create My Account
-          </button>
+               type="submit"
+               disabled={loading}
+               className="bg-linear-to-r from-orange-700 bg-amber-900 cursor-pointer flex w-full items-center justify-center gap-1 rounded-xl px-5 py-2 font-semibold text-white transition duration-300 hover:bg-gray-900 disabled:opacity-60"
+                >
+               <span>{loading ? "Signing you up..." : "Sign up"}</span>
+
+               {!loading && (
+                 <ArrowLeft
+                   size={18}
+                   className="rotate-180 transition-transform duration-300 group-hover:translate-x-1"
+                 />
+               )}
+             </button>
           <Link href="/Account/Signin" className="text-sm text-gray-700 hover:underline -mt-5 block text-center">Already have an account? <strong className="text-orange-900">Login</strong></Link>
         </form>
       </div>

@@ -24,6 +24,9 @@ enum TransactionType {
   EDUCATION
   SPORT
   WALLET_FUNDING
+  TRANSFER_SENT
+  TRANSFER_RECEIVED
+  TRANSFER_BANK
 }
 
 enum Provider {

@@ -10,7 +10,7 @@ type Step = "form" | "review" | "success";
 type Bank = { name: string; code: string };
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-const MIN_AMOUNT = 100;
+const MIN_AMOUNT = 10;
 const PIN_LENGTH = 4; // change if your PIN is a different length
 
 // DISPLAY ONLY. The backend must calculate the real fee itself.
