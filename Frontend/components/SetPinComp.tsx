@@ -191,7 +191,7 @@ const SetPinCom: React.FC = () => {
     <>
       <div className="relative flex min-h-screen flex-col bg-orange-100">
         {/* Go back */}
-        <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-white">
+        <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-black">
           <p
             onClick={() => router.back()}
             className="flex cursor-pointer items-center gap-3"
@@ -223,16 +223,18 @@ const SetPinCom: React.FC = () => {
               </div>
 
               {/* Heading */}
-              <div className="mt-10 flex h-12 w-12 items-center justify-center rounded-full bg-[#fbf1e8]">
+              <div className="mt-10 flex h-12 w-12 items-center mx-auto justify-center rounded-full bg-[#fbf1e8]">
                 <ShieldCheck size={22} className="text-[#7a5b44]" />
               </div>
-              <h1 className="mt-5 text-3xl font-semibold leading-tight text-white">
-                Set your PIN
-              </h1>
-              <p className="mt-2 text-xs text-white/70">
-                Choose a 4-digit PIN you&apos;ll use to confirm every transaction
-                on Sollnispay.
-              </p>
+              <div className="mt-5 text-center">
+                  <h1 className="mt-5 text-3xl font-semibold leading-tight text-white">
+                   Set your PIN
+                  </h1>
+                  <p className="mt-2 text-xs text-white/70">
+                    Choose a 4-digit PIN you&apos;ll use to confirm every transaction
+                    on Sollnispay.
+                  </p>
+              </div>
 
               {/* Form */}
               <form className="mt-8" onSubmit={handleSubmit}>
