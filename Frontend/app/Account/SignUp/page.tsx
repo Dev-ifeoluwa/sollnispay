@@ -295,7 +295,7 @@ const Signup = () => {
     <>
       <div className="relative flex min-h-screen flex-col bg-orange-100">
         {/* Go back */}
-        {/* <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-black">
+        <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-black">
           <p
             onClick={HandleClick}
             className="flex cursor-pointer items-center gap-3"
@@ -303,7 +303,7 @@ const Signup = () => {
             <ArrowLeft size={20} />
             <span className="font-semibold">Go Back</span>
           </p>
-        </span> */}
+        </span>
 
         <div className="flex flex-1 items-center justify-center px-4 py-8">
           {/* Card */}
