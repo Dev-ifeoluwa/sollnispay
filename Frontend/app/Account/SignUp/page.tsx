@@ -293,7 +293,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="relative flex min-h-screen flex-col bg-white">
+      <div className="relative flex min-h-screen flex-col bg-orange-100">
         {/* Go back */}
         {/* <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-black">
           <p
