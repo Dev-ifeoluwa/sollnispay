@@ -4,13 +4,17 @@ import { AuthService } from './auth.service';
 import { UsersService } from 'src/users/users.service';
 import { JwtAuthGuard } from './jwt.auth.guard';
 import { PaystackService } from 'src/paystack/paystack.service';
+import { Throttle } from '@nestjs/throttler/dist/throttler.decorator';
+import { ThrottlerGuard } from '@nestjs/throttler';
+import { PasswordResetService } from './password-reset.service';
  
 @Controller('auth')
 export class AuthController {
     constructor(
         private authService: AuthService,
         private usersService: UsersService,
-        private paystackService: PaystackService
+        private paystackService: PaystackService,
+        private passwordResetService: PasswordResetService,
     ) { }
  
     @Post("register")
@@ -146,4 +150,26 @@ export class AuthController {
         if (!userId) throw new BadRequestException('No user found');
         return this.authService.deleteAccount(userId, body?.password);
     }
+
+
+    @Post('forgot-password')
+    @HttpCode(200)
+    @UseGuards(ThrottlerGuard)
+    @Throttle({ default: { limit: 5, ttl: 60_000 } })
+    async forgotPassword(@Body() body: { email: string }) {
+    if (!body?.email) throw new BadRequestException('Email is required');
+    await this.passwordResetService.requestOtp(body.email);
+    return { message: 'If that email is registered, we have sent a 6-digit code.' };
+   }
+    
+
+    @Post('reset-password')
+    @HttpCode(200)
+    @UseGuards(ThrottlerGuard)
+    @Throttle({ default: { limit: 10, ttl: 60_000 } })
+    async resetPassword(@Body() body: { email: string; otp: string; newPassword: string }) {
+    return this.passwordResetService.resetPassword(body?.email, body?.otp, body?.newPassword);
+   }
+
+
 }

@@ -15,6 +15,8 @@ import { SabussModule } from './sabuss/sabuss.module';
 import { DataModule } from './data/data.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TransfersModule } from './transfers/transfers.module';
+import { MailModule } from './mail/mail.module';
+// import { CoService } from './co/co.service';
 
  
  
@@ -25,7 +27,7 @@ import { TransfersModule } from './transfers/transfers.module';
   ScheduleModule.forRoot(),            // <- add
   AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule,
   WebhooksModule, PaystackModule,
-  SabussModule, DataModule, TransfersModule,
+  SabussModule, DataModule, TransfersModule, MailModule,
 ],
   // imports: [ 
   //   ConfigModule.forRoot({
@@ -33,5 +35,6 @@ import { TransfersModule } from './transfers/transfers.module';
   // }), AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule, WebhooksModule, MonnifyModule, PaystackModule, SabussModule, DataModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
+  // providers: [AppService, PrismaService, CoService],
 })
 export class AppModule {}

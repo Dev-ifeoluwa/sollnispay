@@ -8,11 +8,16 @@ import { PrismaService } from 'src/prisma.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PaystackModule } from 'src/paystack/paystack.module';
+import { ThrottlerModule } from '@nestjs/throttler/dist/throttler.module';
+import { MailModule } from 'src/mail/mail.module';
+import { PasswordResetService } from './password-reset.service';
 
 @Module({
   imports: [
     UsersModule,
     PaystackModule,
+    MailModule,
+    ThrottlerModule.forRoot([{ ttl: 60_000, limit: 10 }]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       useFactory: () => {
@@ -23,7 +28,7 @@ import { PaystackModule } from 'src/paystack/paystack.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService, PrismaService, JwtStrategy],
+  providers: [AuthService, UsersService, PrismaService, JwtStrategy, PasswordResetService],
   exports: [AuthService],
 })
 export class AuthModule {}

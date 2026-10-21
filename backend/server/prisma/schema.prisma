@@ -63,6 +63,9 @@ model TotalUser {
   pinFailedAttempts Int       @default(0)
   pinLockedUntil    DateTime?
 
+  passwordChangedAt DateTime?
+  passwordResets    PasswordReset[]
+
   deletedAt            DateTime?           // NEW: set when the user deletes their account
 
   createdAt            DateTime            @default(now())
@@ -144,4 +147,18 @@ model Admin {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   Transaction Transaction[]
+}
+
+
+model PasswordReset {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  user      TotalUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  otpHash   String
+  expiresAt DateTime
+  attempts  Int       @default(0)
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, createdAt])
 }
