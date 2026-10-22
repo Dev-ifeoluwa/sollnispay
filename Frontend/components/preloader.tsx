@@ -15,13 +15,13 @@ export default function Preloader() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-gradient-to-r from-ornage-100 p-2 rounded-full shadow-lg">
+      <div className="bg-gradient-to-r from-ornage-100 p-5 rounded-full shadow-lg">
             <Image 
             src="/favicon.ico" 
             alt="loading...."
             width={40} 
             height={40}
-            className="w-15 h-15 animate-pulse rounded-full"
+            className="w-20 h-20 animate-bounce rounded-full"
             />
       </div>
     </div>

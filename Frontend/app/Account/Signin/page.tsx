@@ -96,7 +96,7 @@ const Signin = () => {
                 Welcome back
               </h1>
               <p className="mt-2 text-xs text-white/70">
-                Sign in to Sollnispay and pick up where you left off.
+                Sign in and pick up from where you left off.
               </p>
 
               {/* Form */}

@@ -1,5 +1,6 @@
 "use client"
 
+import ForgotPinSheet from "components/ForgotPinSheet";
 import { ArrowLeft, CircleUser, Newspaper, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -88,6 +89,7 @@ export default function MobileDataTopup() {
     const [showPopup, setShowPopup] = useState(false)
     const [error, setError] = useState('')
     const [activeTab, setActiveTab] = useState<Tab>('Hot')
+    const [showForgotPin, setShowForgotPin] = useState(false)
     const [showPin, setShowPin] = useState(false)
     const [pin, setPin] = useState(["", "", "", ""]);
     const [submitting, setSubmitting] = useState(false)
@@ -456,7 +458,13 @@ export default function MobileDataTopup() {
                                         />
                                     ))}
                                 </div>
-                                <button className="font-semibold text-[#ff7a3d] text-xs">
+                                {/* added to others */}
+                                <button
+                                        type="button"
+                                        onClick={() => setShowForgotPin(true)}
+                                        disabled={submitting}
+                                        className="font-semibold text-[#ff7a3d] text-xs disabled:opacity-50"
+                                    >
                                     Forgot PIN
                                 </button>
                             </div>
@@ -479,6 +487,17 @@ export default function MobileDataTopup() {
                         </div>
                     </div>
                 )}
+
+                {/* add to others */}
+                <ForgotPinSheet
+                        open={showForgotPin}
+                        onClose={() => setShowForgotPin(false)}
+                        onDone={() => {
+                            setShowForgotPin(false)
+                            setPin(["", "", "", ""])
+                            document.getElementById('pin-0')?.focus()
+                        }}
+                    />
 
                 <Toaster position="top-center" reverseOrder={true} />
             </div>

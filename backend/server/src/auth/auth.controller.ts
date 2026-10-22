@@ -7,6 +7,7 @@ import { PaystackService } from 'src/paystack/paystack.service';
 import { Throttle } from '@nestjs/throttler/dist/throttler.decorator';
 import { ThrottlerGuard } from '@nestjs/throttler';
 import { PasswordResetService } from './password-reset.service';
+import { assertNoPersonalInfo, assertStrongPassword } from 'src/common/password-policy';
  
 @Controller('auth')
 export class AuthController {
@@ -25,7 +26,19 @@ export class AuthController {
         lastName: string,
         phoneNumber: string,
     },
+
         @Res({ passthrough: true }) res: Response) {
+
+
+         // NEW: reject weak passwords before doing anything else
+        assertStrongPassword(body.password);
+        assertNoPersonalInfo(body.password, {
+            email: body.email,
+            firstName: body.firstName,
+            lastName: body.lastName,
+        });
+
+
         const existing = await this.usersService.findByEmail(body.email);
         if (existing) throw new BadRequestException('User already exists');
  

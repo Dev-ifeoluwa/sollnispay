@@ -43,12 +43,12 @@ export class MailService {
           <div style="font-family:Arial,sans-serif;max-width:420px;margin:auto;padding:24px">
             <h2 style="margin:0 0 12px">Reset your password</h2>
             <p>Hi ${escapeHtml(firstName)},</p>
-            <p>Use this code to reset your Sollnis Pay password:</p>
+            <p>Use this code to reset your SollnisPay password:</p>
             <p style="font-size:32px;letter-spacing:8px;font-weight:bold;margin:24px 0">${otp}</p>
-            <p>This code expires in <strong>10 minutes</strong>. Never share it with anyone, including Sollnis Pay staff.</p>
+            <p>This code expires in <strong>10 minutes</strong>. Never share it with anyone, including SollnisPay staff.</p>
             <p style="color:#666;font-size:13px">If you did not request this, you can safely ignore this email. Your password will not change.</p>
           </div>`;
-        await this.send(to, 'Your Sollnis Pay password reset code', html);
+        await this.send(to, 'Your SollnisPay password reset code', html);
     }
 
     async sendPasswordChanged(to: string, firstName: string) {
@@ -56,9 +56,9 @@ export class MailService {
           <div style="font-family:Arial,sans-serif;max-width:420px;margin:auto;padding:24px">
             <h2 style="margin:0 0 12px">Your password was changed</h2>
             <p>Hi ${escapeHtml(firstName)},</p>
-            <p>The password on your Sollnis Pay account was just changed.</p>
+            <p>The password on your SollnisPay account was just changed.</p>
             <p style="color:#666;font-size:13px">If this was not you, reset your password again immediately and contact support.</p>
           </div>`;
-        await this.send(to, 'Your Sollnis Pay password was changed', html);
+        await this.send(to, 'Your SollnisPay password was changed', html);
     }
 }
