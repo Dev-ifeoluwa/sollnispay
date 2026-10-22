@@ -2,11 +2,11 @@ import { IsString, IsNumber } from 'class-validator';
 
 export class ConvertDto {
   @IsString()
-  from: string;     
+  from!: string;     
 
   @IsString()
-  to: string;       
+  to!: string;       
 
   @IsNumber()
-  amount: number; 
+  amount!: number; 
 }

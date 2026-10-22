@@ -437,7 +437,12 @@ export class TransfersService {
       throw new ServiceUnavailableException('Bank transfers are temporarily unavailable. Please try again later.');
     }
 
-    const bankName = (await this.paystack.listBanks().catch(() => [])).find((b) => b.code === dto.bankCode)?.name ?? null;
+    // const bankName = (await this.paystack.listBanks().catch(() => [])).find((b) => b.code === dto.bankCode)?.name ?? null;
+    const banks: { code: string; name: string }[] = await this.paystack
+      .listBanks()
+      .catch(() => []);
+    const bankName = banks.find((b) => b.code === dto.bankCode)?.name ?? null;
+
 
     // 6. take the money and record the transfer in ONE database transaction.
     //    The balance >= total condition is what stops two parallel requests overdrawing.

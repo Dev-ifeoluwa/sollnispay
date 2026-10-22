@@ -37,6 +37,11 @@ enum Provider {
   SABUSS
 }
 
+enum OtpPurpose {
+  PASSWORD
+  PIN
+}
+
 model TotalUser {
   id                   Int                 @id @default(autoincrement())
   email                String              @unique
@@ -159,6 +164,8 @@ model PasswordReset {
   attempts  Int       @default(0)
   usedAt    DateTime?
   createdAt DateTime  @default(now())
+
+  purpose OtpPurpose @default(PASSWORD)
 
   @@index([userId, createdAt])
 }
