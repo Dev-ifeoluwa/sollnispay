@@ -55,7 +55,7 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-7">
+        {/* <div className="flex flex-col gap-7">
           <h3 className="text-white font-serif text-lg mt-6 md:text-xl">
             We're Working With
           </h3>
@@ -82,7 +82,7 @@ export default function Hero() {
               height={30}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {/* -------------- */}
       <div className="relative pr-0 md:pr-15 -mb-10 max-w-[250px] md:max-w-md lg:max-w-lg">
