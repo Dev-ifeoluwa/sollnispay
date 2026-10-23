@@ -7,7 +7,7 @@
  */
 const VERSION = 'v1'
 const STATIC_CACHE = `sollnis-static-${VERSION}`
-const PRECACHE = ['/offline', '/icons/favicon.ico', '/icons/favicon.ico']
+const PRECACHE = ['/offline', '/icons/sollnispay.png', '/icons/sollnispay.png']
 
 // self.addEventListener('install', (event) => {
 //   event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(PRECACHE)))

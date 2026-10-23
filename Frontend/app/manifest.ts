@@ -10,12 +10,13 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     display: 'standalone',
     orientation: 'portrait',
-    background_color: '#1a110b', // splash screen colour (match your dark brown theme)
+    background_color: '#FFFFFF', // splash screen colour (match your dark brown theme)
+    // background_color: '#1a110b', // splash screen colour (match your dark brown theme)
     theme_color: '#1a110b',
     icons: [
-      { src: '/icons/favicon.ico', sizes: '192x192', type: 'image/x-icon' },
-      { src: '/icons/favicon.ico', sizes: '512x512', type: 'image/x-icon' },
-      { src: '/icons/favicon.ico', sizes: '512x512', type: 'image/x-icon', purpose: 'maskable' },
+      { src: '/icons/sollnispay.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icons/sollnispay.png', sizes: '512x512', type: 'image/png' },
+      { src: '/icons/sollnispay.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
     ],
   }
 }
