@@ -128,7 +128,7 @@ export default function ReceiptPage() {
                 </div>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-6 text-sm text-[#fbf3ec] border-t border-white/10">
                 <Row label="Description" value={tx.description} />
                 <Row label="Type" value={tx.type?.replace(/_/g, " ")} />
                 <Row
