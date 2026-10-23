@@ -59,7 +59,7 @@ export default function PwaProvider() {
     position: 'fixed',
     left: 12,
     right: 12,
-    bottom: 12,
+    bottom: 15,
     zIndex: 1000,
     padding: '12px 14px',
     borderRadius: 14,
@@ -94,7 +94,7 @@ export default function PwaProvider() {
   if (installEvent && !dismissed) {
     return (
       <div style={bar}>
-        <span>Install Sollnispay for quick access.</span>
+        <span>Install Sollnispay.</span>
         <span style={{ display: 'flex', gap: 8 }}>
           <button style={{ ...btn, background: 'transparent', color: '#fff' }} onClick={() => setDismissed(true)}>
             Later
