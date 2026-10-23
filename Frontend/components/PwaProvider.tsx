@@ -83,7 +83,7 @@ export default function PwaProvider() {
   if (waiting) {
     return (
       <div style={bar}>
-        <span>A new version of Sollnis Pay is available.</span>
+        <span>A new version of Sollnispay is available.</span>
         <button style={btn} onClick={() => waiting.postMessage('SKIP_WAITING')}>
           Update
         </button>
@@ -94,7 +94,7 @@ export default function PwaProvider() {
   if (installEvent && !dismissed) {
     return (
       <div style={bar}>
-        <span>Install Sollnis Pay for quick access.</span>
+        <span>Install Sollnispay for quick access.</span>
         <span style={{ display: 'flex', gap: 8 }}>
           <button style={{ ...btn, background: 'transparent', color: '#fff' }} onClick={() => setDismissed(true)}>
             Later

@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Sollnispay',
     short_name: 'Sollnispay',
     description: 'Fund your wallet, buy data and airtime, and send money.',
-    start_url: '/',
+    start_url: '/Account/loginaccount',
     scope: '/',
     display: 'standalone',
     orientation: 'portrait',
