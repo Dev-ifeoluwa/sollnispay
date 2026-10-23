@@ -90,7 +90,7 @@ export default function ReceiptPage() {
     const text = `Sollnis Pay receipt\n${tx.description ?? "Transaction"}\nAmount: ${naira(tx.amount)}\nRef: ${tx.reference ?? tx.id}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Sollnis Pay receipt", text });
+        await navigator.share({ title: "Sollnispay receipt", text });
       } catch {
         /* user cancelled */
       }
@@ -105,7 +105,7 @@ export default function ReceiptPage() {
       <div className="max-w-md mx-auto">
         <button
           onClick={() => router.back()}
-          className="print:hidden inline-flex items-center gap-2 text-sm text-[#d8c3b6] mb-6"
+          className="print:hidden inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.06] border border-white/[0.08] text-[#d8c3b6]"
         >
           <ArrowLeft size={18} /> Back
         </button>
@@ -117,7 +117,7 @@ export default function ReceiptPage() {
           <>
             <div className="rounded-2xl bg-[#26140c] border border-white/10 p-6">
               <div className="text-center">
-                <p className="text-xs uppercase tracking-widest text-[#8f7768]">Sollnis Pay</p>
+                <p className="text-xs uppercase tracking-widest text-[#8f7768]">Sollnispay</p>
                 <h1 className="mt-1 text-lg font-semibold">Transaction receipt</h1>
                 <p className={`mt-5 text-3xl font-semibold ${isCredit(tx) ? "text-[#ffb36b]" : "text-white"}`}>
                   {isCredit(tx) ? "+" : "-"}
