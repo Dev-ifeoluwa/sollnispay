@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -46,4 +46,15 @@ export class TransactionsService {
       return true;
     });
   }
+
+
+
+
+  async findOne(userId: number, id: number) {
+  const tx = await this.prisma.transaction.findFirst({
+    where: { id, userId },
+  });
+  if (!tx) throw new NotFoundException('Receipt not found');
+  return tx;
+}
 }
