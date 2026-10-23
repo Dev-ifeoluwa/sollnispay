@@ -148,7 +148,7 @@ const ResetPassword = () => {
         {/* Go back */}
         <span className="relative z-10 flex items-center justify-between px-4 pt-5 text-sm text-black">
           <p
-            onClick={() => router.push("/Account/ForgotPassword")}
+            onClick={() => router.push("/Account/Forgot-password")}
             className="flex cursor-pointer items-center gap-3"
           >
             <ArrowLeft size={20} />
