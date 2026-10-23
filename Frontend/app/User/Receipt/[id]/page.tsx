@@ -129,7 +129,7 @@ export default function ReceiptPage() {
               </div>
 
               <div className="mt-6">
-                <Row label="Description" value={tx.description} />
+                <Row label="Des" value={tx.description} />
                 <Row label="Type" value={tx.type?.replace(/_/g, " ")} />
                 <Row
                   label="Date"
