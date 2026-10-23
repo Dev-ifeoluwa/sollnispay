@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { clearPwaCaches } from "lib/pwa";
 
 export default function DeleteAccountButton() {
   const router = useRouter();
@@ -23,12 +24,15 @@ export default function DeleteAccountButton() {
         body: JSON.stringify({ password }),
       });
       if (res.ok) {
+        await clearPwaCaches();    
         localStorage.removeItem("token");
         toast.success("Your account has been deleted.");
         router.push("/Account/Signin");
         return;
       }
-      if (res.status === 401) { router.push("/Account/Signin"); return; }
+      if (res.status === 401) { 
+        await clearPwaCaches();
+        router.push("/Account/Signin"); return; }
       const err = await res.json().catch(() => null);
       toast.error((Array.isArray(err?.message) ? err.message[0] : err?.message) ?? "Could not delete account.");
     } catch {

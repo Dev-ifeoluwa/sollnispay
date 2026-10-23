@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preloader from "components/preloader";
 import { Toaster } from "react-hot-toast";
+import { clearPwaCaches } from "lib/pwa";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -57,14 +58,22 @@ export default function ProfilePage() {
     fetchProfile();
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    router.push('/Account/Signin');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   router.push('/Account/Signin');
+  // };
+
+
+  async function handleLogout() {
+  await clearPwaCaches()
+  localStorage.removeItem('token');
+  router.push('/Account/Signin');
+}
 
   const handleDeleteAccount = () => {
     router.push('/User/DeleteAccount');
   }
+  
 
   return (
     <>
