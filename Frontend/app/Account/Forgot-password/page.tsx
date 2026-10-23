@@ -121,7 +121,7 @@ const ForgotPassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-2 flex w-full cursor-pointer items-center justify-center gap-1 rounded-full bg-[#b9763c] px-5 py-3 text-xs font-semibold text-white shadow-lg shadow-black/30 transition duration-300 hover:bg-[#a56630] disabled:opacity-60"
+                  className="mt-2 flex w-full cursor-pointer items-center justify-center gap-1 rounded-full bg-orange-600 px-5 py-3 text-xs font-semibold text-white shadow-lg shadow-black/30 transition duration-300 hover:bg-[#a56630] disabled:opacity-60"
                 >
                   <span>{loading ? "Sending code..." : "Send code"}</span>
                 </button>
