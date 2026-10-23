@@ -105,7 +105,7 @@ export default function ReceiptPage() {
       <div className="max-w-md mx-auto">
         <button
           onClick={() => router.back()}
-          className="print:hidden inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.06] border border-white/[0.08] text-[#d8c3b6]"
+          className="print:hidden inline-flex items-center gap-2 text-sm text-[#d8c3b6] mb-6"
         >
           <ArrowLeft size={18} /> Back
         </button>
@@ -115,9 +115,9 @@ export default function ReceiptPage() {
 
         {tx && (
           <>
-            <div className="rounded-2xl bg-[#26140c] border border-white/10 p-6">
+            <div className="rounded-2xl mt-10 bg-[#26140c] border border-white/10 p-6">
               <div className="text-center">
-                <p className="text-xs uppercase tracking-widest text-[#8f7768]">Sollnispay</p>
+                <p className="text-xs uppercase tracking-widest text-[#8f7768]">Sollnisay</p>
                 <h1 className="mt-1 text-lg font-semibold">Transaction receipt</h1>
                 <p className={`mt-5 text-3xl font-semibold ${isCredit(tx) ? "text-[#ffb36b]" : "text-white"}`}>
                   {isCredit(tx) ? "+" : "-"}
@@ -129,7 +129,7 @@ export default function ReceiptPage() {
               </div>
 
               <div className="mt-6">
-                <Row label="Des" value={tx.description} />
+                <Row label="Description" value={tx.description} />
                 <Row label="Type" value={tx.type?.replace(/_/g, " ")} />
                 <Row
                   label="Date"
