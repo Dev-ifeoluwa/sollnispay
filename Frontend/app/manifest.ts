@@ -10,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     display: 'standalone',
     orientation: 'portrait',
-    background_color: '#FFFFFF', // splash screen colour (match your dark brown theme)
-    // background_color: '#1a110b', // splash screen colour (match your dark brown theme)
+    // background_color: '#FFFFFF', // splash screen colour (match your dark brown theme)
+    background_color: '#1a110b', // splash screen colour (match your dark brown theme)
     theme_color: '#1a110b',
     icons: [
       { src: '/icons/sollnispay.png', sizes: '192x192', type: 'image/png' },
