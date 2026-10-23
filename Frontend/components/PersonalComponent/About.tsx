@@ -32,12 +32,12 @@ export default function About() {
           </span>
 
           <Animate type="fade-down" delay={300}>
-          <h2 
-          className="text-balance mb-6 max-w-lg text-2xl font-bold leading-tight mt-0.5 md:text-3xl lg:text-5xl font-[family-name:var(--font-serif)] text-brand-brown leading-[1.02] tracking-[-0.025em]"
-          // className="mb-6 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold leading-tight text-brand-brown"
-          >
-            One platform, built to make every bill payment effortless
-          </h2>
+            <h2
+              className="text-balance mb-6 max-w-lg text-2xl font-bold leading-tight mt-0.5 md:text-3xl lg:text-5xl font-[family-name:var(--font-serif)] text-brand-brown leading-[1.02] tracking-[-0.025em]"
+            // className="mb-6 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold leading-tight text-brand-brown"
+            >
+              One platform, built to make every bill payment effortless
+            </h2>
           </Animate>
 
           <p className="mb-10 max-w-md text-[17px] leading-relaxed text-brand-brown-soft">
@@ -49,22 +49,6 @@ export default function About() {
             time on logistics and more time on what actually matters to
             you.
           </p>
-
-          {/* <div className="grid gap-7">
-            {pillars.map((pillar) => (
-              <div key={pillar.heading} className="flex items-start gap-4">
-                <span className="mt-2.5 h-2 w-2 flex-shrink-0 rounded-full bg-brand-orange" />
-                <div>
-                  <h3 className="mb-1.5 text-base font-semibold text-brand-brown">
-                    {pillar.heading}
-                  </h3>
-                  <p className="max-w-sm text-[15px] leading-relaxed text-brand-brown-muted">
-                    {pillar.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div> */}
         </div>
 
         {/* Right column — reliability panel */}

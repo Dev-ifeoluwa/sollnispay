@@ -19,7 +19,7 @@ export default function Navbar() {
             <span className="bg-[#1C110A] ring-1 ring-orange-500/40 rounded-full p-1">
               <Image src="/favicon.ico" alt="logo" height="23" width="23" />
             </span>
-            <Link href="/Business">
+            <Link href="/Personal">
               Sollnispay
               <span className="text-orange-500 font-bold text-3xl">.</span>
             </Link>
@@ -33,7 +33,7 @@ export default function Navbar() {
             <Link href="/Personal" className="hover:text-orange-300 transition-colors">
               Personal
             </Link>
-            <Link href="/" className="block hover:text-orange-300 transition-colors">
+            <Link href="/About" className="block hover:text-orange-300 transition-colors">
               About
             </Link>
             <Link href="/Company" className="hover:text-orange-300 transition-colors">
