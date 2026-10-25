@@ -87,9 +87,9 @@ export default function AccountTransaction() {
                     {TransactionCard.itemsPurchase}
                   </h4>
                   <div className="flex text-[12px] md:text-md items-center gap-1 text-gray-700">
-                    <p>{TransactionCard.itemsDetails}</p>
+                    {/* <p>{TransactionCard.itemsDetails}</p>
                     <p>{TransactionCard.DayPurchased}</p>
-                    <p>{TransactionCard.itemsTime}</p>
+                    <p>{TransactionCard.itemsTime}</p> */}
                   </div>
                 </div>
                 <p
