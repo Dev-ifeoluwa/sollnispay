@@ -35,9 +35,9 @@ export default function TransactionRow({ tx }: { tx: any }) {
                 <div className="min-w-0">
                     <p className="text-sm font-semibold text-[#fbf3ec] truncate">{tx.itemsPurchased}</p>
                     <div className="flex flex-wrap gap-x-1.5 text-[11px] sm:text-xs text-[#8f7768]">
-                        <span>{tx.description}</span>
-                        <span>{fmtDate(tx.dayPurchased ?? tx.createdAt)}</span>
-                        <span>{fmtTime(tx.itemsTime ?? tx.createdAt)}</span>
+                        <span className="text-sm">{tx.description}</span>
+                        <span className="text-sm">{fmtDate(tx.dayPurchased ?? tx.createdAt)}</span>
+                        <span className="text-sm">{fmtTime(tx.itemsTime ?? tx.createdAt)}</span>
                     </div>
                 </div>
                 <p className={`text-sm sm:text-base font-bold flex-shrink-0 ${isCredit ? "text-[#f4b860]" : "text-[#fbf3ec]"}`}>
