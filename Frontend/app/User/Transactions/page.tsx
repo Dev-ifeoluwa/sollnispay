@@ -93,15 +93,15 @@ export default function TransactionPage() {
 
                 {/* Filters */}
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center text-[2px] gap-0.2 bg-white/[0.06] border border-white/[0.08] rounded-full p-0.2">
-                        <button onClick={() => setKind("all")} className={pill(kind === "all")}>All</button>
-                        <button onClick={() => setKind("in")} className={pill(kind === "in")}>In</button>
-                        <button onClick={() => setKind("out")} className={pill(kind === "out")}>Out</button>
+                    <div className="flex items-center text-sm gap-0.2 bg-white/[0.06] border border-white/[0.08] rounded-full p-0.2">
+                        <button onClick={() => setKind("all")} className={pill(kind === "all")}><p className="text-sm">All</p></button>
+                        <button onClick={() => setKind("in")} className={pill(kind === "in")}><p className="text-sm">In</p></button>
+                        <button onClick={() => setKind("out")} className={pill(kind === "out")}><p className="text-sm">Out</p></button>
                     </div>
-                    <div className="flex items-center gap-0.2 bg-white/[0.06] text-[2px] border border-white/[0.08] rounded-full p-0.2">
-                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}><p className="text-[3px]">7 days</p></button>
-                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}><p className="text-[3px]">30 days</p></button>
-                        <button onClick={() => setRange("all")} className={pill(range === "all")}><p className="text-[3px]">All time</p></button>
+                    <div className="flex items-center gap-0.2 bg-white/[0.06] text-sm border border-white/[0.08] rounded-full p-0.2">
+                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}><p className="text-sm">7 days</p></button>
+                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}><p className="text-sm">30 days</p></button>
+                        <button onClick={() => setRange("all")} className={pill(range === "all")}><p className="text-sm">All time</p></button>
                     </div>
                 </div>
 
