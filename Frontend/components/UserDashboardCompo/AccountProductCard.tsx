@@ -13,7 +13,7 @@ export default function AccountProductCard() {
   const sideItems = rest.slice(0, 2);
   const gridItems = rest.slice(2);
 
-const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
+  const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
     if (comingSoon) {
         e.preventDefault(); // stops navigation to the page
         toast("Coming soon", {

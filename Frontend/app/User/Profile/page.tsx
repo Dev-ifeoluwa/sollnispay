@@ -13,13 +13,14 @@ import {
   ShieldAlert,
   HelpCircle,
   Gift,
+  Clock,
   LogOut,
   CheckCircle2,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preloader from "components/preloader";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { clearPwaCaches } from "lib/pwa";
 
 export default function ProfilePage() {
@@ -58,11 +59,15 @@ export default function ProfilePage() {
     fetchProfile();
   }, []);
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem('token');
-  //   router.push('/Account/Signin');
+  //  const handleClick = (e: React.MouseEvent, comingSoon?: boolean) => {
+  //   if (comingSoon) {
+  //       e.preventDefault(); // stops navigation to the page
+  //       toast("Coming soon", {
+  //       icon: <Clock size={18} className="text-[#ff7a3d]" />,
+  //       id: "coming-soon",
+  //     });
+  //   }
   // };
-
 
   async function handleLogout() {
   await clearPwaCaches()
@@ -99,7 +104,8 @@ export default function ProfilePage() {
                 Profile
               </h1>
               <Link
-                href={"/User/Settings"}
+                href={""}
+                // href={"/User/Settings"}
                 className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.06] border border-white/[0.08] text-[#d8c3b6] hover:text-white transition"
               >
                 <Settings size={16} />
@@ -160,21 +166,24 @@ export default function ProfilePage() {
                 tone="tone-1"
                 label="Personal information"
                 sub="Name, phone, address"
-                href="/User/Profile/Personal"
+                href=""
+                // href="/User/Profile/Personal"
               />
               <ProfileRow
                 icon={<CreditCard size={16} />}
                 tone="tone-2"
                 label="Linked cards"
                 value={`${profile.linkedCards?.length ?? 0} cards`}
-                href="/User/Profile/Cards"
+                href=""
+                // href="/User/Profile/Cards"
               />
               <ProfileRow
                 icon={<ShieldCheck size={16} />}
                 tone="tone-3"
                 label="Identity verification"
                 sub={profile.bvnLinked ? "BVN linked" : "BVN not linked"}
-                href="/User/Profile/Verification"
+                href=""
+                // href="/User/Profile/Verification"
               />
             </div>
 
@@ -185,20 +194,23 @@ export default function ProfilePage() {
                 icon={<Lock size={16} />}
                 tone="tone-1"
                 label="Transaction PIN"
-                href="/User/Profile/Pin"
+                href=""
+                // href="/User/Profile/Pin"
               />
               <ProfileRow
                 icon={<Fingerprint size={16} />}
                 tone="tone-2"
                 label="Biometric login"
                 value={profile.biometricEnabled ? "On" : "Off"}
-                href="/User/Profile/Biometrics"
+                href=""
+                // href="/User/Profile/Biometrics"
               />
               <ProfileRow
                 icon={<ShieldAlert size={16} />}
                 tone="tone-3"
                 label="Two-factor authentication"
-                href="/User/Profile/TwoFactor"
+                href=""
+                // href="/User/Profile/TwoFactor"
               />
             </div>
 
@@ -209,13 +221,15 @@ export default function ProfilePage() {
                 icon={<HelpCircle size={16} />}
                 tone="tone-1"
                 label="Help centre"
-                href="/User/Support"
+                href=""
+                // href="/User/Support"
               />
               <ProfileRow
                 icon={<Gift size={16} />}
                 tone="tone-2"
                 label="Refer & earn"
-                href="/User/Refer"
+                href=""
+                // href="/User/Refer"
               />
             </div>
 
@@ -253,6 +267,7 @@ function ProfileRow({
   sub,
   value,
   href,
+  onClick
 }: {
   icon: React.ReactNode;
   tone: "tone-1" | "tone-2" | "tone-3";
@@ -260,6 +275,7 @@ function ProfileRow({
   sub?: string;
   value?: string;
   href: string;
+  onClick?: () => void;
 }) {
   const toneClasses = {
     "tone-1": "bg-[#ff7a3d]/15 text-[#ff7a3d]",
