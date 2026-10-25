@@ -93,12 +93,12 @@ export default function TransactionPage() {
 
                 {/* Filters */}
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center text-sm gap-1 bg-white/[0.06] border border-white/[0.08] rounded-full p-0.5">
+                    <div className="flex items-center text-[5px] gap-1 bg-white/[0.06] border border-white/[0.08] rounded-full p-0.5">
                         <button onClick={() => setKind("all")} className={pill(kind === "all")}>All</button>
                         <button onClick={() => setKind("in")} className={pill(kind === "in")}>Money in</button>
                         <button onClick={() => setKind("out")} className={pill(kind === "out")}>Money out</button>
                     </div>
-                    <div className="flex items-center gap-1 bg-white/[0.06] text-sm border border-white/[0.08] rounded-full p-0.5">
+                    <div className="flex items-center gap-1 bg-white/[0.06] text-[5px] border border-white/[0.08] rounded-full p-0.5">
                         <button onClick={() => setRange("7d")} className={pill(range === "7d")}>7 days</button>
                         <button onClick={() => setRange("30d")} className={pill(range === "30d")}>30 days</button>
                         <button onClick={() => setRange("all")} className={pill(range === "all")}>All time</button>
