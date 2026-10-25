@@ -95,12 +95,12 @@ export default function TransactionPage() {
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                     <div className="flex items-center text-[2px] gap-0.2 bg-white/[0.06] border border-white/[0.08] rounded-full p-0.2">
                         <button onClick={() => setKind("all")} className={pill(kind === "all")}>All</button>
-                        <button onClick={() => setKind("in")} className={pill(kind === "in")}>Funds in</button>
-                        <button onClick={() => setKind("out")} className={pill(kind === "out")}>Funds out</button>
+                        <button onClick={() => setKind("in")} className={pill(kind === "in")}>In</button>
+                        <button onClick={() => setKind("out")} className={pill(kind === "out")}>Out</button>
                     </div>
                     <div className="flex items-center gap-0.2 bg-white/[0.06] text-[2px] border border-white/[0.08] rounded-full p-0.2">
-                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}>7 days</button>
-                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}>30 days</button>
+                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}>7 D</button>
+                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}>30 D</button>
                         <button onClick={() => setRange("all")} className={pill(range === "all")}>All time</button>
                     </div>
                 </div>
