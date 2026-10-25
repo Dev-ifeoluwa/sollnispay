@@ -99,9 +99,9 @@ export default function TransactionPage() {
                         <button onClick={() => setKind("out")} className={pill(kind === "out")}>Out</button>
                     </div>
                     <div className="flex items-center gap-0.2 bg-white/[0.06] text-[2px] border border-white/[0.08] rounded-full p-0.2">
-                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}>7 D</button>
-                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}>30 D</button>
-                        <button onClick={() => setRange("all")} className={pill(range === "all")}>All time</button>
+                        <button onClick={() => setRange("7d")} className={pill(range === "7d")}><p className="text-[3px]">7 days</p></button>
+                        <button onClick={() => setRange("30d")} className={pill(range === "30d")}><p className="text-[3px]">30 days</p></button>
+                        <button onClick={() => setRange("all")} className={pill(range === "all")}><p className="text-[3px]">All time</p></button>
                     </div>
                 </div>
 
