@@ -35,7 +35,7 @@ export default function TransactionRow({ tx }: { tx: any }) {
                 <div className="min-w-0">
                     <p className="text-sm font-semibold text-[#fbf3ec] truncate">{tx.itemsPurchased}</p>
                     <div className="flex flex-wrap gap-x-1.5 text-[11px] sm:text-xs text-[#8f7768]">
-                        <span className="justify-content align-items">{tx.description}</span>
+                        <span>{tx.description}</span>
                         <span>{fmtDate(tx.dayPurchased ?? tx.createdAt)}</span>
                         <span>{fmtTime(tx.itemsTime ?? tx.createdAt)}</span>
                     </div>
