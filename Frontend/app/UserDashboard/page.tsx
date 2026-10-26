@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preloader from "components/preloader";
 import TransactionRow from "components/UserDashboardCompo/TransactionRow";
+import BannerCarousel from "components/BannerCarousel";
 
 // helpers: dates may be ISO strings or null
 const fmtDate = (v?: string | null) => {
@@ -230,6 +231,32 @@ export default function UserDashboard() {
                         <div className="mt-6 sm:mt-8">
                             <AccountProductCard />
                         </div>
+
+                        {/* <div>
+                           <BannerCarousel
+                            className="my-4"
+                            banners={[
+                                {
+                                    src: "/quote.png", alt: "Get your solar", href: "/"
+                                },
+                                {
+                                    src: "/home.png", alt: "Get your solar", href: "/"
+                                }
+                            ]}
+                           /> 
+                        </div> */}
+
+
+                        <div>
+                            <BannerCarousel
+                                className="my-4"
+                                banners={[
+                                    { src: "/quote.png", alt: "Get your solar", href: "" },
+                                    { src: "/home.png", alt: "Get your solar", href: "" },
+                                ]}
+                            />
+                        </div>
+
 
                         {/* Recent transactions */}
                         <div className="mt-8 sm:mt-10">
