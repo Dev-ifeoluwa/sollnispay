@@ -87,7 +87,7 @@ export default function BannerCarousel({
 
   return (
     <section
-      className={`relative h-25 w-full sm:h-40 md:h-48 w-full ${className}`}
+      className={`relative aspect-[4/1] w-full ${className}`}
       // className={`relative aspect-[4/1] w-full ${className}`}
       aria-roledescription="carousel"
       aria-label="Promotions"
