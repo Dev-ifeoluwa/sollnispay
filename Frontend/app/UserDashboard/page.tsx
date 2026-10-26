@@ -249,10 +249,10 @@ export default function UserDashboard() {
 
                         <div>
                             <BannerCarousel
-                                className="my-4 w-full h-30 sm:h-30"
+                                className="my-4"
                                 banners={[
-                                    { src: "/sollnisbanner1.png", alt: "Get your solar", href: "" },
-                                    { src: "/sollnisbanner2.png", alt: "Get your solar", href: "" },
+                                    { src: "/quote.png", alt: "Get your solar", href: "" },
+                                    { src: "/home.png", alt: "Get your solar", href: "" },
                                 ]}
                             />
                         </div>
