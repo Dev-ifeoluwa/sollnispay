@@ -6,13 +6,15 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type Banner = {
-  src: string | StaticImageData; // e.g. "/quote.png" (file in /public) or an imported image
+  src: string | StaticImageData; // e.g. "/sollnis-banner.png" (file in /public)
   alt: string;
   href?: string; // optional: makes the banner clickable
 };
 
 type BannerCarouselProps = {
   banners: Banner[];
+  /** Width / height of your banner images. 1200x250 => 1200 / 250 */
+  aspectRatio?: number;
   /** Time between automatic slides, in ms */
   interval?: number;
   /** How long auto-scroll stays paused after the user touches/scrolls, in ms */
@@ -25,6 +27,7 @@ type BannerCarouselProps = {
 
 export default function BannerCarousel({
   banners,
+  aspectRatio = 1200 / 250,
   interval = 4000,
   resumeAfter = 5000,
   showDots = true,
@@ -87,8 +90,7 @@ export default function BannerCarousel({
 
   return (
     <section
-      className={`relative aspect-[4/1] w-full ${className}`}
-      // className={`relative aspect-[4/1] w-full ${className}`}
+      className={`relative w-full ${className}`}
       aria-roledescription="carousel"
       aria-label="Promotions"
     >
@@ -104,15 +106,16 @@ export default function BannerCarousel({
       >
         {banners.map((banner, i) => {
           const image = (
-            <div className="relative aspect-[2/1] w-full">
+            <div className="relative w-full" style={{ aspectRatio }}>
               <Image
                 src={banner.src}
                 alt={banner.alt}
                 fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
+                quality={90}
+                sizes="(min-width: 1200px) 1200px, 100vw"
                 priority={i === 0}
                 draggable={false}
-                className="select-none object-cover"
+                className="select-none object-contain"
               />
             </div>
           );

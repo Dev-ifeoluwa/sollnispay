@@ -74,8 +74,8 @@ export default function UserDashboard() {
     const rangeDays = range === "7d" ? 7 : 30;
     const cutoff = Date.now() - rangeDays * 24 * 60 * 60 * 1000;
     const filtered: any[] = (dashboard?.transactions ?? [])
-    .filter((tx: any) => new Date(tx.createdAt).getTime() >= cutoff)
-    .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        .filter((tx: any) => new Date(tx.createdAt).getTime() >= cutoff)
+        .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     const visibleTransactions = filtered.slice(0, 3);
 
 
@@ -232,30 +232,20 @@ export default function UserDashboard() {
                             <AccountProductCard />
                         </div>
 
-                        {/* <div>
-                           <BannerCarousel
-                            className="my-4"
-                            banners={[
-                                {
-                                    src: "/quote.png", alt: "Get your solar", href: "/"
-                                },
-                                {
-                                    src: "/home.png", alt: "Get your solar", href: "/"
-                                }
-                            ]}
-                           /> 
-                        </div> */}
-
 
                         <div>
                             <BannerCarousel
                                 className="my-4"
+                                aspectRatio={1200 / 250}
                                 banners={[
-                                    { src: "/quote.png", alt: "Get your solar", href: "" },
-                                    { src: "/home.png", alt: "Get your solar", href: "" },
+                                    { src: "/sollnisbanner2.png", alt: "Power your home with Sollnis Solar", href: "/" },
+                                    { src: "/sollnisbanner1.png", alt: "Get your solar", href: "/" },
                                 ]}
                             />
                         </div>
+
+
+
 
 
                         {/* Recent transactions */}
@@ -264,10 +254,10 @@ export default function UserDashboard() {
                                 <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
                                     Recent activity
                                 </h4>
-                                    <div>
-                                        <Link href="/User/Transactions" className="text-sm font-semibold text-[#ff7a3d] whitespace-nowrap">
-                                            View all
-                                        </Link>
+                                <div>
+                                    <Link href="/User/Transactions" className="text-sm font-semibold text-[#ff7a3d] whitespace-nowrap">
+                                        View all
+                                    </Link>
                                 </div>
                             </div>
 
