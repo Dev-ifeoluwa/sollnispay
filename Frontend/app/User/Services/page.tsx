@@ -189,7 +189,7 @@ export default function AllServicesPage() {
                   className={`relative flex h-full flex-col gap-3 rounded-2xl border p-4 transition ${
                     ready
                       ? "border border-white/[0.08] bg-[#26140c] hover:border-[#d9a45b]/60 hover:bg-[#2d1f16]"
-                      : "border-[#2e2018] bg-[#21160f] opacity-80"
+                      : "border-[#2e2018] bg-[#26140c] opacity-80"
                   }`}
                   >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
