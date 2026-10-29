@@ -196,8 +196,7 @@ export default function AllServicesPage() {
                     {s.icon}
                   </span>
                   <span>
-                    <span className="block text-sm leading-snug">
-                    {/* <span className="block text-sm font-semibold leading-snug"> */}
+                    <span className="block text-sm font-semibold leading-snug">
                       {s.name}
                     </span>
                     {/* <span className="mt-1 block text-xs leading-snug text-[#a8927f]">
