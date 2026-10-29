@@ -289,30 +289,7 @@ export default function ReceiptPage() {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
-  // Save as PDF: a real one-page PDF of the receipt, downloaded straight to the phone
-  const savePdf = async () => {
-    if (!tx || busy) return;
-    setBusy("pdf");
-    try {
-      const node = receiptRef.current!;
-      const dataUrl = await renderPng();
-      const { jsPDF } = await import("jspdf");
-      const w = node.offsetWidth;
-      const h = node.offsetHeight;
-      const pdf = new jsPDF({
-        orientation: w > h ? "l" : "p",
-        unit: "px",
-        format: [w, h],
-        hotfixes: ["px_scaling"],
-      });
-      pdf.addImage(dataUrl, "PNG", 0, 0, w, h);
-      pdf.save(`${fileBase}.pdf`);
-    } catch {
-      alert("Could not create the PDF. Please try again.");
-    } finally {
-      setBusy("");
-    }
-  };
+
 
   // Share: sends the receipt as an image. Falls back to downloading the image
   const share = async () => {
@@ -338,8 +315,35 @@ export default function ReceiptPage() {
     }
   };
 
+  // Save as PDF: a real one-page PDF of the receipt, downloaded straight to the phone
+  const savePdf = async () => {
+    if (!tx || busy) return;
+    setBusy("pdf");
+    try {
+      const node = receiptRef.current!;
+      const dataUrl = await renderPng();
+      const { jsPDF } = await import("jspdf");
+      const w = node.offsetWidth;
+      const h = node.offsetHeight;
+      const pdf = new jsPDF({
+        orientation: w > h ? "l" : "p",
+        unit: "px",
+        format: [w, h],
+        hotfixes: ["px_scaling"],
+      });
+      pdf.addImage(dataUrl, "PNG", 0, 0, w, h);
+      pdf.save(`${fileBase}.pdf`);
+    } catch {
+      alert("Could not create the PDF. Please try again.");
+    } finally {
+      setBusy("");
+    }
+  };
+
+  
+
   return (
-    <main className="min-h-screen bg-[#0d0806] text-[#fbf3ec] px-4 py-6">
+    <main className="min-h-screen bg-[#0d0806] text-[#fbf3ec] px-2 py-6">
       <div className="max-w-md mx-auto">
         <button
           onClick={() => router.back()}
