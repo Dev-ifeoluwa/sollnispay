@@ -28,7 +28,7 @@ export default function AccountProductCard() {
     <div className="flex flex-col gap-4 py-6 sm:px-3">
       <div className="flex items-center justify-between">
         <h4 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">
-          Quick actions
+          Services
         </h4>
         <Link
           // href=""
