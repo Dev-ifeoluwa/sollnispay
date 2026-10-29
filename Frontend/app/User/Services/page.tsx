@@ -59,7 +59,7 @@ const SERVICES: Service[] = [
   },
   {
     id: "sollnis-solar",
-    name: "Sollnis Solar",
+    name: "Sollnissolar",
     description: "Solar power and batteries",
     href: undefined,
     icon: (
@@ -126,7 +126,7 @@ export default function AllServicesPage() {
   }, [query]);
 
   return (
-    <main className="min-h-screen bg-[#1a110c] text-[#f3e9df]">
+    <main className="min-h-screen bg-[linear-gradient(180deg,#1a0f0a_0%,#0e0704_40%,#0a0503_100%)] text-[#f3e9df]">
       <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-6">
         {/* Header */}
         <header className="flex items-center gap-3">
@@ -192,7 +192,7 @@ export default function AllServicesPage() {
                       : "border-[#2e2018] bg-[#21160f] opacity-80"
                   }`}
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#3a2a20] text-[#d9a45b]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
                     {s.icon}
                   </span>
                   <span>
