@@ -76,7 +76,8 @@ export default function AccountProductCard() {
                 <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
                   <Icon size={18} />
                 </span>
-                <p className="text-sm font-semibold text-[#fbf3ec]">{Name}</p>
+                <p className="text-sm text-[#fbf3ec]">{Name}</p>
+                {/* <p className="text-sm font-semibold text-[#fbf3ec]">{Name}</p> */}
               </Link>
             ))}
           </div>

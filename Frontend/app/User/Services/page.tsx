@@ -46,7 +46,7 @@ const SERVICES: Service[] = [
   },
   {
     id: "dollar-card",
-    name: "Dollar Virtual Card",
+    name: "Virtual Card",
     description: "Pay online in USD",
     href: undefined,
     icon: (
@@ -85,7 +85,7 @@ const SERVICES: Service[] = [
   },
   {
     id: "print-recharge-card",
-    name: "Print Recharge Card",
+    name: "Print Card",
     description: "Generate recharge PINs to print",
     href: undefined,
     icon: (
@@ -98,7 +98,7 @@ const SERVICES: Service[] = [
   },
   {
     id: "save-and-spend",
-    name: "Save and Spend",
+    name: "Savings",
     description: "Lock money away, spend what's left",
     href: undefined,
     icon: (
@@ -196,7 +196,8 @@ export default function AllServicesPage() {
                     {s.icon}
                   </span>
                   <span>
-                    <span className="block text-sm font-semibold leading-snug">
+                    <span className="block text-sm leading-snug">
+                    {/* <span className="block text-sm font-semibold leading-snug"> */}
                       {s.name}
                     </span>
                     {/* <span className="mt-1 block text-xs leading-snug text-[#a8927f]">
