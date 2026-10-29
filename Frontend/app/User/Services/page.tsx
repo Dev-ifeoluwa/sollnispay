@@ -192,16 +192,16 @@ export default function AllServicesPage() {
                       : "border-[#2e2018] bg-[#26140c] opacity-80"
                   }`}
                   >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
                     {s.icon}
                   </span>
                   <span>
                     <span className="block text-sm font-semibold leading-snug">
                       {s.name}
                     </span>
-                    <span className="mt-1 block text-xs leading-snug text-[#a8927f]">
+                    {/* <span className="mt-1 block text-xs leading-snug text-[#a8927f]">
                       {s.description}
-                    </span>
+                    </span> */}
                   </span>
                   {!ready && (
                     <span className="absolute right-3 top-3 rounded-full bg-[#3a2a20] px-2 py-0.5 text-[10px] font-medium text-[#d9a45b]">
