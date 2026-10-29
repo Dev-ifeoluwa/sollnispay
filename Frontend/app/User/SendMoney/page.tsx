@@ -242,9 +242,9 @@ export default function SendMoneyPage() {
                             <ArrowLeft size={18} />
                         </Link>
                     )}
-                    <h1 className="text-xl sm:text-2xl font-semibold italic font-serif text-[#fbf3ec]">
+                    {/* <h1 className="text-xl sm:text-2xl font-semibold italic font-serif text-[#fbf3ec]">
                         {step === "review" ? "Confirm transfer" : step === "success" ? "Transfer" : "Send money"}
-                    </h1>
+                    </h1> */}
                 </div>
 
                 {/* ───────────── FORM ───────────── */}

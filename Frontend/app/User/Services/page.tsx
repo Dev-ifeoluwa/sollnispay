@@ -181,7 +181,7 @@ export default function AllServicesPage() {
 
         {/* Grid */}
         {results.length > 0 ? (
-          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 border border-white/[0.08] bg-[#26140c]">
             {results.map((s) => {
               const ready = Boolean(s.href);
               const card = (
