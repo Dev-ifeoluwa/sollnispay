@@ -181,17 +181,17 @@ export default function AllServicesPage() {
 
         {/* Grid */}
         {results.length > 0 ? (
-          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 border border-white/[0.08] bg-[#26140c]">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {results.map((s) => {
               const ready = Boolean(s.href);
               const card = (
                 <div
                   className={`relative flex h-full flex-col gap-3 rounded-2xl border p-4 transition ${
                     ready
-                      ? "border-[#3a2a20] bg-[#261a13] hover:border-[#d9a45b]/60 hover:bg-[#2d1f16]"
+                      ? "border border-white/[0.08] bg-[#26140c] hover:border-[#d9a45b]/60 hover:bg-[#2d1f16]"
                       : "border-[#2e2018] bg-[#21160f] opacity-80"
                   }`}
-                >
+                  >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff7a3d]/15 text-[#ff7a3d]">
                     {s.icon}
                   </span>
