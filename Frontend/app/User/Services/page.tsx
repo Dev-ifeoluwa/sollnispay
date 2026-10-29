@@ -150,7 +150,7 @@ export default function AllServicesPage() {
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <h1 className="text-xl font-semibold tracking-tight">All services</h1>
+          <h1 className="text-xl font-semibold italic font-serif tracking-tight">All services</h1>
         </header>
 
         {/* Search */}
