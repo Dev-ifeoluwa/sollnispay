@@ -117,8 +117,8 @@ export default function SolarPage() {
                 </div>
 
                 {/* Hero */}
-                <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-[#5a2a14] via-[#301a10] to-[#150a06] p-6 sm:p-10 shadow-2xl shadow-black/40">
-                    <svg
+                <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#150a06] p-6 sm:p-10 shadow-2xl shadow-black/40">
+                    {/* <svg
                         className="pointer-events-none absolute -right-24 -top-24 w-80 h-80 sm:w-[26rem] sm:h-[26rem]"
                         viewBox="0 0 400 400"
                         fill="none"
@@ -128,7 +128,19 @@ export default function SolarPage() {
                             <circle key={r} cx="200" cy="200" r={r} stroke="#f4b860" strokeOpacity={0.5 - i * 0.08} />
                         ))}
                         <circle cx="200" cy="200" r="22" fill="#f4b860" fillOpacity="0.5" />
-                    </svg>
+                    </svg> */}
+
+                    {/* background photo */}
+                    <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: "url('/sollnisbanner1.png')" }}
+                        aria-hidden
+                    />
+                    {/* dark overlay so the text stays readable */}
+                    <div
+                        className="absolute inset-0 bg-gradient-to-r from-[#150a06]/95 via-[#150a06]/75 to-[#150a06]/40"
+                        aria-hidden
+                    />
                     <div className="relative max-w-xl">
                         <h2 className="font-serif italic text-3xl sm:text-5xl text-[#fbf3ec] leading-tight">
                             Power your home with the sun
