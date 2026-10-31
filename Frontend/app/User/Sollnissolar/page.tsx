@@ -133,7 +133,7 @@ export default function SolarPage() {
                     {/* background photo */}
                     <div
                         className="absolute inset-0 bg-cover bg-center"
-                        style={{ backgroundImage: "url('/sollnisbanner1.png')" }}
+                        style={{ backgroundImage: "url('/sollnisbanner10.png')" }}
                         aria-hidden
                     />
                     {/* dark overlay so the text stays readable */}
