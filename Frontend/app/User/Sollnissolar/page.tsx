@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 // Replace with your real WhatsApp number (international format, no + or spaces)
-const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+const WHATSAPP_NUMBER = "2349136745664";
 
 type SolarType = {
     id: string;
@@ -27,23 +27,23 @@ const SOLAR_TYPES: SolarType[] = [
         powers: "Phones, lights, fans, TV, laptop",
         icon: Zap,
     },
-    {
-        id: "battery",
-        name: "Lithium battery pack",
-        tagline: "Replace your old inverter batteries with longer-lasting lithium.",
-        powers: "Works with your existing inverter",
-        icon: BatteryCharging,
-    },
-    {
-        id: "hybrid",
-        name: "Panels and inverter system",
-        tagline: "Solar panels, inverter and batteries sized to your home.",
-        powers: "Fridge, freezer, TV, fans, pumping machine",
-        icon: Sun,
-    },
+    // {
+    //     id: "battery",
+    //     name: "Lithium battery pack",
+    //     tagline: "Replace your old inverter batteries with longer-lasting lithium.",
+    //     powers: "Works with your existing inverter",
+    //     icon: BatteryCharging,
+    // },
+    // {
+    //     id: "hybrid",
+    //     name: "Panels and inverter system",
+    //     tagline: "Solar panels, inverter and batteries sized to your home.",
+    //     powers: "Fridge, freezer, TV, fans, pumping machine",
+    //     icon: Sun,
+    // },
     {
         id: "home",
-        name: "Full home installation",
+        name: "Full home setup",
         tagline: "We survey, design, install and maintain the whole system.",
         powers: "Whole-house power, including heavy appliances",
         icon: Home,
@@ -113,7 +113,7 @@ export default function SolarPage() {
                     >
                         <ArrowLeft size={18} />
                     </button>
-                    <h1 className="text-lg font-semibold text-[#fbf3ec]">Sollnis Solar</h1>
+                    <h1 className="text-lg font-semibold text-[#fbf3ec]">Sollnissolar</h1>
                 </div>
 
                 {/* Hero */}
@@ -134,7 +134,7 @@ export default function SolarPage() {
                             Power your home with the sun
                         </h2>
                         <p className="mt-4 text-sm sm:text-base text-[#d8c3b6] leading-relaxed">
-                            Solar generators, lithium batteries and full installations from Sollnis Solar.
+                            Solar generators, lithium batteries and full installations from Sollnissolar.
                             Choose what fits you and get a quotation without leaving the app.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-3">
@@ -291,7 +291,7 @@ export default function SolarPage() {
                 </section>
 
                 <p className="mt-8 text-center text-xs text-[#8f7768]">
-                    Questions? <Link href="/User/Dashboard" className="text-[#ff7a3d]">Back to dashboard</Link>
+                    Questions? <Link href="/UserDashboard" className="text-[#ff7a3d]">Back to dashboard</Link>
                 </p>
             </div>
         </div>
