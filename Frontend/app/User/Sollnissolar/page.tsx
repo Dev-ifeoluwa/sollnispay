@@ -113,11 +113,11 @@ export default function SolarPage() {
                     >
                         <ArrowLeft size={18} />
                     </button>
-                    <h1 className="text-lg font-semibold text-[#fbf3ec]">Sollnissolar</h1>
+                    <h1 className="text-md font-semibold font-serif italic text-[#fbf3ec]">Sollnissolar</h1>
                 </div>
 
                 {/* Hero */}
-                <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#150a06] p-6 sm:p-10 shadow-2xl shadow-black/40">
+                {/* <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#150a06] p-6 sm:p-10 shadow-2xl shadow-black/40"> */}
                     {/* <svg
                         className="pointer-events-none absolute -right-24 -top-24 w-80 h-80 sm:w-[26rem] sm:h-[26rem]"
                         viewBox="0 0 400 400"
@@ -131,40 +131,40 @@ export default function SolarPage() {
                     </svg> */}
 
                     {/* background photo */}
-                    <div
+                    {/* <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{ backgroundImage: "url('/sollnisbanner10.png')" }}
                         aria-hidden
-                    />
+                    /> */}
                     {/* dark overlay so the text stays readable */}
-                    <div
+                    {/* <div
                         className="absolute inset-0 bg-gradient-to-r from-[#150a06]/95 via-[#150a06]/75 to-[#150a06]/40"
                         aria-hidden
-                    />
-                    <div className="relative max-w-xl">
-                        <h2 className="font-serif italic text-3xl sm:text-5xl text-[#fbf3ec] leading-tight">
+                    /> */}
+                    {/* <div className="relative max-w-xl"> */}
+                        {/* <h2 className="font-serif italic text-3xl sm:text-5xl text-[#fbf3ec] leading-tight">
                             Power your home with the sun
-                        </h2>
-                        <p className="mt-4 text-sm sm:text-base text-[#d8c3b6] leading-relaxed">
+                        </h2> */}
+                        {/* <p className="mt-4 text-sm sm:text-base text-[#d8c3b6] leading-relaxed">
                             Solar generators, lithium batteries and full installations from Sollnissolar.
                             Choose what fits you and get a quotation without leaving the app.
-                        </p>
-                        <div className="mt-6 flex flex-wrap gap-3">
-                            <a
+                        </p> */}
+                        {/* <div className="mt-6 flex flex-wrap gap-3"> */}
+                            {/* <a
                                 href="#types"
                                 className="rounded-xl px-6 py-3 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40"
                             >
                                 Choose your solar type
-                            </a>
-                            <a
+                            </a> */}
+                            {/* <a
                                 href="#quote"
                                 className="rounded-xl px-6 py-3 font-bold text-sm text-[#fbf3ec] bg-white/[0.06] border border-white/15"
                             >
                                 Request a quotation
-                            </a>
-                        </div>
-                    </div>
-                </section>
+                            </a> */}
+                        {/* </div> */}
+                    {/* </div> */}
+                {/* </section> */}
 
                 {/* Solar types */}
                 <section id="types" className="mt-10 scroll-mt-6">
