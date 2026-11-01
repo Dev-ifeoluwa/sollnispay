@@ -11,7 +11,7 @@ async function main() {
 
   const admin = await prisma.admin.upsert({
     where: { email },
-    update: {}, // never overwrites an existing admin's password
+    update: { password: await bcrypt.hash(password, 10), isActive: true },
     create: {
       email,
       password: await bcrypt.hash(password, 10),

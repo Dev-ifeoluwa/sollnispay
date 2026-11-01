@@ -20,6 +20,9 @@ import { AdminJwtGuard } from './admin-jwt.guard';
 import { PrismaService } from 'src/prisma.service';
 import { ThrottlerModule } from '@nestjs/throttler';
 // import { PrismaService } from '../prisma/prisma.service'; // adjust to your path
+import { AuditService } from './audit.service';
+import { AdminTransactionsService } from './admin-transactions.service';
+import { AdminTransactionsController } from './admin-transactions.controller';
 
 @Module({
   imports: [
@@ -31,8 +34,8 @@ import { ThrottlerModule } from '@nestjs/throttler';
       },
     }),
   ],
-  controllers: [AdminAuthController],
-  providers: [AdminAuthService, AdminJwtGuard, PrismaService],
+  controllers: [AdminAuthController, AdminTransactionsController],
+  providers: [AdminAuthService, AdminJwtGuard, PrismaService, AuditService, AdminTransactionsService],
   exports: [AdminJwtGuard, JwtModule],
 })
 export class AdminModule {}
