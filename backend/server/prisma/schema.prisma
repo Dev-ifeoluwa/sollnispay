@@ -142,6 +142,7 @@ model ConversionHistory {
   user            TotalUser @relation(fields: [userId], references: [id])
 }
 
+
 model Admin {
   id          Int           @id @default(autoincrement())
   email       String        @unique
@@ -149,10 +150,32 @@ model Admin {
   firstName   String
   middleName  String
   lastName    String
+  isActive    Boolean       @default(true)   // NEW
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   Transaction Transaction[]
+  auditLogs   AuditLog[]
 }
+
+
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  adminId    Int
+  admin      Admin    @relation(fields: [adminId], references: [id])
+  action     String            // e.g. "transaction.refund", "user.freeze"
+  targetType String?           // e.g. "Transaction", "TotalUser"
+  targetId   String?
+  before     Json?
+  after      Json?
+  reason     String?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  @@index([adminId, createdAt])
+  @@index([targetType, targetId])
+}
+
 
 
 model PasswordReset {
