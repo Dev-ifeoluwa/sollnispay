@@ -19,7 +19,7 @@ const CURRENCIES: Record<string, { symbol: string; label: string }> = {
 type Wallet = { currency: string; balance: number };
 
 // How long each wallet stays on screen before the card moves to the next one
-const AUTOPLAY_MS = 5000;
+const AUTOPLAY_MS = 9000;
 
 export default function UserDashboard() {
     const router = useRouter();
