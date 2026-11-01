@@ -274,13 +274,13 @@ export default function MobileDataTopup() {
                         >
                             <ArrowLeft size={16} />
                         </button>
-                        <p className="font-semibold text-[#fbf3ec] text-base italic font-serif">Mobile Data</p>
+                        <p className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">Mobile Data</p>
                     </div>
                     <p className="cursor-pointer font-semibold text-sm text-[#ff7a3d]">History</p>
                 </div>
 
                 {/* Network + phone number */}
-                <div className="flex items-center justify-between gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-4 py-3">
+                <div className="flex items-center mt-4 justify-between gap-3 rounded-2xl border border-white/[0.08] bg-[#26140c] px-4 py-3">
                     <div className="flex items-center gap-2 flex-1 min-w-0">
                         <select
                             value={network}

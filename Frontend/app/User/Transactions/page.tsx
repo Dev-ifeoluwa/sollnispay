@@ -88,7 +88,7 @@ export default function TransactionPage() {
                         >
                             <ArrowLeft size={16} />
                         </button>
-                        <p className="font-semibold text-[#fbf3ec] text-base italic font-serif">Transaction</p>
+                        <h1 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">Transaction</h1>
                 </div>
 
                 {/* Filters */}

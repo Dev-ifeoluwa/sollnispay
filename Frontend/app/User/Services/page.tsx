@@ -150,11 +150,11 @@ export default function AllServicesPage() {
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <h1 className="text-xl font-semibold italic font-serif tracking-tight">All services</h1>
+          <h1 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">All services</h1>
         </header>
 
         {/* Search */}
-        <div className="relative mt-6">
+        <div className="relative mt-10">
           <svg
             className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#a8927f]"
             width="18"

@@ -113,7 +113,7 @@ export default function SolarPage() {
                     >
                         <ArrowLeft size={18} />
                     </button>
-                    <h1 className="text-md font-semibold font-serif italic text-[#fbf3ec]">Sollnissolar</h1>
+                    <h1 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">Sollnissolar</h1>
                 </div>
 
                 {/* Hero */}

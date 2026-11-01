@@ -281,7 +281,7 @@ export default function FundWalletPage() {
                         <button
                             onClick={handleFund}
                             disabled={loading}
-                            className="w-full mt-7 mb-10 flex items-center justify-center gap-2 rounded-xl py-4 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40 disabled:opacity-60"
+                            className="w-full cursor-not-allowed mt-7 mb-10 flex items-center justify-center gap-2 rounded-xl py-4 font-bold text-sm text-[#1a0d05] bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] shadow-lg shadow-orange-900/40 disabled:opacity-60"
                         >
                             {loading ? "Processing..." : "Continue to pay"}
                         </button>
