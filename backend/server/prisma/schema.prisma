@@ -142,6 +142,7 @@ model ConversionHistory {
   user            TotalUser @relation(fields: [userId], references: [id])
 }
 
+
 model Admin {
   id          Int           @id @default(autoincrement())
   email       String        @unique
@@ -149,10 +150,12 @@ model Admin {
   firstName   String
   middleName  String
   lastName    String
+  isActive    Boolean       @default(true)   // NEW
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   Transaction Transaction[]
 }
+
 
 
 model PasswordReset {

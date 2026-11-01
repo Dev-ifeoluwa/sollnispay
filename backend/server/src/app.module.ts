@@ -17,6 +17,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TransfersModule } from './transfers/transfers.module';
 import { MailModule } from './mail/mail.module';
 // import { CoService } from './co/co.service';
+import { AdminModule } from './admin/admin.module';
 
  
  
@@ -27,7 +28,7 @@ import { MailModule } from './mail/mail.module';
   ScheduleModule.forRoot(),            // <- add
   AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule,
   WebhooksModule, PaystackModule,
-  SabussModule, DataModule, TransfersModule, MailModule,
+  SabussModule, DataModule, TransfersModule, MailModule, AdminModule,
 ],
   // imports: [ 
   //   ConfigModule.forRoot({
