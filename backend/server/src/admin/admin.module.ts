@@ -23,6 +23,8 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { AuditService } from './audit.service';
 import { AdminTransactionsService } from './admin-transactions.service';
 import { AdminTransactionsController } from './admin-transactions.controller';
+import { AdminStatsService } from './admin-stats.service';
+import { AdminStatsController } from './admin-stats.controller';
 
 @Module({
   imports: [
@@ -34,8 +36,8 @@ import { AdminTransactionsController } from './admin-transactions.controller';
       },
     }),
   ],
-  controllers: [AdminAuthController, AdminTransactionsController],
-  providers: [AdminAuthService, AdminJwtGuard, PrismaService, AuditService, AdminTransactionsService],
+  controllers: [AdminAuthController, AdminTransactionsController, AdminStatsController],
+  providers: [AdminAuthService, AdminJwtGuard, PrismaService, AuditService, AdminTransactionsService, AdminStatsService],
   exports: [AdminJwtGuard, JwtModule],
 })
 export class AdminModule {}
