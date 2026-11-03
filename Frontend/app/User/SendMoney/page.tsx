@@ -15,7 +15,8 @@ const PIN_LENGTH = 4; // change if your PIN is a different length
 
 // DISPLAY ONLY. The backend must calculate the real fee itself.
 // Tiers below mirror Paystack's standard transfer fees; adjust to whatever you charge.
-const getBankFee = (amount: number) => (amount <= 5000 ? 10 : amount <= 50000 ? 25 : 50);
+// const getBankFee = (amount: number) => (amount <= 5000 ? 10 : amount <= 50000 ? 25 : 50);
+const getBankFee = (amount: number) => amount <= 5000 ? 25 : amount < 10000 ? 50 : amount <= 50000 ? 100 : 125;
 
 const naira = (n: number) =>
     `₦${Number(n).toLocaleString("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
