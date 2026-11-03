@@ -90,9 +90,10 @@ export default function Hero() {
         <Animate type="flip-right" delay={300}>
           <Image
             src={"/app220.png"}
+            // src={"/app12.png"}
             alt=""
-            width={350}
-            height={350}
+            width={450}
+            height={450}
             className="rotate-20" />
         </Animate>
       </div>
