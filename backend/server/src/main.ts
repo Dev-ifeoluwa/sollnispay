@@ -13,10 +13,10 @@ async function bootstrap() {
   // for cors to talk to frontend
   app.enableCors({
     origin: [
+      'https://pay.sollnistechnologies.com',
       'https://sollnispay.vercel.app',
       'https://animated-space-computing-machine-vxpwprrgx69fxrg5-3000.app.github.dev',
       'http://localhost:3000',
-      'https://pay.sollnistechnologies.com',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
