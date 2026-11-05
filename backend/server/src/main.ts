@@ -16,6 +16,7 @@ async function bootstrap() {
       'https://sollnispay.vercel.app',
       'https://animated-space-computing-machine-vxpwprrgx69fxrg5-3000.app.github.dev',
       'http://localhost:3000',
+      'https://pay.sollnistechnologies.com',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
