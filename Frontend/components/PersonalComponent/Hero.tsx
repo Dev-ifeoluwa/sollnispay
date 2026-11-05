@@ -85,15 +85,17 @@ export default function Hero() {
         </div> */}
       </div>
       {/* -------------- */}
-      <div className="relative pr-0 md:pr-15 -mb-10 max-w-[250px] md:max-w-md lg:max-w-lg">
+      <div className="relative pr-0 md:pr-15 mt-10 -mb-10 max-w-[250px] md:max-w-md lg:max-w-lg">
         {/* right section */}
         <Animate type="flip-right" delay={300}>
           <Image
-            src={"/app220.png"}
-            // src={"/app12.png"}
+            // src={"/app220.png"}
+            src={"/app12.png"}
             alt=""
-            width={450}
-            height={450}
+            width={350}
+            height={350}
+            // width={450}
+            // height={450}
             className="rotate-20" />
         </Animate>
       </div>
