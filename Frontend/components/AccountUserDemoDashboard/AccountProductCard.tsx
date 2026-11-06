@@ -6,6 +6,7 @@ import {
   PhoneCall,
   Earth,
   EuroIcon,
+  BookIcon,
   Plane,
   Network,
   Monitor,
@@ -41,9 +42,13 @@ export default function AccountProductCard() {
       Name: "Airtime",
     },
     {
-      icon: Gamepad2,
-      Name: "Betting",
+      icon: BookIcon,
+      Name: "Education",
     },
+    // {
+    //   icon: Gamepad2,
+    //   Name: "Betting",
+    // },
     {
       icon: Monitor,
       Name: "Tv sub",
