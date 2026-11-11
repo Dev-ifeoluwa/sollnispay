@@ -18,6 +18,8 @@ import { TransfersModule } from './transfers/transfers.module';
 import { MailModule } from './mail/mail.module';
 // import { CoService } from './co/co.service';
 import { AdminModule } from './admin/admin.module';
+import { YangaplugModule } from './yangaplug/yangaplug.module';
+// import { YangaplusModule } from './yangaplug/yangaplug.module';
 
  
  
@@ -28,7 +30,7 @@ import { AdminModule } from './admin/admin.module';
   ScheduleModule.forRoot(),            // <- add
   AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule,
   WebhooksModule, PaystackModule,
-  SabussModule, DataModule, TransfersModule, MailModule, AdminModule,
+  SabussModule, DataModule, TransfersModule, MailModule, AdminModule, YangaplugModule,
 ],
   // imports: [ 
   //   ConfigModule.forRoot({

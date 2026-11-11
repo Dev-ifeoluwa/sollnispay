@@ -29,12 +29,15 @@ enum TransactionType {
   TRANSFER_BANK
 }
 
+
+
 enum Provider {
-  VTPASS
-  INTERNAL
-  PAYSTACK
-  CLUBKONNECT
-  SABUSS
+     VTPASS
+     INTERNAL
+     PAYSTACK
+     CLUBKONNECT
+     SABUSS
+     YANGAPLUG
 }
 
 enum OtpPurpose {

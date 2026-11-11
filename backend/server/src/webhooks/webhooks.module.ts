@@ -4,10 +4,12 @@ import { SabussWebhookController } from './sabuss.controller';
 import { PrismaService } from 'src/prisma.service';
 import { DataModule } from 'src/data/data.module';
 import { TransfersModule } from 'src/transfers/transfers.module';
+import { YangaplugWebhookController } from './yangaplug.controller';
+// import { YangaplusController } from './yangaplug.controller';
 
 @Module({
   imports: [DataModule, TransfersModule],
-  controllers: [PaystackController, SabussWebhookController],
+  controllers: [PaystackController, SabussWebhookController, YangaplugWebhookController],
   providers: [PrismaService],
 })
 export class WebhooksModule {}
