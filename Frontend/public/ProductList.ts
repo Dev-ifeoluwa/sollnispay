@@ -26,20 +26,6 @@ import {
       // comingSoon: true,
     },
     {
-      icon: IdCard,
-      Name: "Gift card",
-      href: "",
-      // href: "/User/GiftCard",
-      comingSoon: true,
-    },
-    {
-      icon: EuroIcon,
-      Name: "Convert money",
-      href: "",
-      // href: "/User/Convertmoney",
-      comingSoon: true,  
-    },
-    {
       icon: PhoneCall,
       Name: "Airtime",
       href: "",
@@ -53,6 +39,27 @@ import {
       // href: "/User/Betting",
       comingSoon: true,
     },
+     {
+      icon: Monitor,
+      Name: "Tv sub",
+      href: "",
+      // href: "/User/Tvsubscription",
+      comingSoon: true,
+    },
+    {
+      icon: IdCard,
+      Name: "Gift card",
+      href: "",
+      // href: "/User/GiftCard",
+      comingSoon: true,
+    },
+    {
+      icon: EuroIcon,
+      Name: "Convert money",
+      href: "",
+      // href: "/User/Convertmoney",
+      comingSoon: true,  
+    },
     // {
     //   icon: Gamepad2,
     //   Name: "Betting",
@@ -60,13 +67,7 @@ import {
     //   // href: "/User/Betting",
     //   comingSoon: true,
     // },
-    {
-      icon: Monitor,
-      Name: "Tv sub",
-      href: "",
-      // href: "/User/Tvsubscription",
-      comingSoon: true,
-    },
+   
     // {
     //   icon: LoaderIcon,
     //   Name: "view More",
