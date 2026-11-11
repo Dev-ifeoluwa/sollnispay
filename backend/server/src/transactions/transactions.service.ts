@@ -15,7 +15,7 @@ export class TransactionsService {
   async settle(reference: string, outcome: 'SUCCESS' | 'FAILED' | 'REVERSED'): Promise<boolean> {
     if (outcome === 'SUCCESS') {
       const res = await this.prisma.transaction.updateMany({
-        where: { providerRef: reference, provider: 'SABUSS', status: 'PENDING' },
+        where: { providerRef: reference, provider: { in: ['SABUSS', 'YANGAPLUG'] }, status: 'PENDING' },
         data: { status: 'SUCCESS' },
       });
       return res.count > 0;
@@ -28,13 +28,13 @@ export class TransactionsService {
 
     return this.prisma.$transaction(async (tx) => {
       const res = await tx.transaction.updateMany({
-        where: { providerRef: reference, provider: 'SABUSS', status: { in: allowedFrom } },
+        where: { providerRef: reference, provider: { in: ['SABUSS', 'YANGAPLUG'] }, status: { in: allowedFrom } },
         data: { status: outcome },
       });
       if (res.count === 0) return false; // already settled by someone else
 
       const order = await tx.transaction.findFirst({
-        where: { providerRef: reference, provider: 'SABUSS' },
+        where: { providerRef: reference, provider: { in: ['SABUSS', 'YANGAPLUG'] } },
       });
       if (!order) return false;
 
