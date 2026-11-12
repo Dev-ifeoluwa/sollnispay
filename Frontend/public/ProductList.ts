@@ -32,18 +32,18 @@ import {
       href: "/User/AirtimeTopup",
       // comingSoon: true,
     },
+     {
+      icon: Monitor,
+      Name: "Cable TV",
+      // href: "",
+      href: "/User/Tvsubscription",
+      // comingSoon: true,
+    },
     {
       icon: BookIcon,
       Name: "Education",
       href: "",
       // href: "/User/Betting",
-      comingSoon: true,
-    },
-     {
-      icon: Monitor,
-      Name: "Tv sub",
-      href: "",
-      // href: "/User/Tvsubscription",
       comingSoon: true,
     },
     {
