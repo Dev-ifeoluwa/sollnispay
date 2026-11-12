@@ -20,6 +20,7 @@ import { MailModule } from './mail/mail.module';
 import { AdminModule } from './admin/admin.module';
 import { YangaplugModule } from './yangaplug/yangaplug.module';
 // import { YangaplusModule } from './yangaplug/yangaplug.module';
+import { AirtimeModule } from './airtime/airtime.module';
 
  
  
@@ -30,7 +31,7 @@ import { YangaplugModule } from './yangaplug/yangaplug.module';
   ScheduleModule.forRoot(),            // <- add
   AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule,
   WebhooksModule, PaystackModule,
-  SabussModule, DataModule, TransfersModule, MailModule, AdminModule, YangaplugModule,
+  SabussModule, DataModule, TransfersModule, MailModule, AdminModule, YangaplugModule, AirtimeModule,
 ],
   // imports: [ 
   //   ConfigModule.forRoot({

@@ -28,9 +28,9 @@ import {
     {
       icon: PhoneCall,
       Name: "Airtime",
-      href: "",
-      // href: "/User/AirtimeTopup",
-      comingSoon: true,
+      // href: "",
+      href: "/User/AirtimeTopup",
+      // comingSoon: true,
     },
     {
       icon: BookIcon,
