@@ -486,10 +486,10 @@ export default function TvSubsPage() {
             toast.error('Tap Verify to check the smartcard number first')
             return
         }
-        if (provider?.needsPhone && !PHONE_OK.test(phone)) {
-            setError('Enter a valid 11-digit phone number for this provider')
-            return
-        }
+        // if (provider?.needsPhone && !PHONE_OK.test(phone)) {
+        //     setError('Enter a valid 11-digit phone number for this provider')
+        //     return
+        // }
         setError('')
         setSelectPlan(plan)
         setShowPopup(true)
@@ -588,7 +588,7 @@ export default function TvSubsPage() {
         <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#1a0f0a_0%,#0e0704_40%,#0a0503_100%)]">
             <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-[#ff7a3d]/25 blur-2xl" />
 
-            <div className="z-10 mx-auto w-full  px-4 py-6 sm:px-6 sm:py-8 pb-24 flex flex-col gap-5 text-sm">
+            <div className="z-10 mx-auto w-full px-4 py-6 sm:px-6 sm:py-8 pb-24 flex flex-col gap-5 text-sm">
 
                 {error && (
                     <div className="bg-[#e8563a]/15 border border-[#e8563a]/30 text-[#e8563a] font-semibold text-xs sm:text-sm text-center py-2.5 rounded-xl">
