@@ -319,7 +319,7 @@ function apiFetch(path: string, init: RequestInit = {}) {
 
 // same rules the backend enforces
 const PHONE_OK = /^0[789][01]\d{8}$/;
-const MIN_AMOUNT = 50;
+const MIN_AMOUNT = 100;
 const MAX_AMOUNT = 50000;
 
 const NETWORK_LABELS: Record<string, string> = {
@@ -411,12 +411,12 @@ export default function AirtimeTopup() {
     }
 
     const AirtimePrice = [
-        "50",
-        "100",
-        "200",
-        "500",
-        "1000",
-        "2000",
+       "100",
+       "200",
+       "500",
+       "1000",
+       "2000",
+       "5000",
     ]
 
     const handleChange = (value: string, index: number) => {

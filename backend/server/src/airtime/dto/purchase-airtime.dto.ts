@@ -7,9 +7,9 @@ export class PurchaseAirtimeDto {
   @Matches(/^0[789][01]\d{8}$/, { message: 'Enter a valid Nigerian phone number' })
   phone: string;
 
-  /** Face value of the airtime in naira. Yangaplug's own minimum is 50. */
+  /** Face value of the airtime in naira. Yangaplug's own minimum is 100. */
   @IsInt({ message: 'Amount must be a whole number' })
-  @Min(50, { message: 'Minimum airtime is ₦50' })
+  @Min(100, { message: 'Minimum airtime is ₦100' })
   @Max(50000, { message: 'Maximum airtime per purchase is ₦50,000' })
   amount: number;
 
