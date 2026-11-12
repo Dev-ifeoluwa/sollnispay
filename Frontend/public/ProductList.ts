@@ -55,7 +55,7 @@ import {
     },
     {
       icon: EuroIcon,
-      Name: "Convert money",
+      Name: "FX swap",
       href: "",
       // href: "/User/Convertmoney",
       comingSoon: true,  
