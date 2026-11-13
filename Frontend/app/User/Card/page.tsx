@@ -74,7 +74,7 @@ function SollnisCard() {
               <span className="h-3 w-3 rounded-full bg-[#FFB066]" />
             </span> */}
             <Image src="/favicon.ico" alt="logo" height={23} width={23} />
-            <span className="text-lg font-medium tracking-wide">Sollnis</span>
+            <span className="text-md font-medium tracking-wide">Sollnispay</span>
           </div>
           <span className="rounded-full bg-[#FFF3E6]/20 px-3 py-1 text-xs text-[#FFE2C2]">Virtual</span>
         </div>
