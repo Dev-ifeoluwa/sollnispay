@@ -143,13 +143,13 @@ export default function VirtualCardLandingPage() {
 
         <div className="mx-auto w-full max-w-xl space-y-8">
           {/* intro */}
-          <section className="space-y-2 text-center">
+          {/* <section className="space-y-2 text-center">
             <h2 className="text-2xl font-bold tracking-tight">Your dollar card, inside Sollnis Pay</h2>
             <p className="text-sm leading-relaxed text-white/65">
               Get a virtual Sollnis card for paying online in dollars. Fund it from your naira wallet and spend it
               anywhere Mastercard or Visa is accepted online.
             </p>
-          </section>
+          </section> */}
 
           {/* fee */}
           <section className="flex items-center justify-between gap-4 rounded-2xl border border-orange-500/30 bg-orange-500/10 p-4">
@@ -164,7 +164,7 @@ export default function VirtualCardLandingPage() {
           </section>
 
           {/* features */}
-          <section className="space-y-3">
+          {/* <section className="space-y-3">
             <h2 className="font-semibold">Why get one</h2>
             <ul className="space-y-3">
               {FEATURES.map((f) => (
@@ -179,10 +179,10 @@ export default function VirtualCardLandingPage() {
                 </li>
               ))}
             </ul>
-          </section>
+          </section> */}
 
           {/* how it works */}
-          <section className="space-y-3">
+          {/* <section className="space-y-3">
             <h2 className="font-semibold">How it works</h2>
             <ol className="space-y-4">
               {STEPS.map((s, i) => (
@@ -197,7 +197,7 @@ export default function VirtualCardLandingPage() {
                 </li>
               ))}
             </ol>
-          </section>
+          </section> */}
 
           {/* what you need */}
           <section className="space-y-3 rounded-2xl border border-white/10 bg-[#241510] p-4">
