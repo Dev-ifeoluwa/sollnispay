@@ -102,7 +102,8 @@ export default function ReceiptPage() {
 
   return (
     <main className="min-h-screen bg-[#0d0806] text-[#fbf3ec] px-4 py-6">
-      <div className="max-w-md mx-auto">
+      <div className="w-full mx-auto">
+      {/* <div className="max-w-md mx-auto"> */}
         <button
           onClick={() => router.back()}
           className="print:hidden inline-flex items-center gap-2 text-sm text-[#d8c3b6] mb-6"
