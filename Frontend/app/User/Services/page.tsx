@@ -48,7 +48,7 @@ const SERVICES: Service[] = [
     id: "dollar-card",
     name: "Virtual Card",
     description: "Pay online in USD",
-    href: "/user/card",
+    href: "/User/Card",
     // href: undefined,
     icon: (
       <svg {...iconProps}>
@@ -62,7 +62,7 @@ const SERVICES: Service[] = [
     id: "sollnis-solar",
     name: "Sollnissolar",
     description: "Solar power and batteries",
-    href: "/user/sollnissolar",
+    href: "/User/Sollnissolar",
     // href: undefined,
     icon: (
       <svg {...iconProps}>
