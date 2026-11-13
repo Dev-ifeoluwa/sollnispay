@@ -55,7 +55,7 @@ function SollnisCard() {
     <div
       className="relative mx-auto aspect-[1.586/1] w-full max-w-md overflow-hidden rounded-3xl text-[#FFF3E6] ring-1 ring-[#FFC48A]/30"
       style={{ background: 'linear-gradient(135deg, #2B160C 0%, #6B3416 45%, #E8650A 100%)' }}
-    >
+      >
       {/* sun rings, top right */}
       <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 440 277" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         {[60, 100, 140, 180].map((r, i) => (
@@ -99,7 +99,7 @@ function SollnisCard() {
           <div className="flex gap-8">
             <div>
               <p className="text-[11px] text-[#F6C9A0]">Card holder</p>
-              <p className="text-sm font-medium sm:text-[15px]">Your name</p>
+              <p className="text-sm font-medium sm:text-[15px]">*****</p>
             </div>
             <div>
               <p className="text-[11px] text-[#F6C9A0]">Expires</p>
@@ -141,7 +141,7 @@ export default function VirtualCardLandingPage() {
         {/* card on top */}
         <SollnisCard />
 
-        <div className="mx-auto w-full max-w-xl space-y-8">
+        <div className="mx-auto mt-5 w-full max-w-xl space-y-8">
           {/* intro */}
           {/* <section className="space-y-2 text-center">
             <h2 className="text-2xl font-bold tracking-tight">Your dollar card, inside Sollnis Pay</h2>
