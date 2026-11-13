@@ -22,6 +22,7 @@ import { YangaplugModule } from './yangaplug/yangaplug.module';
 // import { YangaplusModule } from './yangaplug/yangaplug.module';
 import { AirtimeModule } from './airtime/airtime.module';
 import { CableModule } from './cable/cable.module';
+import { CardsModule } from './cards/cards.module';
 
  
  
@@ -32,7 +33,7 @@ import { CableModule } from './cable/cable.module';
   ScheduleModule.forRoot(),            // <- add
   AuthModule, UsersModule, CurrencyModule, TransactionsModule, PinModule,
   WebhooksModule, PaystackModule,
-  SabussModule, DataModule, TransfersModule, MailModule, AdminModule, YangaplugModule, AirtimeModule, CableModule,
+  SabussModule, DataModule, TransfersModule, MailModule, AdminModule, YangaplugModule, AirtimeModule, CableModule, CardsModule,
 ],
   // imports: [ 
   //   ConfigModule.forRoot({

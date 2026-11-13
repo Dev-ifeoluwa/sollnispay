@@ -27,17 +27,17 @@ enum TransactionType {
   TRANSFER_SENT
   TRANSFER_RECEIVED
   TRANSFER_BANK
+  CARD_FUNDING
+  CARD_WITHDRAWAL
 }
 
-
-
 enum Provider {
-     VTPASS
-     INTERNAL
-     PAYSTACK
-     CLUBKONNECT
-     SABUSS
-     YANGAPLUG
+  VTPASS
+  INTERNAL
+  PAYSTACK
+  CLUBKONNECT
+  SABUSS
+  YANGAPLUG
 }
 
 enum OtpPurpose {
@@ -74,11 +74,15 @@ model TotalUser {
   passwordChangedAt DateTime?
   passwordResets    PasswordReset[]
 
-  deletedAt            DateTime?           // NEW: set when the user deletes their account
+  deletedAt            DateTime?
 
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
   conversions          ConversionHistory[]
+
+  // Sollnis Card (Yangaplug virtual cards)
+  cardholder           Cardholder?
+  cards                Card[]
 }
 
 model Wallet {
@@ -109,7 +113,7 @@ model Transaction {
   createdAt      DateTime          @default(now())
 
   userId Int
-  user   TotalUser @relation(fields: [userId], references: [id], onDelete: Restrict) // CHANGED: was Cascade
+  user   TotalUser @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   approvedBy Admin? @relation(fields: [approvedById], references: [id])
 
@@ -133,6 +137,32 @@ model Service {
   @@unique([provider, code])
 }
 
+model Cardholder {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  user        TotalUser @relation(fields: [userId], references: [id])
+  yangaplugId String    @unique
+  status      String
+  createdAt   DateTime  @default(now())
+  cards       Card[]
+}
+
+model Card {
+  id           Int        @id @default(autoincrement())
+  userId       Int
+  user         TotalUser  @relation(fields: [userId], references: [id])
+  cardholderId Int
+  cardholder   Cardholder @relation(fields: [cardholderId], references: [id])
+  yangaplugId  String?    @unique
+  issuer       String     // mastercard | visa
+  last4        String?
+  status       String     // PENDING | ACTIVE | FROZEN | TERMINATED | FAILED
+  balanceCents Int        @default(0)
+  createdAt    DateTime   @default(now())
+
+  @@index([userId])
+}
+
 model ConversionHistory {
   id              Int       @id @default(autoincrement())
   userId          Int
@@ -145,7 +175,6 @@ model ConversionHistory {
   user            TotalUser @relation(fields: [userId], references: [id])
 }
 
-
 model Admin {
   id          Int           @id @default(autoincrement())
   email       String        @unique
@@ -153,21 +182,19 @@ model Admin {
   firstName   String
   middleName  String
   lastName    String
-  isActive    Boolean       @default(true)   // NEW
+  isActive    Boolean       @default(true)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   Transaction Transaction[]
   auditLogs   AuditLog[]
 }
 
-
-
 model AuditLog {
   id         Int      @id @default(autoincrement())
   adminId    Int
   admin      Admin    @relation(fields: [adminId], references: [id])
-  action     String            // e.g. "transaction.refund", "user.freeze"
-  targetType String?           // e.g. "Transaction", "TotalUser"
+  action     String
+  targetType String?
   targetId   String?
   before     Json?
   after      Json?
@@ -178,8 +205,6 @@ model AuditLog {
   @@index([adminId, createdAt])
   @@index([targetType, targetId])
 }
-
-
 
 model PasswordReset {
   id        Int       @id @default(autoincrement())
