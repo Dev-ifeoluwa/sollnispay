@@ -433,7 +433,7 @@ export default function UserDashboard() {
                         aspectRatio={1200 / 250}
                         banners={[
                             { src: "/sollnisbanner2.png", alt: "Power your home with Sollnis Solar", href: "/User/Sollnissolar" },
-                            { src: "/sollnisbanner1.png", alt: "Get your solar", href: "/User/Sollnissolar" },
+                            { src: "/sollnisbanner1.png", alt: "Get your solar", href: "https://whatsapp.com/channel/0029Vb9HTkaJJhzX6j9xzn28" },
                         ]}
                     />
                 </div>
