@@ -7,7 +7,7 @@ import {
     BookIcon,
     EuroIcon,
     WalletCards,
-    Card,
+    // Card,
     Plane,
     Network,
     Monitor,
@@ -41,7 +41,7 @@ import {
       // comingSoon: true,
     },
     {
-      icon: Card,
+      icon: IdCard,
       Name: "Virtual card",
       href: "/User/Card",
       // comingSoon: true,
