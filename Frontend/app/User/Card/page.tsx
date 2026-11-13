@@ -141,7 +141,7 @@ export default function VirtualCardLandingPage() {
         {/* card on top */}
         <SollnisCard />
 
-        <div className="mx-auto mt-5 w-full max-w-xl space-y-8">
+        <div className="mx-auto  w-full max-w-xl space-y-8">
           {/* intro */}
           {/* <section className="space-y-2 text-center">
             <h2 className="text-2xl font-bold tracking-tight">Your dollar card, inside Sollnis Pay</h2>
@@ -152,7 +152,7 @@ export default function VirtualCardLandingPage() {
           </section> */}
 
           {/* fee */}
-          <section className="flex items-center justify-between gap-4 rounded-2xl border border-orange-500/30 bg-orange-500/10 p-4">
+          <section className="flex mt-5 items-center justify-between gap-4 rounded-2xl border border-orange-500/30 bg-orange-500/10 p-4">
             <div>
               <p className="text-sm font-semibold">One-time card creation fee</p>
               <p className="mt-1 text-xs leading-relaxed text-white/60">
@@ -210,7 +210,7 @@ export default function VirtualCardLandingPage() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-white/50">It takes about two minutes, and you only do it once.</p>
+            {/* <p className="text-xs text-white/50">It takes about two minutes, and you only do it once.</p> */}
           </section>
         </div>
       </div>
@@ -224,7 +224,7 @@ export default function VirtualCardLandingPage() {
           >
             Get your card
           </button>
-          <p className="mt-2 text-center text-xs text-white/50">One-time ${CREATION_FEE_USD} creation fee</p>
+          {/* <p className="mt-2 text-center text-xs text-white/50">One-time ${CREATION_FEE_USD} creation fee</p> */}
         </div>
       </div>
     </main>
