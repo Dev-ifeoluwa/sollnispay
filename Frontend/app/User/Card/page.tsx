@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const CREATION_FEE_USD = 6;
@@ -69,9 +70,10 @@ function SollnisCard() {
         {/* top row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="grid h-7 w-7 place-items-center rounded-full border-[1.5px] border-[#FFB066]">
+            {/* <span className="grid h-7 w-7 place-items-center rounded-full border-[1.5px] border-[#FFB066]">
               <span className="h-3 w-3 rounded-full bg-[#FFB066]" />
-            </span>
+            </span> */}
+            <Image src="/favicon.ico" alt="logo" height={23} width={23} />
             <span className="text-lg font-medium tracking-wide">Sollnis</span>
           </div>
           <span className="rounded-full bg-[#FFF3E6]/20 px-3 py-1 text-xs text-[#FFE2C2]">Virtual</span>
@@ -123,8 +125,10 @@ export default function VirtualCardLandingPage() {
   // const goVerify = () => router.push('/User/Card/Verify');
 
   return (
-    <main className="min-h-screen bg-[#1a0f0a] px-4 py-6 pb-32 text-white">
-      <div className="mx-auto w-full space-y-6">
+    // <main className="min-h-screen bg-[#1a0f0a] px-4 py-6 pb-32 text-white">
+    //   <div className="mx-auto w-full space-y-6">
+    <main className="flex min-h-screen flex-col bg-[#1a0f0a] px-4 pt-6 text-white">
+      <div className="mx-auto w-full flex-1 space-y-6 pb-6">
         <header className="mb-10 flex items-center gap-3">
           <button
             onClick={() => router.back()}
@@ -216,7 +220,19 @@ export default function VirtualCardLandingPage() {
       </div>
 
       {/* sticky call to action */}
-      <div className="fixed inset-x-0 bottom-0 z-40 bg-gradient-to-t from-[#1a0f0a] via-[#1a0f0a]/95 to-transparent px-4 pb-5 pt-8">
+      {/* <div className="fixed inset-x-0 bottom-0 z-40 bg-gradient-to-t from-[#1a0f0a] via-[#1a0f0a]/95 to-transparent px-4 pb-5 pt-8">
+        <div className="mx-auto w-full max-w-xl">
+          <button
+            onClick={goVerify}
+            className="w-full rounded-xl bg-orange-500 py-3.5 font-semibold text-black transition active:scale-[0.98]"
+          >
+            Get your card
+          </button>
+          <p className="mt-2 text-center text-xs text-white/50">One-time ${CREATION_FEE_USD} creation fee</p>
+        </div>
+      </div> */}
+            {/* call to action: sticks to the bottom inside the page, solid background */}
+      <div className="sticky bottom-0 z-40 -mx-4 border-t border-white/5 bg-[#1a0f0a] px-4 pb-5 pt-4">
         <div className="mx-auto w-full max-w-xl">
           <button
             onClick={goVerify}
