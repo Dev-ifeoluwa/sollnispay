@@ -44,20 +44,20 @@ const SERVICES: Service[] = [
       </svg>
     ),
   },
-  {
-    id: "dollar-card",
-    name: "Virtual Card",
-    description: "Pay online in USD",
-    href: "/User/Card",
-    // href: undefined,
-    icon: (
-      <svg {...iconProps}>
-        <rect x="2" y="5" width="20" height="14" rx="3" />
-        <path d="M2 10h20" />
-        <path d="M6 15h4" />
-      </svg>
-    ),
-  },
+  // {
+  //   id: "dollar-card",
+  //   name: "Virtual Card",
+  //   description: "Pay online in USD",
+  //   href: "/User/Card",
+  //   // href: undefined,
+  //   icon: (
+  //     <svg {...iconProps}>
+  //       <rect x="2" y="5" width="20" height="14" rx="3" />
+  //       <path d="M2 10h20" />
+  //       <path d="M6 15h4" />
+  //     </svg>
+  //   ),
+  // },
   {
     id: "sollnis-solar",
     name: "Sollnissolar",
