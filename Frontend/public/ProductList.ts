@@ -41,7 +41,8 @@ import {
       // comingSoon: true,
     },
     {
-      icon: IdCard,
+      icon: WalletCards,
+      // icon: IdCard,
       Name: "Virtual card",
       href: "/User/Card",
       // comingSoon: true,
