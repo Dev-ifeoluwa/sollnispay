@@ -629,7 +629,7 @@ export default function CardPage() {
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <h1 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">Sollnis Card</h1>
+          <h1 className="text-lg sm:text-xl font-semibold italic font-serif text-[#fbf3ec]">Virtual card</h1>
         </header>
 
         {/* card on top */}
