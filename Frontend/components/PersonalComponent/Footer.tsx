@@ -19,13 +19,13 @@ const columns: LinkColumn[] = [
       "Become a Partner",
     ],
   },
-  {
-    heading: "Resource",
-    links: [
-      "Help Center",
-      "Terms and Policy",
-      "Security Trust Center",
-    ],
+  // {
+  //   heading: "Resource",
+  //   links: [
+  //     "Help Center",
+  //     "Terms and Policy",
+  //     "Security Trust Center",
+  //   ],
   },
 ];
 
