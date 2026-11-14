@@ -10,11 +10,11 @@ export default function PersonalAccount() {
         <div>
           <Animate type="fade-up" delay={300}>
             <Image
-              src={"/app001.png"}
+              src={"/phone-mockup.png"}
               alt=""
               width={350}
               height={350}
-              className="-rotate-20"
+              // className="-rotate-20"
             />
           </Animate>
         </div>

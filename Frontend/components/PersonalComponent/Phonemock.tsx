@@ -367,7 +367,7 @@ const cards = [
     //     depth: 130, rot: 18, delay: "0.6s",
     // },
     {
-        title: "SollnisPay",
+        title: "Sollnispay",
         body: "Your cable TV subscription is now active.",
         icon: MessageSquare,
         pos: "top-[36%] right-0 sm:right-0",

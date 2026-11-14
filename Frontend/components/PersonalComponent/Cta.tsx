@@ -12,7 +12,7 @@ export default function CTA() {
                 <div className="relative pb-12 md:py-16">
                     <p className="text-sm font-semibold text-[#1a0d05]/70">Built for you. Built for tomorrow.</p>
                     <h2 className="mt-3 font-serif text-4xl font-medium leading-tight text-white md:text-5xl">
-                        Start paying with SollnisPay today
+                        Start paying with Sollnispay today
                     </h2>
                     <Link
                         href="/Account/loginaccount"
@@ -25,6 +25,15 @@ export default function CTA() {
                     {/* <PhoneFrame className="h-[560px] -rotate-3">
                         <WalletScreen />
                     </PhoneFrame> */}
+                    <Animate type="fade-up" delay={300}>
+                        <Image
+                        src={"/phone-mockup.png"}
+                        alt=""
+                        width={350}
+                        height={350}
+                        // className="-rotate-20"
+                        />
+                    </Animate>
                 </div>
             </div>
         </section>
