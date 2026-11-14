@@ -14,7 +14,7 @@ export default function PersonalPage() {
       <Hero />
       <About />
       <Benefit />
-      {/* <PersonalAccount /> */}
+      <PersonalAccount />
       {/* <Payment /> */}
        <CTA />
       <Footer />
