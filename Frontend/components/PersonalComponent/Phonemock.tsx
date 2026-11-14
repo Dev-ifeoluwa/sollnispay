@@ -399,7 +399,7 @@ export default function PhoneShowcase() {
             <div className="pointer-events-none absolute left-1/2 top-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,122,61,0.28),transparent_70%)]" />
 
             <div
-                className="relative w-[clamp(640px,100%,1024px)] shrink-0 transition-transform duration-200 ease-out"
+                className="relative w-[clamp(360px,100%,640px)] shrink-0 transition-transform duration-200 ease-out"
                 style={{
                     transformStyle: "preserve-3d",
                     transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
@@ -424,7 +424,7 @@ export default function PhoneShowcase() {
                         // outer: fixed 3D position. inner: floating animation.
                         <div
                             key={title}
-                            className={`absolute ${pos} w-44 sm:w-60`}
+                            className={`absolute ${pos} w-28 sm:w-44`}
                             style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
                         >
                             <div
