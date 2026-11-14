@@ -5,7 +5,8 @@ import Link from "next/link";
 export default function PersonalAccount() {
   return (
     <div className="px-2 py-8 md:px-8">
-      <div className="flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-2 py-3 md:px-15 md:py-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
+      {/* <div className="flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-2 py-3 md:px-15 md:py-4"> */}
         <div>
           <Animate type="fade-up" delay={300}>
             <Image
