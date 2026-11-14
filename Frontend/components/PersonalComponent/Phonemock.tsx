@@ -436,7 +436,7 @@ export default function PhoneShowcase() {
                                 </span>
                                 <span className="min-w-0">
                                     <span className="block text-[8px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
-                                    <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[6px]">{body}</span>
+                                    <span className="mt-0.5 block text-[6px] leading-snug text-[#fbf3ec] sm:text-[6px]">{body}</span>
                                 </span>
                             </div>
                         </div>
