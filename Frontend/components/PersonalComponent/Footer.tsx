@@ -26,7 +26,7 @@ const columns: LinkColumn[] = [
   //     "Terms and Policy",
   //     "Security Trust Center",
   //   ],
-  },
+  // },
 ];
 
 function GooglePlayIcon({ className }: { className?: string }) {
