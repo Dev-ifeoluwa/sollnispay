@@ -225,6 +225,7 @@
 
 
 import Link from "next/link";
+import FancyHeading from "./HeroMirror";
 import PhoneShowcase from "./Phonemock";
 // import PhoneShowcase from "./PhoneShowcase";
 
@@ -232,11 +233,12 @@ export default function Hero() {
     return (
         <section className="relative overflow-hidden rounded-b-[2.5rem] bg-[#0a0503] bg-[radial-gradient(ellipse_at_top_right,#3D2416,#1C110A_60%)] px-4 pt-28 sm:px-6 md:pt-32">
             <div className="mx-auto max-w-3xl text-center">
-                <h1 className="font-serif text-[length:clamp(2.2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-[#fbf3ec]">
+                {/* <h1 className="font-serif text-[length:clamp(2.2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-[#fbf3ec]">
                     One app.
                     <br />
                     <span className="text-[#b89a88]">Every transaction you need.</span>
-                </h1>
+                </h1> */}
+                 <FancyHeading />
                 <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-[#d3bba7]">
                     Gift cards, currency swaps, airtime, data, betting and TV subscriptions in one place. Fast, secure and always reliable.
                 </p>
