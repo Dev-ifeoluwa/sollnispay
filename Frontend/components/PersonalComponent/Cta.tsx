@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Animate from "components/Animate";
+import Image from "next/image";
 // import { PhoneFrame, WalletScreen } from "./Phonemock";
 // import { PhoneFrame, WalletScreen } from "./PhoneMock";
 
