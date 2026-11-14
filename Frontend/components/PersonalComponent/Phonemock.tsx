@@ -352,13 +352,13 @@ const cards = [
         pos: "top-[14%] left-0 sm:left-4",
         depth: 90, rot: 14, delay: "0s",
     },
-    {
-        title: "Airtime delivered",
-        body: "₦2,000 MTN airtime sent",
-        icon: Phone,
-        pos: "top-[6%] right-0 sm:right-4",
-        depth: 60, rot: -14, delay: "1.2s",
-    },
+    // {
+    //     title: "Airtime delivered",
+    //     body: "₦2,000 MTN airtime sent",
+    //     icon: Phone,
+    //     pos: "top-[6%] right-0 sm:right-4",
+    //     depth: 60, rot: -14, delay: "1.2s",
+    // },
     {
         title: "Wallet funded",
         body: "+₦10,000.00 via virtual account",
@@ -366,13 +366,13 @@ const cards = [
         pos: "top-[48%] left-0 sm:left-0",
         depth: 130, rot: 18, delay: "0.6s",
     },
-    {
-        title: "SollnisPay",
-        body: "Your cable TV subscription is now active.",
-        icon: MessageSquare,
-        pos: "top-[36%] right-0 sm:right-0",
-        depth: 110, rot: -18, delay: "1.8s",
-    },
+    // {
+    //     title: "SollnisPay",
+    //     body: "Your cable TV subscription is now active.",
+    //     icon: MessageSquare,
+    //     pos: "top-[36%] right-0 sm:right-0",
+    //     depth: 110, rot: -18, delay: "1.8s",
+    // },
 ];
 
 export default function PhoneShowcase() {
@@ -416,15 +416,15 @@ export default function PhoneShowcase() {
                 />
 
                 {/* centred overlay that holds the floating cards */}
-                {/* <div
+                <div
                     className="absolute inset-x-0 top-0 mx-auto h-full w-[340px] sm:w-[640px]"
                     style={{ transformStyle: "preserve-3d" }}
                     >
                     {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
-                        // outer: fixed 3D position. inner: floating animation.
+                        {/* outer: fixed 3D position. inner: floating animation. */}
                         <div
                             key={title}
-                            className={`absolute ${pos} w-28 sm:w-44`}
+                            className={`absolute ${pos} w-32 sm:w-45`}
                             style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
                         >
                             <div
@@ -441,7 +441,7 @@ export default function PhoneShowcase() {
                             </div>
                         </div>
                     ))}
-                </div> */}
+                </div>
             </div>
 
             <style jsx global>{`
