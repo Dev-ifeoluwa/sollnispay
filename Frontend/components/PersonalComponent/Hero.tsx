@@ -107,12 +107,126 @@
 
 
 
-import Link from "next/link";
-import { CheckCircle2, ArrowDownToLine } from "lucide-react";
-import { PhoneFrame, WalletScreen } from "./Phonemock";
-// import { PhoneFrame, WalletScreen } from "./PhoneMock";
+// import Link from "next/link";
+// import { CheckCircle2, ArrowDownToLine } from "lucide-react";
+// import { PhoneFrame, WalletScreen } from "./Phonemock";
+// // import { PhoneFrame, WalletScreen } from "./PhoneMock";
 
-const methods = ["Airtime", "Data", "Cable TV", "Gift cards", "Betting", "Swaps"];
+// const methods = ["Airtime", "Data", "Cable TV", "Gift cards", "Betting", "Swaps"];
+
+// export default function Hero() {
+//     return (
+//         <section className="relative overflow-hidden rounded-b-[2.5rem] bg-[#0a0503] bg-[radial-gradient(ellipse_at_top_right,#3D2416,#1C110A_60%)] px-4 pt-28 sm:px-6 md:pt-32">
+//             <div className="mx-auto max-w-3xl text-center">
+//                 <h1 className="font-serif text-[length:clamp(2.2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-[#fbf3ec]">
+//                     One app.
+//                     <br />
+//                     <span className="text-[#b89a88]">Every transaction you need.</span>
+//                 </h1>
+//                 <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-[#d3bba7]">
+//                     Gift cards, currency swaps, airtime, data, betting and TV subscriptions in one place. Fast, secure and always reliable.
+//                 </p>
+//                 <div className="mt-8 flex flex-wrap justify-center gap-3">
+//                     <Link
+//                         href="/Account/loginaccount"
+//                         className="rounded-full bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] px-7 py-3 text-sm font-bold text-[#1a0d05] shadow-lg shadow-orange-900/40"
+//                     >
+//                         Open account
+//                     </Link>
+//                     <Link
+//                         href="/Account/Signin"
+//                         className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-[#fbf3ec] hover:bg-white/5"
+//                     >
+//                         Log in
+//                     </Link>
+//                 </div>
+//             </div>
+
+//             {/* phone, cropped at the bottom, with floating cards on large screens */}
+//             <div className="relative mx-auto mt-14 h-[360px] max-w-4xl overflow-hidden sm:h-[440px]">
+//                 <PhoneFrame className="mx-auto h-[640px]">
+//                     <WalletScreen />
+//                 </PhoneFrame>
+
+//                 <div className="absolute left-0 top-24 hidden w-56 rounded-2xl border border-white/10 bg-[#1e100a] p-4 shadow-xl shadow-black/40 md:block">
+//                     <p className="text-xs text-[#8f7768]">Airtime purchase</p>
+//                     <p className="mt-1 font-serif text-xl text-[#fbf3ec]">₦2,000.00</p>
+//                     <p className="mt-2 flex items-center gap-1.5 text-xs text-[#f4b860]">
+//                         <CheckCircle2 size={14} /> Delivered instantly
+//                     </p>
+//                 </div>
+
+//                 <div className="absolute right-0 top-14 hidden w-56 rounded-2xl border border-white/10 bg-[#1e100a] p-4 shadow-xl shadow-black/40 md:block">
+//                     <p className="text-xs text-[#8f7768]">Wallet funded</p>
+//                     <p className="mt-1 font-serif text-xl text-[#fbf3ec]">+₦10,000.00</p>
+//                     <p className="mt-2 flex items-center gap-1.5 text-xs text-[#f4b860]">
+//                         <ArrowDownToLine size={14} /> Via your virtual account
+//                     </p>
+//                 </div>
+
+//                 <div className="absolute bottom-16 right-0 hidden text-right md:block">
+//                     <p className="mb-2 text-xs font-semibold text-[#b89a88]">What you can pay for</p>
+//                     <div className="flex max-w-[15rem] flex-wrap justify-end gap-2">
+//                         {methods.map((m) => (
+//                             <span key={m} className="rounded-lg border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-[#fbf3ec]">
+//                                 {m}
+//                             </span>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// }
+
+
+
+
+// import Link from "next/link";
+// import PhoneShowcase from "./PhoneShowcase";
+
+// export default function Hero() {
+//     return (
+//         <section className="relative overflow-hidden rounded-b-[2.5rem] bg-[#0a0503] bg-[radial-gradient(ellipse_at_top_right,#3D2416,#1C110A_60%)] px-4 pt-28 sm:px-6 md:pt-32">
+//             <div className="mx-auto max-w-3xl text-center">
+//                 <h1 className="font-serif text-[length:clamp(2.2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-[#fbf3ec]">
+//                     One app.
+//                     <br />
+//                     <span className="text-[#b89a88]">Every transaction you need.</span>
+//                 </h1>
+//                 <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-[#d3bba7]">
+//                     Gift cards, currency swaps, airtime, data, betting and TV subscriptions in one place. Fast, secure and always reliable.
+//                 </p>
+//                 <div className="mt-8 flex flex-wrap justify-center gap-3">
+//                     <Link
+//                         href="/Account/loginaccount"
+//                         className="rounded-full bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] px-7 py-3 text-sm font-bold text-[#1a0d05] shadow-lg shadow-orange-900/40"
+//                     >
+//                         Open account
+//                     </Link>
+//                     <Link
+//                         href="/Account/Signin"
+//                         className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-[#fbf3ec] hover:bg-white/5"
+//                     >
+//                         Log in
+//                     </Link>
+//                 </div>
+//             </div>
+
+//             <div className="mt-12">
+//                 <PhoneShowcase />
+//             </div>
+//         </section>
+//     );
+// }
+
+
+
+
+
+import Link from "next/link";
+import PhoneShowcase from "./Phonemock";
+// import PhoneShowcase from "./PhoneShowcase";
 
 export default function Hero() {
     return (
@@ -142,38 +256,8 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* phone, cropped at the bottom, with floating cards on large screens */}
-            <div className="relative mx-auto mt-14 h-[360px] max-w-4xl overflow-hidden sm:h-[440px]">
-                <PhoneFrame className="mx-auto h-[640px]">
-                    <WalletScreen />
-                </PhoneFrame>
-
-                <div className="absolute left-0 top-24 hidden w-56 rounded-2xl border border-white/10 bg-[#1e100a] p-4 shadow-xl shadow-black/40 md:block">
-                    <p className="text-xs text-[#8f7768]">Airtime purchase</p>
-                    <p className="mt-1 font-serif text-xl text-[#fbf3ec]">₦2,000.00</p>
-                    <p className="mt-2 flex items-center gap-1.5 text-xs text-[#f4b860]">
-                        <CheckCircle2 size={14} /> Delivered instantly
-                    </p>
-                </div>
-
-                <div className="absolute right-0 top-14 hidden w-56 rounded-2xl border border-white/10 bg-[#1e100a] p-4 shadow-xl shadow-black/40 md:block">
-                    <p className="text-xs text-[#8f7768]">Wallet funded</p>
-                    <p className="mt-1 font-serif text-xl text-[#fbf3ec]">+₦10,000.00</p>
-                    <p className="mt-2 flex items-center gap-1.5 text-xs text-[#f4b860]">
-                        <ArrowDownToLine size={14} /> Via your virtual account
-                    </p>
-                </div>
-
-                <div className="absolute bottom-16 right-0 hidden text-right md:block">
-                    <p className="mb-2 text-xs font-semibold text-[#b89a88]">What you can pay for</p>
-                    <div className="flex max-w-[15rem] flex-wrap justify-end gap-2">
-                        {methods.map((m) => (
-                            <span key={m} className="rounded-lg border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-[#fbf3ec]">
-                                {m}
-                            </span>
-                        ))}
-                    </div>
-                </div>
+            <div className="mt-12">
+                <PhoneShowcase />
             </div>
         </section>
     );

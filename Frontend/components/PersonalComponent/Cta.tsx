@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PhoneFrame, WalletScreen } from "./Phonemock";
+// import { PhoneFrame, WalletScreen } from "./Phonemock";
 // import { PhoneFrame, WalletScreen } from "./PhoneMock";
 
 export default function CTA() {
@@ -22,9 +22,9 @@ export default function CTA() {
                     </Link>
                 </div>
                 <div className="relative mx-auto h-[300px] overflow-hidden md:ml-auto md:mr-0 md:mt-12 md:h-[360px]">
-                    <PhoneFrame className="h-[560px] -rotate-3">
+                    {/* <PhoneFrame className="h-[560px] -rotate-3">
                         <WalletScreen />
-                    </PhoneFrame>
+                    </PhoneFrame> */}
                 </div>
             </div>
         </section>
