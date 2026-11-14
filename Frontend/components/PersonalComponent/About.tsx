@@ -94,58 +94,59 @@
 
 
 // import { PhoneFrame } from "./PhoneMock";
-import PhoneFrame  from "./Phonemock";
+// import PhoneFrame  from "./Phonemock";
 
-const steps = [
-    { title: "Create an account", body: "Sign up in under 60 seconds with your basic details and get verified." },
-    { title: "Fund your wallet", body: "Transfer to your dedicated virtual account and get credited instantly, every time." },
-    { title: "Make payments", body: "Pick a service, enter your details and get value delivered immediately." },
-];
+// const steps = [
+//     { title: "Create an account", body: "Sign up in under 60 seconds with your basic details and get verified." },
+//     { title: "Fund your wallet", body: "Transfer to your dedicated virtual account and get credited instantly, every time." },
+//     { title: "Make payments", body: "Pick a service, enter your details and get value delivered immediately." },
+// ];
 
-function Step({ n, title, body, active = false }: { n: number; title: string; body: string; active?: boolean }) {
-    return (
-        <div className={`rounded-2xl border p-5 ${active ? "border-[#ff7a3d]/50 bg-[#ff7a3d]/10" : "border-[#2B1810]/10 bg-white"}`}>
-            <p className="text-xs font-semibold text-[#c1440e]">Step {n}</p>
-            <h3 className="mt-1 text-lg font-semibold text-[#2B1810]">{title}</h3>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-[#7a6455]">{body}</p>
-        </div>
-    );
-}
+// function Step({ n, title, body, active = false }: { n: number; title: string; body: string; active?: boolean }) {
+//     return (
+//         <div className={`rounded-2xl border p-5 ${active ? "border-[#ff7a3d]/50 bg-[#ff7a3d]/10" : "border-[#2B1810]/10 bg-white"}`}>
+//             <p className="text-xs font-semibold text-[#c1440e]">Step {n}</p>
+//             <h3 className="mt-1 text-lg font-semibold text-[#2B1810]">{title}</h3>
+//             <p className="mt-1.5 text-[15px] leading-relaxed text-[#7a6455]">{body}</p>
+//         </div>
+//     );
+// }
 
 export default function About() {
 // export default function HowItWorks() {
     return (
-        <section className="bg-[#fbf3ec] px-4 py-24 sm:px-6">
-            <h2 className="text-center font-serif text-4xl font-medium tracking-tight text-[#2B1810] md:text-5xl">
-                How it <span className="italic text-[#c1440e]">works</span>
-            </h2>
+        <></>
+        // <section className="bg-[#fbf3ec] px-4 py-24 sm:px-6">
+        //     <h2 className="text-center font-serif text-4xl font-medium tracking-tight text-[#2B1810] md:text-5xl">
+        //         How it <span className="italic text-[#c1440e]">works</span>
+        //     </h2>
 
-            <div className="mx-auto mt-14 grid max-w-5xl items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
-                <div className="space-y-6">
-                    <Step n={1} {...steps[0]} />
-                    <Step n={3} {...steps[2]} />
-                </div>
+        //     <div className="mx-auto mt-14 grid max-w-5xl items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
+        //         <div className="space-y-6">
+        //             <Step n={1} {...steps[0]} />
+        //             <Step n={3} {...steps[2]} />
+        //         </div>
 
-                <PhoneFrame className="mx-auto">
-                    <div className="space-y-3 pb-3">
-                        <p className="text-center text-xs font-semibold text-[#fbf3ec]">Fund wallet</p>
-                        {["Bank", "Account number", "Account name"].map((l) => (
-                            <div key={l} className="rounded-xl border border-white/10 bg-[#1e100a] px-3 py-2.5">
-                                <p className="text-[9px] text-[#8f7768]">{l}</p>
-                                <div className="mt-1 h-2 w-3/4 rounded-full bg-white/15" />
-                            </div>
-                        ))}
-                        <div className="rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] py-2.5 text-center text-[11px] font-bold text-[#1a0d05]">
-                            Copy account number
-                        </div>
-                        <div className="h-24" />
-                    </div>
-                </PhoneFrame>
+        //         <PhoneFrame className="mx-auto">
+        //             <div className="space-y-3 pb-3">
+        //                 <p className="text-center text-xs font-semibold text-[#fbf3ec]">Fund wallet</p>
+        //                 {["Bank", "Account number", "Account name"].map((l) => (
+        //                     <div key={l} className="rounded-xl border border-white/10 bg-[#1e100a] px-3 py-2.5">
+        //                         <p className="text-[9px] text-[#8f7768]">{l}</p>
+        //                         <div className="mt-1 h-2 w-3/4 rounded-full bg-white/15" />
+        //                     </div>
+        //                 ))}
+        //                 <div className="rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] py-2.5 text-center text-[11px] font-bold text-[#1a0d05]">
+        //                     Copy account number
+        //                 </div>
+        //                 <div className="h-24" />
+        //             </div>
+        //         </PhoneFrame>
 
-                <div>
-                    <Step n={2} {...steps[1]} active />
-                </div>
-            </div>
-        </section>
+        //         <div>
+        //             <Step n={2} {...steps[1]} active />
+        //         </div>
+        //     </div>
+        // </section>
     );
 }
