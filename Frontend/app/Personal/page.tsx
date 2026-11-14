@@ -12,7 +12,7 @@ export default function PersonalPage() {
     <>
       <Navbar />
       <Hero />
-      {/* <About /> */}
+      <About />
       <Benefit />
       {/* <PersonalAccount /> */}
       {/* <Payment /> */}
