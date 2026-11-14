@@ -5,6 +5,7 @@ import Benefit from "components/PersonalComponent/Benefit";
 import Hero from "components/PersonalComponent/Hero";
 import Payment from "components/PersonalComponent/Payment";
 import PersonalAccount from "components/PersonalComponent/PersonalAccount";
+import CTA from "components/PersonalComponent/Cta";
 
 export default function PersonalPage() {
   return (
@@ -13,8 +14,9 @@ export default function PersonalPage() {
       <Hero />
       <About />
       <Benefit />
-      <PersonalAccount />
-      <Payment />
+      {/* <PersonalAccount /> */}
+      {/* <Payment /> */}
+       <CTA />
       <Footer />
     </>
   );
