@@ -428,15 +428,15 @@ export default function PhoneShowcase() {
                                 style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
                             >
                             <div
-                                className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-4"
+                                className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-2"
                                 style={{ animationDelay: delay }}
                             >
-                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
-                                    <Icon size={16} />
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
+                                    <Icon size={10} />
                                 </span>
                                 <span className="min-w-0">
-                                    <span className="block text-[11px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
-                                    <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[13px]">{body}</span>
+                                    <span className="block text-[8px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
+                                    <span className="mt-0.5 block text-[8px] leading-snug text-[#fbf3ec] sm:text-[6px]">{body}</span>
                                 </span>
                             </div>
                         </div>
