@@ -424,11 +424,11 @@ export default function PhoneShowcase() {
                             // outer: fixed 3D position. inner: floating animation.
                             <div
                                 key={title}
-                                className={`absolute ${pos} w-30 sm:w-40`}
+                                className={`absolute ${pos} w-35 sm:w-45`}
                                 style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
                             >
                             <div
-                                className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 md:p-1"
+                                className="float-card flex items-start gap-3 md:gap-2 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-1"
                                 style={{ animationDelay: delay }}
                             >
                                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
@@ -436,7 +436,7 @@ export default function PhoneShowcase() {
                                 </span>
                                 <span className="min-w-0">
                                     <span className="block text-[8px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
-                                    <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] md:text-[6px]">{body}</span>
+                                    <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[6px]">{body}</span>
                                 </span>
                             </div>
                         </div>
