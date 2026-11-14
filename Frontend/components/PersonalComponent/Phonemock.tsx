@@ -203,6 +203,132 @@
 
 
 
+// "use client";
+
+// import { useState } from "react";
+// import Image from "next/image";
+// import { ArrowDownToLine, Phone, MessageSquare, Wallet } from "lucide-react";
+
+// // ── your Canva mockup ──
+// // 1. Export it from Canva as PNG (tick "Transparent background" if you have Canva Pro).
+// // 2. Save it as public/phone-mockup.png
+// // 3. Put the image's real pixel size below so it doesn't stretch.
+// const PHONE_SRC = "/phone-mockup.png";
+// const PHONE_W = 600;
+// const PHONE_H = 1200;
+
+// // depth = how far the card floats in front of the phone (px), rot = its own tilt
+// const cards = [
+//     {
+//         title: "Payment received",
+//         body: "+₦25,000.00 from Chinedu O.",
+//         icon: ArrowDownToLine,
+//         pos: "top-[16%] -left-6 sm:-left-32",
+//         depth: 90, rot: 14, delay: "0s",
+//     },
+//     {
+//         title: "Airtime delivered",
+//         body: "₦2,000 MTN airtime sent",
+//         icon: Phone,
+//         pos: "top-[8%] -right-6 sm:-right-32",
+//         depth: 60, rot: -14, delay: "1.2s",
+//     },
+//     {
+//         title: "Wallet funded",
+//         body: "+₦10,000.00 via virtual account",
+//         icon: Wallet,
+//         pos: "top-[46%] -left-8 sm:-left-36",
+//         depth: 130, rot: 18, delay: "0.6s",
+//     },
+//     {
+//         title: "SollnisPay",
+//         body: "Your cable TV subscription is now active.",
+//         icon: MessageSquare,
+//         pos: "top-[38%] -right-8 sm:-right-36",
+//         depth: 110, rot: -18, delay: "1.8s",
+//     },
+// ];
+
+// export default function PhoneShowcase() {
+//     const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+//     const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
+//         if (e.pointerType !== "mouse") return;
+//         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+//         const r = e.currentTarget.getBoundingClientRect();
+//         const px = (e.clientX - r.left) / r.width - 0.5;
+//         const py = (e.clientY - r.top) / r.height - 0.5;
+//         setTilt({ x: -py * 6, y: px * 12 });
+//     };
+
+//     return (
+//         <div
+//             onPointerMove={onMove}
+//             onPointerLeave={() => setTilt({ x: 0, y: 0 })}
+//             className="relative mx-auto flex h-[420px] max-w-4xl justify-center overflow-hidden sm:h-[520px]"
+//             style={{ perspective: "1200px" }}
+//         >
+//             {/* soft brand glow behind the phone */}
+//             <div className="pointer-events-none absolute top-10 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(255,122,61,0.28),transparent_70%)]" />
+
+//             <div
+//                 className="relative mt-4 w-[230px] transition-transform duration-200 ease-out sm:w-[300px]"
+//                 style={{
+//                     transformStyle: "preserve-3d",
+//                     transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+//                 }}
+//             >
+//                 <Image
+//                     src={PHONE_SRC}
+//                     alt="SollnisPay app on a phone"
+//                     width={PHONE_W}
+//                     height={PHONE_H}
+//                     priority
+//                     className="h-auto w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.55)]"
+//                 />
+
+//                 {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
+//                     // outer: fixed 3D position. inner: floating animation.
+//                     <div
+//                         key={title}
+//                         className={`absolute ${pos} w-44 sm:w-60`}
+//                         style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
+//                     >
+//                         <div
+//                             className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-4"
+//                             style={{ animationDelay: delay }}
+//                         >
+//                             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
+//                                 <Icon size={16} />
+//                             </span>
+//                             <span className="min-w-0">
+//                                 <span className="block text-[11px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
+//                                 <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[13px]">{body}</span>
+//                             </span>
+//                         </div>
+//                     </div>
+//                 ))}
+//             </div>
+
+//             <style jsx global>{`
+//                 @keyframes sollnis-float {
+//                     0%, 100% { transform: translateY(0); }
+//                     50% { transform: translateY(-10px); }
+//                 }
+//                 .float-card { animation: sollnis-float 5s ease-in-out infinite; }
+//                 @media (prefers-reduced-motion: reduce) {
+//                     .float-card { animation: none; }
+//                 }
+//             `}</style>
+//         </div>
+//     );
+// }
+
+
+
+
+
+
 "use client";
 
 import { useState } from "react";
@@ -223,28 +349,28 @@ const cards = [
         title: "Payment received",
         body: "+₦25,000.00 from Chinedu O.",
         icon: ArrowDownToLine,
-        pos: "top-[16%] -left-6 sm:-left-32",
+        pos: "top-[14%] left-0 sm:left-4",
         depth: 90, rot: 14, delay: "0s",
     },
     {
         title: "Airtime delivered",
         body: "₦2,000 MTN airtime sent",
         icon: Phone,
-        pos: "top-[8%] -right-6 sm:-right-32",
+        pos: "top-[6%] right-0 sm:right-4",
         depth: 60, rot: -14, delay: "1.2s",
     },
     {
         title: "Wallet funded",
         body: "+₦10,000.00 via virtual account",
         icon: Wallet,
-        pos: "top-[46%] -left-8 sm:-left-36",
+        pos: "top-[48%] left-0 sm:left-0",
         depth: 130, rot: 18, delay: "0.6s",
     },
     {
         title: "SollnisPay",
         body: "Your cable TV subscription is now active.",
         icon: MessageSquare,
-        pos: "top-[38%] -right-8 sm:-right-36",
+        pos: "top-[36%] right-0 sm:right-0",
         depth: 110, rot: -18, delay: "1.8s",
     },
 ];
@@ -262,17 +388,18 @@ export default function PhoneShowcase() {
     };
 
     return (
+        // No fixed height: the image sets the height, so it runs all the way down to the bottom of the hero.
         <div
             onPointerMove={onMove}
             onPointerLeave={() => setTilt({ x: 0, y: 0 })}
-            className="relative mx-auto flex h-[420px] max-w-4xl justify-center overflow-hidden sm:h-[520px]"
+            className="relative flex justify-center overflow-hidden"
             style={{ perspective: "1200px" }}
         >
             {/* soft brand glow behind the phone */}
-            <div className="pointer-events-none absolute top-10 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(255,122,61,0.28),transparent_70%)]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,122,61,0.28),transparent_70%)]" />
 
             <div
-                className="relative mt-4 w-[230px] transition-transform duration-200 ease-out sm:w-[300px]"
+                className="relative w-[clamp(640px,100%,1024px)] shrink-0 transition-transform duration-200 ease-out"
                 style={{
                     transformStyle: "preserve-3d",
                     transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
@@ -283,31 +410,38 @@ export default function PhoneShowcase() {
                     alt="SollnisPay app on a phone"
                     width={PHONE_W}
                     height={PHONE_H}
+                    sizes="(min-width: 1024px) 1024px, 100vw"
                     priority
-                    className="h-auto w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.55)]"
+                    className="block h-auto w-full"
                 />
 
-                {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
-                    // outer: fixed 3D position. inner: floating animation.
-                    <div
-                        key={title}
-                        className={`absolute ${pos} w-44 sm:w-60`}
-                        style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
-                    >
+                {/* centred overlay that holds the floating cards */}
+                <div
+                    className="absolute inset-x-0 top-0 mx-auto h-full w-[340px] sm:w-[640px]"
+                    style={{ transformStyle: "preserve-3d" }}
+                >
+                    {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
+                        // outer: fixed 3D position. inner: floating animation.
                         <div
-                            className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-4"
-                            style={{ animationDelay: delay }}
+                            key={title}
+                            className={`absolute ${pos} w-44 sm:w-60`}
+                            style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
                         >
-                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
-                                <Icon size={16} />
-                            </span>
-                            <span className="min-w-0">
-                                <span className="block text-[11px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
-                                <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[13px]">{body}</span>
-                            </span>
+                            <div
+                                className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-4"
+                                style={{ animationDelay: delay }}
+                            >
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
+                                    <Icon size={16} />
+                                </span>
+                                <span className="min-w-0">
+                                    <span className="block text-[11px] font-semibold text-[#f4b860] sm:text-xs">{title}</span>
+                                    <span className="mt-0.5 block text-[11px] leading-snug text-[#fbf3ec] sm:text-[13px]">{body}</span>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             <style jsx global>{`
