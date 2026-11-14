@@ -94,7 +94,7 @@
 
 
 // import { PhoneFrame } from "./PhoneMock";
-import { PhoneFrame } from "./Phonemock";
+import PhoneFrame  from "./Phonemock";
 
 const steps = [
     { title: "Create an account", body: "Sign up in under 60 seconds with your basic details and get verified." },
