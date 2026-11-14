@@ -10,7 +10,7 @@ export default function PersonalAccount() {
         <div>
           <Animate type="fade-up" delay={300}>
             <Image
-              src={"/phone-mockup.png"}
+              src={"/app001.png"}
               alt=""
               width={350}
               height={350}

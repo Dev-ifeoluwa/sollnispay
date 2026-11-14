@@ -29,7 +29,7 @@ export default function CTA() {
                     </PhoneFrame> */}
                     <Animate type="fade-up" delay={300}>
                         <Image
-                        src={"/phone-mockup.png"}
+                        src={"/app002.png"}
                         alt=""
                         width={350}
                         height={350}
