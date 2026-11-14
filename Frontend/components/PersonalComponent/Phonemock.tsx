@@ -420,13 +420,13 @@ export default function PhoneShowcase() {
                     className="absolute inset-x-0 top-0 mx-auto h-full w-[340px] sm:w-[640px]"
                     style={{ transformStyle: "preserve-3d" }}
                     >
-                    {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
-                        {/* outer: fixed 3D position. inner: floating animation. */}
-                        <div
-                            key={title}
-                            className={`absolute ${pos} w-32 sm:w-45`}
-                            style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
-                        >
+                        {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
+                            // outer: fixed 3D position. inner: floating animation.
+                            <div
+                                key={title}
+                                className={`absolute ${pos} w-32 sm:w-45`}
+                                style={{ transform: `translateZ(${depth}px) rotateY(${rot}deg)` }}
+                            >
                             <div
                                 className="float-card flex items-start gap-3 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-4"
                                 style={{ animationDelay: delay }}
