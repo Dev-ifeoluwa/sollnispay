@@ -38,7 +38,7 @@ export default function About() {
               className="text-balance mb-6 max-w-lg text-2xl font-bold leading-tight mt-0.5 md:text-3xl lg:text-5xl font-[family-name:var(--font-serif)] text-brand-brown leading-[1.02] tracking-[-0.025em]"
             // className="mb-6 max-w-lg text-2xl mt-0.5 md:text-3xl lg:text-5xl font-bold leading-tight text-brand-brown"
             >
-              One platform, built to make every bill payment effortless
+              One platform, built to make every bill payment <span className="text-orange-500 font-[family-name:var(--font-domine)]">effortless</span>  
             </h2>
           </Animate>
 
