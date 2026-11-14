@@ -416,10 +416,10 @@ export default function PhoneShowcase() {
                 />
 
                 {/* centred overlay that holds the floating cards */}
-                <div
+                {/* <div
                     className="absolute inset-x-0 top-0 mx-auto h-full w-[340px] sm:w-[640px]"
                     style={{ transformStyle: "preserve-3d" }}
-                >
+                    >
                     {cards.map(({ title, body, icon: Icon, pos, depth, rot, delay }) => (
                         // outer: fixed 3D position. inner: floating animation.
                         <div
@@ -441,7 +441,7 @@ export default function PhoneShowcase() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
 
             <style jsx global>{`
