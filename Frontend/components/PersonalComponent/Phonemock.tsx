@@ -359,20 +359,20 @@ const cards = [
     //     pos: "top-[6%] right-0 sm:right-4",
     //     depth: 60, rot: -14, delay: "1.2s",
     // },
-    {
-        title: "Wallet funded",
-        body: "+₦10,000.00 via virtual account",
-        icon: Wallet,
-        pos: "top-[48%] left-0 sm:left-0",
-        depth: 130, rot: 18, delay: "0.6s",
-    },
     // {
-    //     title: "SollnisPay",
-    //     body: "Your cable TV subscription is now active.",
-    //     icon: MessageSquare,
-    //     pos: "top-[36%] right-0 sm:right-0",
-    //     depth: 110, rot: -18, delay: "1.8s",
+    //     title: "Wallet funded",
+    //     body: "+₦10,000.00 via virtual account",
+    //     icon: Wallet,
+    //     pos: "top-[48%] left-0 sm:left-0",
+    //     depth: 130, rot: 18, delay: "0.6s",
     // },
+    {
+        title: "SollnisPay",
+        body: "Your cable TV subscription is now active.",
+        icon: MessageSquare,
+        pos: "top-[36%] right-0 sm:right-0",
+        depth: 110, rot: -18, delay: "1.8s",
+    },
 ];
 
 export default function PhoneShowcase() {
