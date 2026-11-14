@@ -431,7 +431,7 @@ export default function PhoneShowcase() {
                                 className="float-card flex items-start gap-3 md:gap-2 rounded-2xl border border-white/15 bg-[#1e100a]/90 p-3 shadow-2xl shadow-black/50 sm:p-1"
                                 style={{ animationDelay: delay }}
                             >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-9 sm:w-9">
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff7a3d] to-[#c1440e] text-[#1a0d05] sm:h-5 sm:w-5">
                                     <Icon size={10} />
                                 </span>
                                 <span className="min-w-0">
